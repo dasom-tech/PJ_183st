@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BBS">
+	
+	<!-- 전제 게시글 수 조회 -->
+	<select id="totalCount" resultType="int">
+		SELECT COUNT(*) AS CNT
+		FROM QNALIST
+	</select>
+	
+	<!-- 페이지에 해당하는 글목록(게시글) 가져오기 -->
+	<select id="list" resultType="com.bc.bbs.vo.QnAListVO"
+			parameterType="Map">
+		SELECT BBS_NO, PRODUCTNO, ID, CONTACT, CATEGORY, SUBJECT, Q_REG
+		  FROM ( SELECT ROWNUM AS RN, B.*
+				   FROM ( SELECT *
+				   			FROM QNALIST
+				   		   ORDER BY BBS_NO
+				   		) B	  
+		  		)
+		 WHERE RN BETWEEN #{begin} AND ${end}
+	</select>
+	
+	<!-- 게시글 하나 조회 (상세페이지)-->
+	<select id="one" parameterType="string" resultType="com.bc.bbs.vo.QnAListVO">
+		SELECT BBS_NO, PRODUCTNO, ID, CONTACT, CATEGORY, SUBJECT
+	  	  FROM QNALIST
+	 	 WHERE BBS_NO = #{bbs_no}
+	</select>
+	
+	<insert id="insert" parameterType="com.bc.bbs.vo.QnAListVO">
+		INSERT INTO QNALIST
+				(BBS_NO, PRODUCTNO, ID, SUBJECT, CONTACT, CATEGORY, Q_REG )
+		VALUES (BBSNO.NEXTVAL, #{productno}, #{id}, #{subject}, #{contact},
+				#{category}, SYSDATE)
+	</insert>
+</mapper>
+
+
+
+
+
+
+
+
+

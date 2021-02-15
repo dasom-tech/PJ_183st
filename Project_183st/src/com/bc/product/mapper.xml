@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="products">
+
+	<select id="getCntProductListByType" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		SELECT  COUNT(PRODUCTNO)
+    	FROM    PRODUCTS
+	    <if test="producttype!=null">
+	    	WHERE PRODUCTTYPE = #{producttype}
+	    </if>
+	</select>
+	
+	<select id="selectProductListByType" parameterType="java.util.HashMap" resultType="com.bc.product.ProductVO">
+		SELECT  A.PRODUCTNO
+		      , A.PRODUCTTYPE
+		      , A.PRODUCTNAME
+		      , A.PRICE
+		      , A.STOCK
+		      , A.INFO
+		      , A.RNUM
+		FROM (
+			SELECT  PRODUCTNO
+	          , PRODUCTTYPE
+	          , PRODUCTNAME
+	          , PRICE
+	          , STOCK
+	          , INFO
+	          , ROWNUM RNUM
+	    	FROM    PRODUCTS
+	    <if test="producttype!=null">
+	    	WHERE PRODUCTTYPE = #{producttype}
+	    </if>
+		    ORDER BY PRODUCTTYPE DESC 
+		) A
+		<if test="strNum!=null and endNum!=null">
+		WHERE A.RNUM BETWEEN #{strNum} AND #{endNum}
+		</if>
+	</select>
+	
+	<select id="selectProductInfo" parameterType="java.lang.String" resultType="com.bc.product.ProductVO">
+		SELECT  PRODUCTNO
+		      , PRODUCTTYPE
+		      , PRODUCTNAME
+		      , PRICE
+		      , STOCK
+		      , INFO
+		FROM    PRODUCTS
+		WHERE   PRODUCTNO = #{productno}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
