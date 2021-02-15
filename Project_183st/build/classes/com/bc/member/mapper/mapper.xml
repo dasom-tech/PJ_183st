@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="Member">
+	
+	<!-- ID 중복 확인 -->
+	<select id="overlapChk" resultType="String">
+		select id
+		from members
+		order by id
+	</select>
+	
+	<!-- 회원 가입 -->
+	<insert id="insert" parameterType="MemberVo">
+		insert into members
+		values(#{id}, #{pwd}, #{name}, #{email}, #{addr}, #{phone}, 2000)
+	</insert>
+	
+	<!-- 로그인 -->
+	<select id="login" parameterType="map" resultType="MemberVo">
+		select id, pwd
+		from members
+		where id = #{id} and pwd = #{pwd}
+	</select>
+	
+	<!-- 회원 정보 수정을 위한 회원 정보 검색 -->
+	<select id="sMember" parameterType="map" resultType="MemberVo">
+		select *
+		from members
+		where id = #{id} and pwd = #{pwd}
+	</select>
+	
+	<!-- 회원 정보 수정 -->
+	<update id="modify" parameterType="MemberVo">
+		update members 
+		set pwd = #{pwd}, email = #{email}, addr = #{addr}, phone = #{phone}
+		where id = #{id}
+	</update>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="leave" parameterType="String">
+		delete from members where id = #{id}
+	</delete>
+	
+	
+</mapper>

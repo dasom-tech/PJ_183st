@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/controller")
+@WebServlet("/product_controller")
 public class ProductController extends HttpServlet {
 
 	@Override
