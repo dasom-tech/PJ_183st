@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bc.bbs.vo.QnAListVO;
-import com.bc.common.Page;
+import com.bc.common.mybatis.Page;
 
 public class PageCommand implements Command {
 	

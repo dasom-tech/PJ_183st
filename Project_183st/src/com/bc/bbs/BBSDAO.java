@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.session.SqlSession;
 
 import com.bc.bbs.vo.QnAListVO;
-import com.bc.common.DBService;
+import com.bc.common.mybatis.DBService;
 
 // QnA 게시판
 public class BBSDAO {
