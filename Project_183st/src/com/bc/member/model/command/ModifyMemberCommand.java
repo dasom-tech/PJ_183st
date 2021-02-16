@@ -26,6 +26,8 @@ public class ModifyMemberCommand implements MemberCommand {
 		
 		if(pwd == null || "".equals(pwd)) {
 			pwd = (String)session.getAttribute("pwd");
+		} else {
+			session.setAttribute("pwd", pwd);
 		}
 		
 		MemberVo vo = new MemberVo(id, pwd, name, email, addr, phone, 0);

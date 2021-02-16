@@ -5,14 +5,38 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+<meta name="path_role" content="MAIN">
+<meta name="author" content="183스트리트">
+<meta name="description" content="183스트리트 - 의류 쇼핑몰">
+<meta name="keywords" content="183ST">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/reset.css">
+<link rel="stylesheet" type="text/css" href="common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 <style>
-	#titleArea{position:relative;border-bottom:1px solid #c2c2c2;background-color:#fff;}
-	#titleArea h2{padding:0 61px 10px 61px;line-height:20px;font-size:15px;color:#2e2e2e;text-align:center;}
+	.main-warp {
+		height:900px;
+		top:500px;
+	}
 	
-	.formBox{position:relative;margin:0px 14px 0;font-size:11px;}
-	.formBox .form{margin:0 0px 0 0;}
+	.title_Area {
+		margin-top: 40px;
+		position: relative;
+	    border-bottom: 1px solid #c2c2c2;
+	    background-color:#8f5b52;
+	    text-align:center;
+	}
 	
-	.formBox .btnArea.type1{margin:14px auto 0;}
+	form {
+		margin: 0 auto;
+		width: 400px;
+		padding: 1em;
+		margin-top: 20px;
+	}
+	
+	input {
+		margin: 2px;
+	}
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
@@ -45,31 +69,57 @@
 			$(".pwdchk").text("");
 		});
 		
+		$(".menu").click(function(){
+			$("nav").attr("visibility", "visible");
+		});
+		
 	});
 </script>
 </head>
 <body>
-<div>
-	<div id="titleArea">
-		<h2>로그인</h2>
-	</div>
-	<form action="/Project_183st/memberController?type=login" id="login" method="post">
-	<div id="login_module">
-		<fieldset>
-		<div class="formBox">
-			<div class="form">
-			<input type="text" placeholder="아이디" class="inputId" name="id"><br>
-			<div class="idchk"></div>
-			<input type="password" placeholder="패스워드" class="inputPwd" name="pwd"><br>
-			<div class="pwdchk"></div>
-			</div>
-			<div class="btnArea type1">
-			<input type="button" value="로그인" id="loginBtn">
-			</div>
-		</div>
-		</fieldset>
-	</div>
-	</form>
-</div>
+	<header>
+         <div>
+             <a class="menu" href=""><i class="fas fa-bars"></i></a>
+             <a href=""><i class="fas fa-search"></i></a>
+         </div>
+         <div class="main-logo"><a href="">183ST</a></div>
+         <div>
+             <a href=""><i class="fas fa-user"></i></a>
+             <a href=""><i class="fas fa-shopping-cart"></i></a>
+         </div>    
+     </header>
+     <nav>
+            <ul>
+                <li><a href="">ALL</a></li>
+                <li><a href="">TOP</a></li>
+                <li><a href="">BOTTOM</a></li>
+            </ul>
+     </nav>
+     <!-- ------ 공통부 ------ -->
+     
+     
+     
+     <main>
+     <div class="main-warp">
+     	<div class="title_Area">
+     	<h2>로그인</h2>
+     	</div>
+		<form action="/Project_183st/memberController?type=login" id="login" method="post">
+				<fieldset>
+					<input type="text" placeholder="아이디" class="inputId" name="id"><br>
+					<div class="idchk"></div>
+					<input type="password" placeholder="패스워드" class="inputPwd" name="pwd"><br>
+					<div class="pwdchk"></div>
+					<input type="button" value="로그인" id="loginBtn">
+				</fieldset>
+		</form>
+	  </div>
+	  </main>
+	
+	
+	
+	<!-- ------ 이하 공통부 ------ -->
+	<footer>
+	</footer>
 </body>
 </html>

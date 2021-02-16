@@ -33,7 +33,7 @@
 	<insert id="insert" parameterType="com.bc.bbs.vo.QnAListVO">
 		INSERT INTO QNALIST
 				(BBS_NO, PRODUCTNO, ID, SUBJECT, CONTACT, CATEGORY, Q_REG )
-		VALUES (BBSNO.NEXTVAL, #{productno}, #{id}, #{subject}, #{contact},
+		VALUES (BBSNO.NEXTVAL, 111, #{id}, #{subject}, #{contact},
 				#{category}, SYSDATE)
 	</insert>
 </mapper>
