@@ -12,6 +12,7 @@ public class QnAListVO {
 	public QnAListVO() {}
 
 	public QnAListVO(String bbs_no, String productno, String id, String subject, String contact, String category, String q_reg) {
+		this.bbs_no = bbs_no;
 		this.productno = productno;
 		this.id = id;
 		this.subject = subject;
@@ -78,7 +79,8 @@ public class QnAListVO {
 
 	@Override
 	public String toString() {
-		return "QnAListVO [String bbs_no=" + "productno=" + productno + ", id=" + id + ", subject=" + subject + ", contact=" + contact
-				+ ", category=" + category + ", q_reg=" + q_reg + "]";
+		return "QnAListVO [bbs_no=" + bbs_no + ", productno=" + productno + ", id=" + id + ", subject=" + subject
+				+ ", contact=" + contact + ", category=" + category + ", q_reg=" + q_reg + "]";
 	}
+
 }

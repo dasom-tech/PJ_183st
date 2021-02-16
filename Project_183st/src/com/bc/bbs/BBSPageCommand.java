@@ -6,13 +6,14 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bc.bbs.vo.QnAListVO;
 import com.bc.common.mybatis.Page;
 
-public class PageCommand implements Command {
+public class BBSPageCommand implements Command {
 	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
@@ -62,7 +63,8 @@ public class PageCommand implements Command {
 		
 		request.setAttribute("list", list);
 		request.setAttribute("page", p); //페이지 정보를 담고 있는 VO
+		request.setAttribute("cPage", cPage);
 		
-		return "bbs.jsp";
+		return "bbs/bbs.jsp";
 	}
 }

@@ -73,27 +73,27 @@
 </style>
 <script>
 	function all_search(frm) {
-		frm.action = "controller?viewType=list&cPage=1";
+		frm.action = "product_controller?viewType=list&cPage=1";
 		frm.submit();
 	}
 	function top_search(frm) {
 		producttype = "T";
-		frm.action = "controller?viewType=list&producttype=T&cPage=1";
+		frm.action = "product_controller?viewType=list&producttype=T&cPage=1";
 		frm.submit();
 	}
 	function bottom_search(frm) {
 		producttype = "B";
-		frm.action = "controller?viewType=list&producttype=B&cPage=1";
+		frm.action = "product_controller?viewType=list&producttype=B&cPage=1";
 		frm.submit();
 	}
 	function detail_view(productno){
 		var frm = document.getElementById("submitForm");
-		frm.action="controller?viewType=info&productno="+productno;
+		frm.action="product_controller?viewType=info&productno="+productno;
 		frm.submit();
 	}
 	function paging_click(producttype, pageNo){
 		var frm = document.getElementById("submitForm");
-		frm.action = "controller?viewType=list&producttype="+producttype+"&cPage="+pageNo;		
+		frm.action = "product_controller?viewType=list&producttype="+producttype+"&cPage="+pageNo;		
 		frm.submit();
 	}	
 

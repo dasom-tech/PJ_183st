@@ -30,14 +30,35 @@
 		padding: 4px 10px;
 	}
 </style>
+<script>
+	function modify_go(frm) {
+		frm.action="bbsController?type=modify";
+		frm.submit();
+	}
+	
+	function delete_go(frm) {
+		frm.action="bbsController?type=delete";
+		frm.submit();
+	}
+	
+	function list_go(frm) {
+		frm.action="bbsController?type=bbs";
+		frm.submit();
+	}
+</script>
 </head>
 <body>
-	<div id="bbs">
-<%-- 게시글 내용 표시 --%>
+<div id="bbs">
 <form method="post">
+<input type="hidden" name="bbs_no" value="${vo.bbs_no}" />
+<input type="hidden" name="cPage" value="${cPage}" />
 	<table>
 		<caption>상세보기</caption>
 		<tbody>
+			<tr>
+				<th>상품번호</th>
+				<td>${vo.productno }</td>
+			</tr>
 			<tr>
 				<th>제목</th>
 				<td>${vo.subject }</td>
@@ -55,23 +76,19 @@
 				<td>${vo.contact }</td>
 			</tr>
 		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="2">
+					<input type="button" value="수 정" onclick="modify_go(this.form)">
+					<input type="button" value="삭 제" onclick="delete_go(this.form)">
+					<input type="button" value="목 록" onclick="list_go(this.form)">
+				</td>
+			</tr>
+		</tfoot>
 	</table>
 </form>
 </div>
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
 

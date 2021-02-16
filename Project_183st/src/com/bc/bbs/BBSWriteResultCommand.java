@@ -1,0 +1,33 @@
+package com.bc.bbs;
+
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.bc.bbs.vo.QnAListVO;
+
+public class BBSWriteResultCommand implements Command {
+	@Override
+	public String execute(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
+		QnAListVO vo = new QnAListVO();
+		vo.setProductno(request.getParameter("productno"));
+		vo.setSubject(request.getParameter("subject"));
+		vo.setCategory(request.getParameter("category"));
+		vo.setId("TEST");
+		vo.setContact(request.getParameter("content"));
+		System.out.println("vo : " + vo);
+		
+		BBSDAO.insert(vo);
+		System.out.println("insert vo : " + vo);
+		
+		request.setAttribute("vo", vo);
+		
+		return "bbs/detail.jsp";
+	}
+
+}

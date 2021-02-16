@@ -89,7 +89,7 @@
 			<tr>
 				<td>${vo.bbs_no }</td>
 				<td>
-					<a href="controller?type=detail&bbs_no=${vo.bbs_no }&cPage=${page.nowPage }">${vo.subject }</a>
+					<a href="bbsController?type=detail&bbs_no=${vo.bbs_no }&cPage=${page.nowPage }">${vo.subject }</a>
 				</td>
 				<td>${vo.id }</td>
 				<td>${vo.category }</td>
@@ -108,7 +108,7 @@
 					<li class="disable">이전으로</li>
 				</c:when>
 				<c:otherwise>
-					<li><a href="controller?type=bbs&cPage=${page.beginPage - 1 }">이전으로</a></li>
+					<li><a href="bbsController?type=bbs&cPage=${page.beginPage - 1 }">이전으로</a></li>
 				</c:otherwise>
 			</c:choose>
 			<%-- 블록내에 표시할 페이지 태그 작성(시작페이지 ~ 끝페이지)
@@ -119,14 +119,14 @@
 				</c:if>
 				<c:if test="${pageNo != page.nowPage }">
 					<li>
-						<a href="controller?type=bbs&cPage=${pageNo }">${pageNo }</a>
+						<a href="bbsController?type=bbs&cPage=${pageNo }">${pageNo }</a>
 					</li>
 				</c:if>
 			</c:forEach>
 			<%--[다음으로]에 대한 사용여부 처리 : endPage가 전체페이지수(totalPage)보다 작은경우 활성화--%>
 			<c:if test="${page.endPage < page.totalPage }">
 				<li>
-					<a href="controller?type=bbs&cPage=${page.endPage + 1 }">다음으로</a>
+					<a href="bbsController?type=bbs&cPage=${page.endPage + 1 }">다음으로</a>
 				</li>
 			</c:if>
 			<c:if test="${page.endPage >= page.totalPage }">
@@ -135,7 +135,7 @@
 				</ol>
 			</td>
 			<td>
-			<form action="controller?type=write" method="post">	
+			<form action="bbsController?type=write" method="post">	
 				<input type="submit" value="글쓰기">
 			</form>
 			</td>

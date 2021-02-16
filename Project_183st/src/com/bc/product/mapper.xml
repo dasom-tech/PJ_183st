@@ -49,6 +49,7 @@
 		FROM    PRODUCTS
 		WHERE   PRODUCTNO = #{productno}
 	</select>
+	
 </mapper>
 
 

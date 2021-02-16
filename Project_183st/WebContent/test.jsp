@@ -7,7 +7,7 @@
 <title>메인</title>
 </head>
 <body>
-	<form action="controller?type=bbs" method="post">
+	<form action="bbsController?type=bbs" method="post">
 		<input type="submit" value="게시판">
 	</form>
 </body>

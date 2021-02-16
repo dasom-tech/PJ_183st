@@ -17,7 +17,7 @@
 		  FROM ( SELECT ROWNUM AS RN, B.*
 				   FROM ( SELECT *
 				   			FROM QNALIST
-				   		   ORDER BY BBS_NO
+				   		   ORDER BY BBS_NO DESC
 				   		) B	  
 		  		)
 		 WHERE RN BETWEEN #{begin} AND ${end}
@@ -30,12 +30,30 @@
 	 	 WHERE BBS_NO = #{bbs_no}
 	</select>
 	
+	<!-- 게시글 작성 -->
 	<insert id="insert" parameterType="com.bc.bbs.vo.QnAListVO">
+		<selectKey keyProperty="bbs_no" resultType="String" order="BEFORE">
+    		SELECT BBSNO.NEXTVAL FROM DUAL
+  		</selectKey>	
 		INSERT INTO QNALIST
 				(BBS_NO, PRODUCTNO, ID, SUBJECT, CONTACT, CATEGORY, Q_REG )
-		VALUES (BBSNO.NEXTVAL, #{productno}, #{id}, #{subject}, #{contact},
+		VALUES (#{bbs_no}, #{productno}, #{id}, #{subject}, #{contact},
 				#{category}, SYSDATE)
 	</insert>
+	
+	<!-- 게시글 수정 -->
+	<update id="update" parameterType="com.bc.bbs.vo.QnAListVO">
+		UPDATE QNALIST
+		   SET SUBJECT = #{subject},
+		       CONTACT = #{contact},
+		       CATEGORY = #{category}
+		 WHERE BBS_NO = #{bbs_no}
+	</update>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delete" parameterType="string">
+		DELETE FROM QNALIST WHERE BBS_NO = #{bbs_no}
+	</delete>
 </mapper>
 
 
