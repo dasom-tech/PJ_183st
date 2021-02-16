@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+}
+
+body {
+    width: 100%;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+li {
+    display: inline-block;
+}
+
+.body_wrap {
+    position: absolute;
+}
+
+header {
+    width: 100%;
+    position: fixed;
+    width: 100%;
+    height: 40px;
+    background-color: #8f5b528e;
+    padding: 10px 50px;
+    display: flex;
+    justify-content: center;
+}
+
+header .wrap {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+}
+
+.header_menu i{
+    margin: 0 7px;
+}
+
+.header_logo {
+    font-size: 23px;
+    color: white;   
+}
+
+
+nav {
+    display: none;
+    position: fixed;
+    background-color: #898f81a1;
+    width: 250px;
+    height: 100%;
+    margin-top: 40px;
+}
+
+.menu.active {
+    display: flex;
+}
+
+nav ul{
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px;
+}
+
+nav ul li{
+    margin-bottom: 8px;
+    background-color: (0,0,0,0.3);
+}
+
+footer {
+    width: 100%;
+    width: 100%;
+    background-color: #32435F;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+}
+
+footer .wrap {
+    display: flex;
+    font-size: 12px;
+    color: lightgray;
+}
+
+.footer_left {
+    flex-basis: 50%;
+    padding-right: 50px;
+    border-right: 1px solid gray;
+}
+
+.footer_terms {
+    margin-bottom: 10px;
+}
+
+.footer_terms ul li {
+    margin: 0px 10px;
+}
+
+.footer_business-info ul li {
+    padding: 0px 10px;
+    border-right: 1px solid gray;
+}
+
+.footer_business-info ul li:last-child{
+    border-right: 0px;
+}
+
+.footer_right {
+    flex-basis: 50%;
+    display: flex;
+    padding-left: 100px;
+    border:0;
+}
+
+.footer_contact {
+    margin-right: 40px;
+}
+
+.footer_contact_phone {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.footer_contact_sns {
+    font-size: 20px;
+}
+
+.footer_other {
+    display: flex;
+    flex-direction: column;
+}
+.footer_other_business-hour{
+    margin-bottom: 10px;
+}
+.footer_other_bank {
+    font-size: 16px;
+}
+
+.chat-bot {
+    font-size: 30px;
+    background-color: orange;
+    color: rgb(37, 29, 29);
+    position: fixed;
+    bottom: 80px;
+    right: 50px;
+    padding: 20px;
+    border-radius: 30%;
+}
