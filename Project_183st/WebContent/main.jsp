@@ -16,6 +16,7 @@
 	<a id="logout" href="memberController?type=logout">로그아웃</a>
 	<a id="modify" href="memberController?type=modifyMove">정보 수정</a>
 	<a href="Member/leave.jsp">회원 탈퇴</a>
+	<a href="CartController?type=cart">장바구니</a>
 	</c:if>
 	<c:if test="${empty sessionScope.id && empty sessionScope.pwd }">
 	<a id="login" href="memberController?type=loginMove">로그인</a>
