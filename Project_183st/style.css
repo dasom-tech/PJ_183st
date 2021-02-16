@@ -1,91 +1,39 @@
-@import url('https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap');
-
-* {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-}
-
-body {
-    position: absolute;
-    font-family: 'Nanum Gothic', sans-serif;
-}
-
-header {
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:#8f5b52;
-    width: 100%;
-    height: 40px;
-    padding: 10px 30px;
-}
-
-header div i{
-    color:white;
-}
-
-.main-logo{
-    font-family: 'Lexend Mega', sans-serif;
-    font-size: 23px;
-    color: white;   
-}
-
-nav {
-    position: fixed;
-    background-color: #898f81a1;
-    width: 250px;
-    height: 100%;
+.main_slide-banner {
+    width: 100%;   
+    height: 350px;
+    background-image: url("https://images.unsplash.com/photo-1527963841590-34ea3172750d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80;");
     margin-top: 40px;
-}
-
-nav ul{
-    display: flex;
-    flex-direction: column;
-    padding: 30px 30px;
-}
-
-nav ul li{
-    margin-bottom: 8px;
-    background-color: (0,0,0,0.3);
 }
 
 main {
-    margin-top: 40px;
+    width: 100%;
+    background-color: #f0eddf;
+    padding: 30px 30px;
+    display: flex;
+    justify-content: center;
 }
 
 main .wrap {
-    width: 100%;
-    height: 100%;
-    display:flex;
+    display: flex;
     flex-direction: column;
 }
 
-main section {
-    display:flex;
+main div div {
+    display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.main_slide-banner {
-    height:350px;
-    background-image: url("https://images.unsplash.com/photo-1527963841590-34ea3172750d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80;");
-}
-
 .item_list_title {
-    font-size: 17px;
-    margin-bottom:15px;
+    font-size: 18px;
+    margin-bottom: 23px;
 }
 
-.recommended-item, .normal-item {
-    padding: 0 30px;
-}
 
 .item_list {
     width: 100%;
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -100,15 +48,4 @@ main section {
 .item_img {
     width: 230px;
     height: 300px;
-}
-
-footer {
-    font-size: 12px;
-    color: white;
-    background-color:#32435F;
-    padding: 30px 30px 30px 30px;
-}
-
-footer section{
-    margin-bottom: 10px;
 }

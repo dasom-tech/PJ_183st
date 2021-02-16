@@ -37,6 +37,7 @@
   		</selectKey>	
 		INSERT INTO QNALIST
 				(BBS_NO, PRODUCTNO, ID, SUBJECT, CONTACT, CATEGORY, Q_REG )
+
 		VALUES (#{bbs_no}, #{productno}, #{id}, #{subject}, #{contact},
 				#{category}, SYSDATE)
 	</insert>

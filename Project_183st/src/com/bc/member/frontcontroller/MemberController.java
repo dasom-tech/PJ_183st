@@ -61,7 +61,7 @@ public class MemberController extends HttpServlet {
 			command = new ModifyMoveCommand();
 			execute(command.execute(request, response), request, response);
 		}
-		else if("modify_go".equals(type)) {
+		else if("modify".equals(type)) {
 			command = new ModifyMemberCommand();
 			execute(command.execute(request, response), request, response);
 		}

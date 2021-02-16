@@ -9,6 +9,7 @@
 
 	<typeAliases>
       <typeAlias type="com.bc.member.model.vo.MemberVo" alias="MemberVo"/>
+      <typeAlias type="com.bc.cart.model.vo.CartVO" alias="CartVO"/>
    </typeAliases>
    
   <environments default="development">
@@ -26,6 +27,7 @@
   <mappers>
     <mapper resource="com/bc/product/mapper.xml"/>
     <mapper resource="com/bc/member/mapper/mapper.xml"/>
+    <mapper resource="com/bc/cart/mapper/mapper.xml"/>
     <mapper resource="com/bc/bbs/mapper.xml"/>
   </mappers>
 </configuration>
