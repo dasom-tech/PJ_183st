@@ -35,6 +35,29 @@
 			}
 		});
 		
+		$(".sDelete").click(function(){
+			var sDchk = confirm("해당 상품을 장바구니에서 삭제하시겠습니까?");
+			
+			if(chk){
+				if($("input[type=checkbox]").prop("checked")){
+				}
+			} else{
+				return;
+			}
+		});
+		
+		$(".selectAll").click(function(){
+			if($("input[type=checkbox]").prop("checked")){
+				$("input[type=checkbox]").prop("checked", false);
+			} else{
+				$("input[type=checkbox]").prop("checked", true);
+			}
+		});
+		
+		$(".return").click(function(){
+			location.href="main.jsp";
+		});
+		
 	});
 </script>
 </head>
@@ -46,10 +69,10 @@
 		<p>장바구니에 상품이 없습니다</p>
 	</c:if>
 	<c:if test="${!empty UserCart }">
-	<form method="post">
+	<form action="OrderController?type=orderMove" method="post">
 		<c:forEach var="list" items="${UserCart }">
 			<div>
-				<input type="checkbox" name="item" value="${list.cartid }">
+				<input type="checkbox" name="cartid" value="${list.cartid }">
 				<p>${list.productname }</p>
 				<p>${list.price }원</p>
 				<p>수량 : <input type="number" name="amount" value="${list.c_amount }"><input type="button" class="modAmount" name="${list.cartid }" value="수정">
@@ -58,6 +81,8 @@
 			<hr>
 		</c:forEach>
 	<p>총액 : ${total }원</p>
+	<p><input type="button" class="selectAll" value="전체선택"><input type="button" class="sDelete" value="선택삭제"></p>
+	<p><input type="submit" value="주문하기"><input type="button" class="return" value="돌아가기"></p>
 	</form>
 	</c:if>
 	</div>

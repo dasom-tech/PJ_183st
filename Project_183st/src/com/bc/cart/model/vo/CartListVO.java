@@ -1,12 +1,12 @@
 package com.bc.cart.model.vo;
 
-public class CartVO {
+public class CartListVO {
 	
 	private String cartid,	productno,	id,	c_amount, productname, price;
 	
-	public CartVO() {	}
+	public CartListVO() {	}
 
-	public CartVO(String cartid, String productno, String id, String c_amount, String productname, String price) {
+	public CartListVO(String cartid, String productno, String id, String c_amount, String productname, String price) {
 		this.cartid = cartid;
 		this.productno = productno;
 		this.id = id;

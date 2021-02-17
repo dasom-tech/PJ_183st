@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.bc.cart.model.command.CartCommand;
 import com.bc.cart.model.dao.CartDAO;
-import com.bc.cart.model.vo.CartVO;
+import com.bc.cart.model.vo.CartListVO;
 
 public class CartMove implements CartCommand {
 
@@ -21,12 +21,12 @@ public class CartMove implements CartCommand {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("id");
 		
-		List<CartVO> list = CartDAO.cartList(id);
+		List<CartListVO> list = CartDAO.cartList(id);
 		//System.out.println(">> list : " + list);
 		
 		int total = 0;
 		
-		for (CartVO vo : list) {
+		for (CartListVO vo : list) {
 			total += Integer.parseInt(vo.getC_amount()) * Integer.parseInt(vo.getPrice());
 		}
 		

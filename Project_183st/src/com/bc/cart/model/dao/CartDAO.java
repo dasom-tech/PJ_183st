@@ -5,15 +5,15 @@ import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
-import com.bc.cart.model.vo.CartVO;
+import com.bc.cart.model.vo.CartListVO;
 import com.bc.common.mybatis.DBService;
 
 public class CartDAO {
 	
 	// ����� ��ٱ��� ��ȸ
-	public static List<CartVO> cartList(String id){
+	public static List<CartListVO> cartList(String id){
 		SqlSession ss = DBService.getFactory().openSession();
-		List<CartVO> list = ss.selectList("Cart.cartList", id);
+		List<CartListVO> list = ss.selectList("Cart.cartList", id);
 		ss.close();
 		return list;
 	}
