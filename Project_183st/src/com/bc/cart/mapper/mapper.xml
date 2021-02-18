@@ -29,4 +29,19 @@
 		delete from cartlist where cartid = #{cartid}
 	</delete>
 	
+	<!-- 장바구니에 추가 -->
+	<insert id="insertItem" parameterType="Map">
+		insert into cartlist(cartid, productno, id, c_amount)
+		values (cartid.nextval, #{productno}, #{id}, #{c_amount})		
+	</insert>
 </mapper>
+
+
+
+
+
+
+
+
+
+

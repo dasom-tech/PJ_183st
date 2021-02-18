@@ -7,6 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.bc.cart.model.vo.CartListVO;
 import com.bc.common.mybatis.DBService;
+import com.bc.product.ProductVO;
 
 public class CartDAO {
 	
@@ -46,5 +47,14 @@ public class CartDAO {
 		ss.close();
 		return result;
 	}
+	
+	// 장바구니에 추가
+		public static int insertItem(Map<String, String> map) {
+			SqlSession ss = DBService.getFactory().openSession(true);
+			int result = ss.insert("Cart.insertItem", map);
+			ss.close();
+			return result;
+		}
+	
 	
 }

@@ -35,29 +35,40 @@
 			}
 		});
 		
-		$(".sDelete").click(function(){
-			var sDchk = confirm("해당 상품을 장바구니에서 삭제하시겠습니까?");
+		$(".insertItem").click(function(){
+			var insertid = event.srcElement.name;
+			
+			var chk = confirm("해당 상품을 장바구니에서 추가하시겠습니까?");
 			
 			if(chk){
-				if($("input[type=checkbox]").prop("checked")){
-				}
+				location.href="CartController?type=insertItem&cid=" + insertid;
 			} else{
-				return;
-			}
-		});
-		
-		$(".selectAll").click(function(){
-			if($("input[type=checkbox]").prop("checked")){
-				$("input[type=checkbox]").prop("checked", false);
-			} else{
-				$("input[type=checkbox]").prop("checked", true);
-			}
-		});
-		
-		$(".return").click(function(){
-			location.href="main.jsp";
-		});
-		
+		        return;
+		    }
+		 });
+
+		$(".sDelete").click(function(){
+	        var sDchk = confirm("해당 상품을 장바구니에서 삭제하시겠습니까?");
+	        
+	        if(chk){
+	           if($("input[type=checkbox]").prop("checked")){
+	           }
+	        } else{
+	           return;
+	        }
+	     });
+	     
+	     $(".selectAll").click(function(){
+	        if($("input[type=checkbox]").prop("checked")){
+	           $("input[type=checkbox]").prop("checked", false);
+	        } else{
+	           $("input[type=checkbox]").prop("checked", true);
+	        }
+	     });
+	     
+	     $(".return").click(function(){
+	        location.href="main.jsp";
+	     });
 	});
 </script>
 </head>

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bc.cart.model.command.CartCommand;
 import com.bc.cart.model.command.ChangeAmountCommand;
 import com.bc.cart.model.command.DeleteItemCommand;
+import com.bc.cart.model.command.InsertItemCommand;
 import com.bc.cart.move.CartMove;
 
 @WebServlet("/CartController")
@@ -32,6 +33,9 @@ public class CartController extends HttpServlet {
 			break;
 		case "deleteItem":
 			command = new DeleteItemCommand();
+			break;
+		case "insertItem":
+			command = new InsertItemCommand();
 			break;
 		}
 		String path = command.execute(request, response);
