@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,13 +24,13 @@
                 <div class="wrap">
                     <div class="header_menu">
                         <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
-                        <a href=""><i class="fas fa-user"></i></a>
+                        <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
                     </div>
                     <div class="header_logo">
                         <a href="index.html">183번가</a></div>
                     <div class="header_menu">
                         <a href=""><i class="fas fa-search"></i></a>
-                        <a href=""><i class="fas fa-shopping-cart"></i></a>
+                        <a href="CartController?type=cart"><i class="fas fa-shopping-cart"></i></a>
                     </div>  
                 </div>  
             </header>
@@ -36,9 +38,12 @@
             <nav class="menu">
                 <div class="wrap">
                     <ul>
-                        <li><a href="product-all.html">ALL</a></li>
-                        <li><a href="product-top.html">TOP</a></li>
-                        <li><a href="product-pants.html">PANTS</a></li>
+                        <li><a href="product_controller?viewType=list&cPage=1">ALL</a></li>
+                        <li><a href="product_controller?viewType=list&producttype=T&cPage=1">TOP</a></li>
+                        <li><a href="product_controller?viewType=list&producttype=B&cPage=1">PANTS</a></li>
+                        <br>
+                        <li><a href="qna.html">Q&A</a></li>
+                        <li><a href="mypage.html">MY PAGE</a></li>
                     </ul>
                 </div>
             </nav>
@@ -59,7 +64,7 @@
                         </ul>                       
                     </div>
                     <div class="normal-item">
-                        <div class="item_list_title">PRODUCTS</div>
+                        <div class="item_list_title">ALL</div>
                         <ul class="item_list">
                             <li class="item"><div class="item_box"><a href=""><img class="item_img" alt="" src="https://images.unsplash.com/photo-1613152385623-3cff59a74175?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=974&q=80"><div class="item_name">헤링본 더블 롱 코트</div><div class="item_price">$100</div></a></div></li>
                             <li class="item"><div class="item_box"><a href=""><img class="item_img" alt="" src="https://images.unsplash.com/photo-1613152385623-3cff59a74175?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=974&q=80"><div class="item_name">헤링본 더블 롱 코트</div><div class="item_price">$100</div></a></div></li>

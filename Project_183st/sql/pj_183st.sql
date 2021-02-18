@@ -205,3 +205,61 @@ UPDATE  PRODUCTS
 SET     PRODUCTNO = 'B'||SUBSTR(PRODUCTNO,2,4)
 WHERE   PRODUCTTYPE = 'B' ;
 COMMIT;
+-----------------------------------------------------------------------------------------------
+
+DROP TABLE ORDERLIST;
+COMMIT;
+-------------------------
+CREATE TABLE ORDERINFO (
+    ORDERID NUMBER PRIMARY KEY,
+    ID VARCHAR2(30),
+    NAME VARCHAR2(30),
+    ADDR VARCHAR2(100),
+    PHONE VARCHAR2(30),
+    POINT NUMBER,
+    TOTALPRICE NUMBER
+);
+----------------------------------------------
+CREATE TABLE ORDERDETAIL (
+    O_DETAILID NUMBER PRIMARY KEY,
+    ORDERID NUMBER,
+    PRODUCTNO   VARCHAR2(50 BYTE),
+    O_AMOUNT NUMBER,
+    PRICE NUMBER,
+    PRODUCTNAME   VARCHAR2(80 BYTE),
+    FOREIGN KEY (ORDERID) REFERENCES ORDERINFO(ORDERID)
+);
+--------------------------------------------
+CREATE SEQUENCE ORDER_SEQ NOCACHE;
+CREATE SEQUENCE O_DETAIL_SEQ NOCACHE;
+
+DROP SEQUENCE ORDERNO;
+--------------------------------
+ALTER TABLE PRODUCTS
+ADD IMAGE_S VARCHAR2(500);
+
+ALTER TABLE PRODUCTS
+ADD IMAGE_L VARCHAR2(1000);
+
+ALTER TABLE CARTLIST
+ADD IMAGE_S VARCHAR2(500);
+COMMIT;
+-------------------------------------------------
+INSERT INTO PRODUCTS(PRODUCTNO, PRODUCTTYPE, PRODUCTNAME, PRICE, STOCK, INFO, IMAGE_S, IMAGE_L) 
+VALUES('T100','T','20FW 에센셜 오버핏 후드 CREAM BRULEE',41860,65,'Cotton 100%***
+복원력이 매우 우수한 하이텐션 퀄리티의 시보리 제작***
+20FW의 트렌드 컬러 및 엘무드의 독자적 더스키함을 믹스한 자체 염색된 포인트 컬러들로 적재적소에 스타일 매칭이 가능***
+일반 세탁기 테스트 결과 큰 수축률 및 변형없이 착용 가능 합니다.***
+원단 특성상 뜨거운물 세탁과 건조기능은 가급적 피해주시길 바랍니다.','t100s.jpg','t100l.jsp') ;
+
+
+
+
+
+
+
+
+
+
+
+

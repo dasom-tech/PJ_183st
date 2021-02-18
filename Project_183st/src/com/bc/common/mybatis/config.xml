@@ -12,6 +12,7 @@
       <typeAlias type="com.bc.cart.model.vo.CartListVO" alias="CartListVO"/>
       <typeAlias type="com.bc.order.model.vo.OrderListVO" alias="OrderListVO"/>
       <typeAlias type="com.bc.order.model.vo.OrderItemVO" alias="OrderItemVO"/>
+      <typeAlias type="com.bc.product.ProductVO" alias="ProductVO"/>
    </typeAliases>
    
   <environments default="development">
