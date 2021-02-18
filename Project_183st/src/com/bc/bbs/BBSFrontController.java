@@ -30,8 +30,6 @@ public class BBSFrontController extends HttpServlet {
 			command = new BBSModifyCommand();
 		} else if ("modifyResult".equals(type)) {
 			command = new BBSModifyResultCommand();
-		} else if ("delete".equals(type)) {
-			command = new BBSDeleteCommand();
 		} else if ("deleteResult".equals(type)) {
 			command = new BBSDeleteResultCommand();
 		}
@@ -43,6 +41,7 @@ public class BBSFrontController extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("doPost() 실행");
 		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}

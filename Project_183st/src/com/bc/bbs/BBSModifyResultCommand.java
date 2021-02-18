@@ -10,6 +10,8 @@ public class BBSModifyResultCommand implements Command {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		String bbs_no = request.getParameter("bbs_no");
 		
+		System.out.println("modify bbs_no : " + bbs_no);
+		
 		QnAListVO vo = new QnAListVO();
 		
 		vo.setBbs_no(bbs_no);
@@ -25,6 +27,6 @@ public class BBSModifyResultCommand implements Command {
 		request.setAttribute("vo", vo);
 		request.setAttribute("bbs_no", bbs_no);
 		
-		return "bbs/detail.jsp";
+		return "bbsController?type=detail";
 	}
 }

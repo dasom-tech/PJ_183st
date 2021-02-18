@@ -22,7 +22,7 @@ public class BBSDeleteResultCommand implements Command {
 		BBSDAO.delete(bbs_no);
 		request.setAttribute("cPage", cPage);
 		
-		return "bbs/bbs.jsp";
+		return "bbsController?type=bbs";
 	}
 	
 }

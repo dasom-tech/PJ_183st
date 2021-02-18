@@ -37,8 +37,14 @@
 	}
 	
 	function delete_go(frm) {
-		frm.action="bbsController?type=delete";
-		frm.submit();
+		var chk = confirm("해당 게시글을 삭제 하시겠습니까?");
+		
+		if(chk){
+			frm.action="bbsController?type=deleteResult";
+			frm.submit();
+		} else{
+			return;
+		}
 	}
 	
 	function list_go(frm) {
@@ -50,7 +56,7 @@
 <body>
 <div id="bbs">
 <form method="post">
-<input type="hidden" name="bbs_no" value="${vo.bbs_no}" />
+<input type="hidden" name="bbs_no" value="${bbs_no}" />
 <input type="hidden" name="cPage" value="${cPage}" />
 	<table>
 		<caption>상세보기</caption>

@@ -12,7 +12,11 @@ public class BBSWriteCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String cPage = "1";
+		System.out.println("cPage : " + cPage);
 		
-			return "bbs/write.jsp";
+		request.setAttribute("cPage", cPage);
+		
+		return "bbs/write.jsp";
 	}
 }

@@ -8,17 +8,8 @@
 <title>게시글 수정</title>
 <script>
 	function sendData(frm) {
-		var firstForm = document.forms[0];
-		for (var i=0; i<firstForm.elements.length; i++) {
-			console.log(firstForm.elements[i]);
-			if (firstForm.elements[i].value.trim() == "") {
-				alert(firstForm.elements[i].title + "을(를) 입력하세요");
-				firstForm.elements[i].focus();
-				return;
-			}
-		}
 		
-		frm.action="bbsController";
+		frm.action="bbsController?type=modifyResult";
 		frm.submit();
 	}		
 		
@@ -31,7 +22,6 @@
 <body>
 <div id="bbs">
 <form method="post">
-<input type="hidden" name="type" value="modifyResult" />
 <input type="hidden" name="bbs_no" value="${bbs_no}" />
 <input type="hidden" name="cPage" value="${cPage}" />
 	<table>
@@ -62,9 +52,9 @@
 				<th>문의종류</th>
 				<td>
 					<select name="category" title="문의종류">
-						<option selected disabled value="">::문의종류</option>
-						<option <c:if test="${vo.category == '배송문의' }"> selected </c:if>>배송문의</option>
-						<option <c:if test="${vo.category == '상품문의' }"> selected </c:if>>상품문의</option>
+						<option selected disabled>::문의종류</option>
+						<option value="배송문의" <c:if test="${vo.category == '배송문의' }"> selected </c:if>>배송문의</option>
+						<option value="상품문의" <c:if test="${vo.category == '상품문의' }"> selected </c:if>>상품문의</option>
 					</select>
 				</td>
 			</tr>
