@@ -61,6 +61,10 @@
 			}
 		});
 		
+		$("#joinBtn").click(function(){
+			location.href="memberController?type=joinMove";
+		});
+		
 		// 위의 문장이 작동한 이후 정보 입력 시 div를 초기화
 		$(".inputId").blur(function(){
 			$(".idchk").text("");
@@ -111,6 +115,7 @@
 					<input type="password" placeholder="패스워드" class="inputPwd" name="pwd"><br>
 					<div class="pwdchk"></div>
 					<input type="button" value="로그인" id="loginBtn">
+					<input type="button" value="회원가입" id="joinBtn">
 				</fieldset>
 		</form>
 	  </div>

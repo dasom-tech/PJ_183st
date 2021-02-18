@@ -34,18 +34,6 @@
 				return;
 			}
 		});
-		
-		$(".insertItem").click(function(){
-			var insertid = event.srcElement.name;
-			
-			var chk = confirm("해당 상품을 장바구니에서 추가하시겠습니까?");
-			
-			if(chk){
-				location.href="CartController?type=insertItem&cid=" + insertid;
-			} else{
-		        return;
-		    }
-		 });
 
 		$(".sDelete").click(function(){
 	        var sDchk = confirm("해당 상품을 장바구니에서 삭제하시겠습니까?");
