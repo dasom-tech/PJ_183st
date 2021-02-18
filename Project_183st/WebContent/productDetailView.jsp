@@ -64,5 +64,34 @@
 			</tr>
 		</table>
 	</form>
+	
+<%-- 상품에 대한 리뷰 작성 영역 --%>
+<form action="ans_write_ok.jsp" method="post">
+	<p>이름 : <input type="text" name="writer">
+		비밀번호 : <input type="password" name="pwd"></p>
+	<p>내용 : <textarea name="content" rows="4" cols="55"></textarea>
+	<input type="submit" value="리뷰 저장">
+	<input type="hidden" name="b_idx" value="${bvo.b_idx }">
+</form>
+
+<hr>
+<p>리뷰</p>
+<hr>
+<%-- 상품에 작성된 리뷰 표시 영역 --%>
+<c:forEach var="vo" items="${clist }">
+<div class="comment">
+	<form action="ans_del.jsp" method="post">
+		<p>이름 : ${commVO.writer } &nbsp; 날짜: ${commVO.write_date }</p>
+		<p>내용 : ${commVO.content }</p>
+		<input type="submit" value="리뷰 삭제">
+		<input type="hidden" name="" value="${commVO.c_idx }">
+		<input type="hidden" name="pwd" value="${commVO.pwd }">
+		<%-- 리뷰 삭제처리후 상품 상세페이지로 이동 --%>
+		<input type="hidden" name="b_idx" value="${commVO.b_idx }">
+	</form>
+</div>
+<hr>
+</c:forEach>
+
 </body>
 </html>

@@ -30,8 +30,9 @@
     <mapper resource="com/bc/product/mapper.xml"/>
     <mapper resource="com/bc/member/mapper/mapper.xml"/>
     <mapper resource="com/bc/cart/mapper/mapper.xml"/>
-    <mapper resource="com/bc/bbs/mapper.xml"/>
+    <mapper resource="com/bc/bbs/mapper/mapper.xml"/>
     <mapper resource="com/bc/order/mapper/mapper.xml"/>
+    <mapper resource="com/bc/review/mapper/mapper.xml"/>
   </mappers>
 </configuration>
 
