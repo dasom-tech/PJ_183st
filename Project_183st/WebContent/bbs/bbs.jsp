@@ -135,8 +135,9 @@
 				</ol>
 			</td>
 			<td>
-			<form action="bbsController?type=write" method="post">	
+			<form action="bbsController?type=write" method="post">
 				<input type="submit" value="글쓰기">
+				<input type="hidden" name="cPage" value="${page.nowPage }"/>	
 			</form>
 			</td>
 		</tr>

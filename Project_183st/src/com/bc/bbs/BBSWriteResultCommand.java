@@ -13,6 +13,8 @@ public class BBSWriteResultCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		String cPage = request.getParameter("cPage");
+		System.out.println("cPage : " + cPage);
 		
 		QnAListVO vo = new QnAListVO();
 		vo.setProductno(request.getParameter("productno"));
@@ -26,6 +28,7 @@ public class BBSWriteResultCommand implements Command {
 		System.out.println("insert vo : " + vo);
 		
 		request.setAttribute("vo", vo);
+		request.setAttribute("cPage", cPage);
 		
 		return "bbs/detail.jsp";
 	}

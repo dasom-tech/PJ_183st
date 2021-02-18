@@ -9,9 +9,10 @@ public class BBSModifyCommand implements Command {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		String bbs_no = request.getParameter("bbs_no");
-		System.out.println("bbs_no : " + bbs_no);
 		String cPage = request.getParameter("cPage");
+		System.out.println("bbs_no : " + bbs_no);
 		System.out.println("cPage : " + cPage);
+		
 		QnAListVO vo = BBSDAO.selectOne(bbs_no);
 		
 		System.out.println("vo2 : " + vo);
@@ -23,6 +24,7 @@ public class BBSModifyCommand implements Command {
 //		request.setAttribute("contant", vo.getContact());
 		
 		request.setAttribute("vo", vo);
+		request.setAttribute("bbs_no", bbs_no);
 		request.setAttribute("cPage", cPage);
 		
 		return "bbs/modify.jsp";

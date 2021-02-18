@@ -6,8 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
-	function list_go() {
-		location.href="bbsController?type=bbs";
+	function list_go(frm) {
+		frm.action="bbsController?type=bbs";
+		frm.submit();
 	}
 	
 	function sendData() {
@@ -28,6 +29,7 @@
 <body>
 <div id="bbs">
 <form action="bbsController?type=writeResult" method="post">
+<input type="hidden" name="cPage" value="${cPage}" >
 	<table>
 		<caption>게시판 글쓰기</caption>
 		<tbody>
@@ -75,7 +77,7 @@
 				<td colspan="2">
 					<input type="button" value="저 장" onclick="sendData()">
 					<input type="reset" value="다시 작성">
-					<input type="button" value="목 록" onclick="list_go()">
+					<input type="button" value="목 록" onclick="list_go(this.form)">
 				</td>
 			</tr>
 		</tfoot>
