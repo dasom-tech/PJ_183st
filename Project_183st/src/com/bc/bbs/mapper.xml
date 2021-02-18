@@ -25,7 +25,7 @@
 	
 	<!-- 게시글 하나 조회 (상세페이지)-->
 	<select id="one" parameterType="string" resultType="com.bc.bbs.vo.QnAListVO">
-		SELECT BBS_NO, PRODUCTNO, ID, CONTACT, CATEGORY, SUBJECT
+		SELECT BBS_NO, PRODUCTNO, ID, CONTACT, CATEGORY, SUBJECT, Q_REG
 	  	  FROM QNALIST
 	 	 WHERE BBS_NO = #{bbs_no}
 	</select>

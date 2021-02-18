@@ -23,7 +23,7 @@ public class BBSDetailCommand implements Command {
 		request.setAttribute("bbs_no", bbs_no);
 		request.setAttribute("vo", vo);
 		request.setAttribute("cPage", cPage);
-//		System.out.println("cPage : " + cPage);
+		System.out.println("cPage : " + cPage);
 		
 		return "bbs/detail.jsp";
 	}
