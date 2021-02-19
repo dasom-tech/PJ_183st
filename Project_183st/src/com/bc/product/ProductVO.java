@@ -1,7 +1,7 @@
 package com.bc.product;
 
 public class ProductVO {
-	private String productno, producttype, productname, info;
+	private String productno, producttype, productname, info, image_s, image_l;
 	private int price, stock;
 
 	public String getProductno() {
@@ -43,6 +43,22 @@ public class ProductVO {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+	
+	public String getImage_s() {
+		return image_s;
+	}
+
+	public void setImage_s(String image_s) {
+		this.image_s = image_s;
+	}
+
+	public String getImage_l() {
+		return image_l;
+	}
+
+	public void setImage_l(String image_l) {
+		this.image_l = image_l;
+	}
 
 	public String getProdducttype() {
 		return producttype;
@@ -55,7 +71,7 @@ public class ProductVO {
 	@Override
 	public String toString() {
 		return "ProductVO [productno=" + productno + ", producttype=" + producttype + ", productname=" + productname + ", price=" + price + ", stock="
-				+ stock + ", info=" + info + "]";
+				+ stock + ", info=" + info + ", image_s=" + image_s + ", image_l=" + image_l + "]";
 	}
 	
 }
