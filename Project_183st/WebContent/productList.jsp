@@ -14,7 +14,13 @@
 <head>
 <meta charset="UTF-8">
 <title>목록</title>
-
+<style>
+	#titleArea{position:relative;border-bottom:1px solid #c2c2c2;background-color:#fff;}
+	#titleArea h2{padding:0 61px 10px 61px;line-height:20px;font-size:15px;color:#2e2e2e;text-align:center;}
+	
+	.join_form { border:1px solid black; border-collapse:collapse; border-style: solid;}
+	.join_form tr { border:1px solid black; border-style: solid none; }
+</style>
 <style>
 	#bbs table {
 		width: 580px;

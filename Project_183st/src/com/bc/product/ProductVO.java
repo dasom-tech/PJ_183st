@@ -73,5 +73,7 @@ public class ProductVO {
       return "ProductVO [productno=" + productno + ", producttype=" + producttype + ", productname=" + productname + ", price=" + price + ", stock="
             + stock + ", info=" + info + ", image_s=" + image_s + ", image_l=" + image_l + "]";
    }
-   
 }
+   
+
+
