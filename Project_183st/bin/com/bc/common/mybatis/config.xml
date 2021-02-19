@@ -11,12 +11,9 @@
       <typeAlias type="com.bc.member.model.vo.MemberVo" alias="MemberVo"/>
       <typeAlias type="com.bc.cart.model.vo.CartListVO" alias="CartListVO"/>
       <typeAlias type="com.bc.order.model.vo.OrderItemVO" alias="OrderItemVO"/>
-<<<<<<< Updated upstream
       <typeAlias type="com.bc.product.ProductVO" alias="ProductVO"/>
-=======
       <typeAlias type="com.bc.order.model.vo.OrderInfoVO" alias="OrderInfoVO"/>
-      <typeAlias type="com.bc.order.model.vo.OrderDetailVO" alias="OrderDetailVO"/>      
->>>>>>> Stashed changes
+      <typeAlias type="com.bc.order.model.vo.OrderDetailVO" alias="OrderDetailVO"/>
    </typeAliases>
    
   <environments default="development">
