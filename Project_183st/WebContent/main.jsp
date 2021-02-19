@@ -21,6 +21,7 @@
 	<c:if test="${empty sessionScope.id && empty sessionScope.pwd }">
 	<a id="login" href="memberController?type=loginMove">로그인</a>
 	<a id="join" href="memberController?type=joinMove">회원 가입</a>
+	<a id="bbs" href="bbsController?type=bbs">테스트</a>
 	</c:if>
 	
 </body>
