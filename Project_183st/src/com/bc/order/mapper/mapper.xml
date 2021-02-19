@@ -24,4 +24,9 @@
 		values(1, #{id}, #{name}, #{addr}, #{phone}, #{point}, #{totalprice})
 	</insert>
 	
+	<!-- 주문 처리 과정에서 필요한 orderid를 select -->
+	<select id="selectOrderid">
+	
+	</select>
+	
 </mapper>

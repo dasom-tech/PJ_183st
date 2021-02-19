@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="Review">
-	<select id="reviewList" parameterType="string"
+ 	<select id="reviewList" parameterType="string"
 			resultType="com.bc.review.vo.ReviewVO">
 		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG
 		  FROM REVIEWLIST
