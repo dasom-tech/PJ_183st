@@ -1,4 +1,4 @@
-package com.bc.bbs.vo;
+package com.bc.review.vo;
 
 public class ReviewListVO {
 	private String reviewId;
@@ -14,6 +14,7 @@ public class ReviewListVO {
 		this.productno = productno;
 		this.id = id;
 		this.review = review;
+		this.r_reg = r_reg;
 	}
 	
 	public String getReviewId() {

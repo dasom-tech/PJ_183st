@@ -1,4 +1,4 @@
-package com.bc.bbs;
+package com.bc.bbs.model.dao;
 
 import java.util.List;
 import java.util.Map;
