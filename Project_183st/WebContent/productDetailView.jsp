@@ -2,12 +2,38 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- 전달받은 제품번호를 사용해서 DB데이터 조회 후 화면 표시 --%>
+	<%-- 액션태그 useBean scope 상에 id명 속성값이 
+		있으면 사용하고, 없으면 클래스 속성 타입의 객체 생성 + scope 등록--%>
+	<jsp:useBean id="dao" class="com.bc.product.ProductDAO" scope="session" />
+<%
+	//전달 받은 값 추출(파라미터 값)
+	String productno = request.getParameter("productno");
+	//EL, JSTL 사용을 위한 속성값 설정
+	pageContext.setAttribute("vo", dao.selectProductInfo(productno));
+%>    
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>상세페이지</title>
+<link href="css/menu.css" rel="stylesheet" type="text/css">
+<style>
+	table {
+		width: 600px;
+		margin: 30px auto 0; /* 상 좌우 하 */
+		border: 1px solid navy;
+		border-collapse: collapse;
+		font-size: 0.8em;
+	}
+	th, td { border: 1px solid navy; padding: 4px; }
+	th { background-color: #ddd; }
+	.red { color: red; }
+	
+	.title { width: 30%; }
+	tfoot { text-align: center; height: 3em; }
+</style>
 </head>
 
 <body>
@@ -15,7 +41,7 @@
 		<table border="1" style="height: 300px; width: 400px;">
 			<tr>
 				<td>
-					<img src="" width="340" height="300">
+					<img src="images/${vo.getImage_s()}" alt="제품이미지" width="340" height="300">
 				</td>
 				<td align="center">
 					<table border="1" style="height: 300px; width: 400px;">
@@ -59,10 +85,12 @@
 							</tr>
 						</c:if>	
 					</table>
-					<input type="button" value="상품목록으로 가기" onclick="history.go(-1);">
 				</td>
 			</tr>
 		</table>
+		<div>
+			<img src="images/${vo.getImage_l() }" alt="제품이미지">
+		</div>		
 	</form>
 	
 <%-- 상품에 대한 리뷰 작성 영역 --%>
