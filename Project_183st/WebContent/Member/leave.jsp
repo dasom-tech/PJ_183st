@@ -13,7 +13,7 @@
 	
 	<form action="/Project_183st/memberController?type=leave" method="post">
 		비밀번호 <input type="text" name="pwdchk">
-		<input type="submit" value="회원 탈퇴">
+		<input type="password" value="회원 탈퇴">
 	</form>
 </body>
 </html>

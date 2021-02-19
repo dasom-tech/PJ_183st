@@ -1,4 +1,4 @@
-package com.bc.bbs;
+package com.bc.bbs.model.command;
 
 import java.io.IOException;
 
@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bc.bbs.model.dao.BBSDAO;
 import com.bc.bbs.vo.QnAListVO;
 
 public class BBSWriteResultCommand implements Command {
