@@ -1,8 +1,9 @@
-package com.bc.bbs;
+package com.bc.bbs.model.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bc.bbs.model.dao.BBSDAO;
 import com.bc.bbs.vo.QnAListVO;
 
 public class BBSModifyCommand implements Command {
