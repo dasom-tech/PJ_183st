@@ -2,7 +2,17 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%-- 전달받은 제품번호를 사용해서 DB데이터 조회 후 화면 표시 --%>
+	<%-- 액션태그 useBean scope 상에 id명 속성값이 
+		있으면 사용하고, 없으면 클래스 속성 타입의 객체 생성 + scope 등록--%>
+	<jsp:useBean id="dao" class="com.bc.product.ProductDAO" scope="session" />
+<%
+	//전달 받은 값 추출(파라미터 값)
+	String productno = request.getParameter("productno");
+	//EL, JSTL 사용을 위한 속성값 설정
+	pageContext.setAttribute("vo", dao.selectProductInfo(productno));
+%>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,11 +78,6 @@
 								<input type="submit" value="주문하기"><br><br>
 							</td>
 						</tr>
-						<tr>
-							<td colspan="2">
-								<img src="images/${vo.getImage_l() }" alt="제품이미지">
-							</td>
-						</tr>
 						</c:if>
 						<c:if test="${empty info}">
 							<tr>
@@ -83,6 +88,9 @@
 				</td>
 			</tr>
 		</table>
+		<div>
+			<img src="images/${vo.getImage_l() }" alt="제품이미지">
+		</div>		
 	</form>
 </body>
 </html>
