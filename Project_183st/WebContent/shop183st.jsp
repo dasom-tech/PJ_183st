@@ -18,14 +18,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
     </head>
-    <div id="loading"></div> 
+   <!--  <div id="loading"></div> 
     <div class="header_banner">
 	    <ul><li style="background-color:#ddbf8d;"><a href="http://lmood.co.kr/member/join.html" style="color:#fff;">엘무드 공식 온라인 스토어 신규가입 적립금 2,000원 추가혜택!</a></li>
 	        <li style="background-color:#fff;"><a href="http://lmoodc.cafe24.com/product/list.html?cate_no=58" style="color:#000;">2월 기간 한정 타임 세일</a></li>
 	        <li style="background-color:#ffe501;"><a href="http://pf.kakao.com/_xjUCvC/chat%0A" style="color:#602d03;">카카오플러스친구 @엘무드 카카오친구 전용 쿠폰 지급</a></li>
 	        <li style="background-color:#493828;"><a href="https://www.instagram.com/lmood_official/" style="color:#fff;">인스타그램 @lmood_official 팔로우 시 다양한 이벤트 선참여 추가혜택</a></li>
 		</ul>
-	</div>
+	</div> -->
     <body>
         <div class="body_wrap"> 
             <header>

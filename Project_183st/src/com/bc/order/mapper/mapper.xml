@@ -21,12 +21,39 @@
 	<!-- 주문확인 후 주문 정보를 insert -->
 	<insert id="insertOrder" parameterType="OrderInfoVO">
 		insert into orderinfo
-		values(1, #{id}, #{name}, #{addr}, #{phone}, #{point}, #{totalprice})
+		values(order_seq.nextval, #{id}, #{name}, #{addr}, #{phone}, #{point}, #{totalprice})
 	</insert>
 	
-	<!-- 주문 처리 과정에서 필요한 orderid를 select -->
-	<select id="selectOrderid">
-	
+	<!-- 주문 처리 과정에서 필요한 orderid를 select(가장 최근의 주문 정보를 가져와야 함) -->
+	<select id="selectOrderid" parameterType="String" resultType="String">
+		select max(orderid)
+        from orderinfo
+        where id = #{id}
 	</select>
+	
+	<!-- 주문한 상품 정보(OrderDetail)를 삽입 -->
+	<insert id="insertOrderDetail" parameterType="OrderDetailVO">
+		insert into orderdetail
+		values(o_detail_seq.nextval, #{orderid}, #{productno}, #{o_amount}, #{price}, #{productname})
+	</insert>
+	
+	<!-- 주문한 상품의 갯수만큼 재고량 감소 -->
+	<update id="updateStock" parameterType="Map">
+		update products 
+		set stock = stock - #{c_amount}
+		where productno = #{productno}
+	</update>
+	
+	<!-- 주문 후 포인트 변화 -->
+	<update id="updatePoint">
+		update members
+		set point = #{point}
+		where id = #{id}
+	</update>
+	
+	<!-- 주문 후 주문한 내역을 장바구니에서 삭제 -->
+	<delete id="deleteCart">
+		delete from cartlist where cartid = #{cartid}
+	</delete>
 	
 </mapper>

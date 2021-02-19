@@ -36,11 +36,16 @@
 		});
 
 		$(".sDelete").click(function(){
-	        var sDchk = confirm("해당 상품을 장바구니에서 삭제하시겠습니까?");
+	        var sDchk = confirm("체크된 상품을 장바구니에서 삭제하시겠습니까?");
 	        
-	        if(chk){
-	           if($("input[type=checkbox]").prop("checked")){
-	           }
+	        if(sDchk){
+	        	
+	        	$("input[name='cartid']:checked").each(function(){
+	        		// 반복문 테스트 출력
+	        		//alert($(this).attr("value"));
+	        		location.href="CartController?type=deleteItem&cid=" + $(this).attr("value");
+	        	});
+	        	
 	        } else{
 	           return;
 	        }
@@ -66,6 +71,7 @@
 	<div>
 	<c:if test="${empty UserCart }">
 		<p>장바구니에 상품이 없습니다</p>
+		<p><input type="button" class="return" value="돌아가기"></p>
 	</c:if>
 	<c:if test="${!empty UserCart }">
 	<form action="OrderController?type=orderMove" method="post">
