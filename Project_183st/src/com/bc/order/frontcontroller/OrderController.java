@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.bc.order.model.command.OrderCommand;
+import com.bc.order.model.command.OrderProcCommand;
 import com.bc.order.move.OrderMoveCommand;
 
 @WebServlet("/OrderController")
@@ -23,6 +24,9 @@ public class OrderController extends HttpServlet {
 		switch (type) {
 		case "orderMove":
 			command = new OrderMoveCommand();
+			break;
+		case "orderProc":
+			command = new OrderProcCommand();
 			break;
 		}
 		String path = command.execute(request, response);

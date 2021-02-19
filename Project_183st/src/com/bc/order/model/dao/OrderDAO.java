@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.bc.common.mybatis.DBService;
 import com.bc.member.model.vo.MemberVo;
+import com.bc.order.model.vo.OrderInfoVO;
 import com.bc.order.model.vo.OrderItemVO;
 
 public class OrderDAO {
@@ -22,6 +23,14 @@ public class OrderDAO {
 		MemberVo vo = ss.selectOne("Order.orderMemberInfo", id);
 		ss.close();
 		return vo;
+	}
+	
+	// 주문 정보(OrderInfo) 삽입
+	public static int insertOrderInfo(OrderInfoVO vo) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.insert("Order.insertOrder", vo);
+		ss.close();
+		return result;
 	}
 	
 }

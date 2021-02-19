@@ -1,4 +1,4 @@
-package com.bc.bbs;
+package com.bc.bbs.model.command;
 
 import java.io.IOException;
 

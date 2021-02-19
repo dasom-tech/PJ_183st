@@ -33,6 +33,7 @@ header {
     display: flex;
     justify-content: center;
 }
+
 .loading{
 	position:fixed;
 	top:0;
