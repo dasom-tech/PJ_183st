@@ -9,7 +9,7 @@
 <title>메인</title>
 </head>
 <body>
-	<h1>회원 CRUD 테스트를 위한 메인 페이지</h1>
+	<h1>테스트를 위한 메인 페이지</h1>
 	<hr>
 	<c:if test="${!empty sessionScope.id && !empty sessionScope.pwd }">
 	<h2>${sessionScope.id } 님 환영합니다</h2>

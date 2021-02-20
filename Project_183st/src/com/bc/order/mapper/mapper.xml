@@ -21,7 +21,7 @@
 	<!-- 주문확인 후 주문 정보를 insert -->
 	<insert id="insertOrder" parameterType="OrderInfoVO">
 		insert into orderinfo
-		values(order_seq.nextval, #{id}, #{name}, #{addr}, #{phone}, #{point}, #{totalprice})
+		values(#{orderid}, #{id}, #{name}, #{addr}, #{phone}, #{point}, #{totalprice})
 	</insert>
 	
 	<!-- 주문 처리 과정에서 필요한 orderid를 select(가장 최근의 주문 정보를 가져와야 함) -->
@@ -55,5 +55,15 @@
 	<delete id="deleteCart">
 		delete from cartlist where cartid = #{cartid}
 	</delete>
+	
+	<!-- 주문번호 생성을 위한 시퀀스 select -->
+	<select id="getOrderSeq" resultType="String">
+		SELECT order_seq.NEXTVAL seq_num FROM dual
+	</select>
+	
+	<!-- 로그인한 사용자의 주문 내역 불러오기 -->
+	<select id="getOrderList">
+		
+	</select>
 	
 </mapper>

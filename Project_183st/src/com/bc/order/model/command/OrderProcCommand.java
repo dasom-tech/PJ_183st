@@ -1,6 +1,7 @@
 package com.bc.order.model.command;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,7 +40,17 @@ public class OrderProcCommand implements OrderCommand {
 		String []price = request.getParameterValues("price");
 		String []productname = request.getParameterValues("productname");
 		
+		// 주문번호 생성을 위한 처리
+		java.util.Date now = new java.util.Date();
+	    SimpleDateFormat vans = new SimpleDateFormat("yyyyMMdd");
+	    String wdate = vans.format(now);
+	    
+	    String orderKey = OrderDAO.getSequence();
+	    String orderid = "S" + wdate + "_" + orderKey;
+		
+	    // 주문 목록에 넣을 VO 생성
 		OrderInfoVO orderinfo = new OrderInfoVO();
+		orderinfo.setOrderid(orderid);
 		orderinfo.setId(id);
 		orderinfo.setName(name);
 		orderinfo.setAddr(addr);
@@ -49,9 +60,6 @@ public class OrderProcCommand implements OrderCommand {
 		
 		int result = OrderDAO.insertOrderInfo(orderinfo);
 		System.out.println("주문 처리 건수 : " + result);
-		
-		// OrderDetail에 삽입하기 위한 키 값을 받아옴
-		String orderid = OrderDAO.selectOrderId(id);
 		
 		// 주문정보 출력 테스트
 		//System.out.println("orderinfo : " + orderinfo.toString());

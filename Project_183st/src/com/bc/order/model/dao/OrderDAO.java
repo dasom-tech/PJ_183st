@@ -76,4 +76,12 @@ public class OrderDAO {
 		return result;
 	}
 	
+	// 주문번호 생성을 위한 시퀀스 번호 채번
+	public static String getSequence() {
+		SqlSession ss = DBService.getFactory().openSession();
+		String getSeq = ss.selectOne("Order.getOrderSeq");
+		ss.close();
+		return getSeq;
+	}
+	
 }
