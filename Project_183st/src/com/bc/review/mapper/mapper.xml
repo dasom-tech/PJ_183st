@@ -6,11 +6,11 @@
 <mapper namespace="Review">
 
 	<select id="reviewList" parameterType="string"
-			resultType="com.bc.review.vo.ReviewVO">
+			resultType="com.bc.review.vo.ReviewListVO">
 		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG
 		  FROM REVIEWLIST
 		 WHERE PRODUCTNO = #{productno}
-		 ORDER BY R_REG DESC;
+		 ORDER BY R_REG DESC
 	</select>
 
 </mapper>
