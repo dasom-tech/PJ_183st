@@ -4,58 +4,58 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="products">
 
-   <select id="getCntProductListByType" parameterType="java.util.HashMap" resultType="java.lang.Integer">
-      SELECT  COUNT(PRODUCTNO)
-       FROM    PRODUCTS
-       <if test="producttype!=null">
-          WHERE PRODUCTTYPE = #{producttype}
-       </if>
-   </select>
-   
-   <select id="selectProductListByType" parameterType="java.util.HashMap" resultType="com.bc.product.ProductVO">
-      SELECT  A.PRODUCTNO
-            , A.PRODUCTTYPE
-            , A.PRODUCTNAME
-            , A.PRICE
-            , A.STOCK
-            , A.INFO
-            , A.IMAGE_S
-            , A.IMAGE_L
-            , A.RNUM
-      FROM (
-         SELECT PRODUCTNO
-             , PRODUCTTYPE
-             , PRODUCTNAME
-             , PRICE
-             , STOCK
-             , INFO
-             , IMAGE_S
-            , IMAGE_L
-             , ROWNUM RNUM
-          FROM    PRODUCTS
-       <if test="producttype!=null">
-          WHERE PRODUCTTYPE = #{producttype}
-       </if>
-          ORDER BY PRODUCTTYPE DESC 
-      ) A
-      <if test="strNum!=null and endNum!=null">
-      WHERE A.RNUM BETWEEN #{strNum} AND #{endNum}
-      </if>
-   </select>
-   
-   <select id="selectProductInfo" parameterType="java.lang.String" resultType="com.bc.product.ProductVO">
-      SELECT  PRODUCTNO
-            , PRODUCTTYPE
-            , PRODUCTNAME
-            , PRICE
-            , STOCK
-            , INFO
-            , IMAGE_S
-            , IMAGE_L
-      FROM    PRODUCTS
-      WHERE   PRODUCTNO = #{productno}
-   </select>
-   
+	<select id="getCntProductListByType" parameterType="java.util.HashMap" resultType="java.lang.Integer">
+		SELECT  COUNT(PRODUCTNO)
+    	FROM    PRODUCTS
+	    <if test="producttype!=null">
+	    	WHERE PRODUCTTYPE = #{producttype}
+	    </if>
+	</select>
+	
+	<select id="selectProductListByType" parameterType="java.util.HashMap" resultType="com.bc.product.ProductVO">
+		SELECT  A.PRODUCTNO
+		      , A.PRODUCTTYPE
+		      , A.PRODUCTNAME
+		      , A.PRICE
+		      , A.STOCK
+		      , A.INFO
+		      , A.IMAGE_S
+		      , A.IMAGE_L
+		      , A.RNUM
+		FROM (
+			SELECT PRODUCTNO
+	          , PRODUCTTYPE
+	          , PRODUCTNAME
+	          , PRICE
+	          , STOCK
+	          , INFO
+	          , IMAGE_S
+		      , IMAGE_L
+	          , ROWNUM RNUM
+	    	FROM    PRODUCTS
+	    <if test="producttype!=null">
+	    	WHERE PRODUCTTYPE = #{producttype}
+	    </if>
+		    ORDER BY PRODUCTTYPE DESC 
+		) A
+		<if test="strNum!=null and endNum!=null">
+		WHERE A.RNUM BETWEEN #{strNum} AND #{endNum}
+		</if>
+	</select>
+	
+	<select id="selectProductInfo" parameterType="java.lang.String" resultType="com.bc.product.ProductVO">
+		SELECT  PRODUCTNO
+		      , PRODUCTTYPE
+		      , PRODUCTNAME
+		      , PRICE
+		      , STOCK
+		      , INFO
+		      , IMAGE_S
+		      , IMAGE_L
+		FROM    PRODUCTS
+		WHERE   PRODUCTNO = #{productno}
+	</select>
+	
 </mapper>
 
 

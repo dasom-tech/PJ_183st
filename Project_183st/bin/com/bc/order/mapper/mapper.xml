@@ -13,9 +13,15 @@
 	
 	<!-- 주문 창에서 선택 여하에 따라 가져올 수 있는 회원 정보 검색 -->
 	<select id="orderMemberInfo" parameterType="String" resultType="MemberVO">
-		select addr, phone, point
+		select id, name, addr, phone, point
 		from members
 		where id = #{id}	
 	</select>
+	
+	<!-- 주문확인 후 주문 정보를 insert -->
+	<insert id="insertOrder" parameterType="OrderInfoVO">
+		insert into orderinfo
+		values(1, #{id}, #{name}, #{addr}, #{phone}, #{point}, #{totalprice})
+	</insert>
 	
 </mapper>

@@ -19,14 +19,18 @@
 		      , A.PRICE
 		      , A.STOCK
 		      , A.INFO
+		      , A.IMAGE_S
+		      , A.IMAGE_L
 		      , A.RNUM
 		FROM (
-			SELECT  PRODUCTNO
+			SELECT PRODUCTNO
 	          , PRODUCTTYPE
 	          , PRODUCTNAME
 	          , PRICE
 	          , STOCK
 	          , INFO
+	          , IMAGE_S
+		      , IMAGE_L
 	          , ROWNUM RNUM
 	    	FROM    PRODUCTS
 	    <if test="producttype!=null">
@@ -46,6 +50,8 @@
 		      , PRICE
 		      , STOCK
 		      , INFO
+		      , IMAGE_S
+		      , IMAGE_L
 		FROM    PRODUCTS
 		WHERE   PRODUCTNO = #{productno}
 	</select>
