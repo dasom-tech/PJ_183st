@@ -37,62 +37,63 @@
 </head>
 
 <body>
-   <form action="CartController?type=insertItem" method="post" id="submitForm">
-      <table border="1" style="height: 300px; width: 400px;">
-         <tr>
-            <td>
-               <img src="images/${vo.getImage_s()}" alt="제품이미지" width="340" height="300">
-            </td>
-            <td align="center">
-               <table border="1" style="height: 300px; width: 400px;">
-               <c:if test="${not empty info}">
-                  <tr align="center">
-                     <td width="15%">상품번호</td>
-                     <td>${info.getProductno()}</td>
-                  </tr>
-                  <tr align="center">
-                     <td width="20%">상품명</td>
-                     <td>${info.getProductname()}</td>
-                  </tr>
-                  <tr align="center">
-                     <td width="20%">가격</td>
-                     <td>${info.getPrice()}원</td>
-                  </tr>
-                  <tr align="center">
-                     <td width="20%">재고</td>
-                     <td>${info.getStock()}</td>
-                  </tr>
-                  <tr align="center">
-                     <td width="20%">상품설명</td>
-                     <td>${info.getInfo()}</td>
-                  </tr>
-                  <tr align="center">
-                     <td colspan="2">
-                           <input type="hidden" name="productno" value="${info.getProductno()}">
-                           <select name="amount">
-                              <c:forEach begin="1" end="10" var="i">
-                                 <option value="${i}">${i}</option>
-                              </c:forEach>
-                           </select>&nbsp;개
-                        <input type="submit" value="장바구니에 담기">
-                        <input type="submit" value="주문하기"><br><br>
-                     </td>
-                  </tr>
-                  </c:if>
-                  <c:if test="${empty info}">
-                     <tr>
-                        <td colspan='5'>현재 판매중인 상품이 아닙니다</td>
-                     </tr>
-                  </c:if>   
-               </table>
-            </td>
-         </tr>
-      </table>
-      <div>
-         <img src="images/${vo.getImage_l() }" alt="제품이미지">
-      </div>      
-   </form>
 
+	<form action="CartController?type=insertItem" method="post" id="submitForm">
+		<table border="1" style="height: 300px; width: 400px;">
+			<tr>
+				<td>
+					<img src="images/${vo.getImage_s()}" alt="제품이미지" width="340" height="300">
+				</td>
+				<td align="center">
+					<table border="1" style="height: 300px; width: 400px;">
+					<c:if test="${not empty info}">
+						<tr align="center">
+							<td width="15%">상품번호</td>
+							<td>${info.getProductno()}</td>
+						</tr>
+						<tr align="center">
+							<td width="20%">상품명</td>
+							<td>${info.getProductname()}</td>
+						</tr>
+						<tr align="center">
+							<td width="20%">가격</td>
+							<td>${info.getPrice()}원</td>
+						</tr>
+						<tr align="center">
+							<td width="20%">재고</td>
+							<td>${info.getStock()}</td>
+						</tr>
+						<tr align="center">
+							<td width="20%">상품설명</td>
+							<td>${info.getInfo()}</td>
+						</tr>
+						<tr align="center">
+							<td colspan="2">
+									<input type="hidden" name="productno" value="${info.getProductno()}">
+									<select name="amount">
+										<c:forEach begin="1" end="10" var="i">
+											<option value="${i}">${i}</option>
+										</c:forEach>
+									</select>&nbsp;개
+								<input type="submit" value="장바구니에 담기">
+								<input type="submit" value="주문하기"><br><br>
+							</td>
+						</tr>
+						</c:if>
+						<c:if test="${empty info}">
+							<tr>
+								<td colspan='5'>현재 판매중인 상품이 아닙니다</td>
+							</tr>
+						</c:if>	
+					</table>
+				</td>
+			</tr>
+		</table>
+		<div>
+			<img src="images/${vo.getImage_l() }" alt="제품이미지">
+		</div>		
+	</form>
+	
 <%-- 상품에 대한 리뷰 작성 영역 --%>
 <form action="ans_write_ok.jsp" method="post">
 	<p>이름 : <input type="text" name="writer">
