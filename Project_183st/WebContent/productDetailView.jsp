@@ -37,6 +37,7 @@
 </head>
 
 <body>
+
 	<form action="CartController?type=insertItem" method="post" id="submitForm">
 		<table border="1" style="height: 300px; width: 400px;">
 			<tr>
@@ -106,16 +107,15 @@
 <p>리뷰</p>
 <hr>
 <%-- 상품에 작성된 리뷰 표시 영역 --%>
-<c:forEach var="vo" items="${clist }">
+<c:forEach var="rvo" items="${reviewVO }">
 <div class="comment">
 	<form action="ans_del.jsp" method="post">
-		<p>이름 : ${commVO.writer } &nbsp; 날짜: ${commVO.write_date }</p>
-		<p>내용 : ${commVO.content }</p>
+		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
+		<p>내용 : ${rvo.review }</p>
 		<input type="submit" value="리뷰 삭제">
-		<input type="hidden" name="" value="${commVO.c_idx }">
-		<input type="hidden" name="pwd" value="${commVO.pwd }">
+		<!--<input type="hidden" name="delete" value="${commVO.c_idx }"> -->
 		<%-- 리뷰 삭제처리후 상품 상세페이지로 이동 --%>
-		<input type="hidden" name="b_idx" value="${commVO.b_idx }">
+		<!--<input type="hidden" name="cPage" value="${commVO.b_idx }"> -->
 	</form>
 </div>
 <hr>
