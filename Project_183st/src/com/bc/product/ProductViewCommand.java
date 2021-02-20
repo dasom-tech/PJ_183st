@@ -24,7 +24,6 @@ public class ProductViewCommand implements Command{
 		
 		//리뷰 값 가져오기
 		List<ReviewListVO> reviewVO = ReviewDAO.getRivewList(productno);
-		//ReviewListVO reviewVO = (ReviewListVO)ReviewDAO.getRivewList(productno);
 		System.out.println("reviewVO : " + reviewVO);
 		
 		//2. 응답페이지(list.jsp)에 데이터 전달(request 객체에 속성값으로 전달)

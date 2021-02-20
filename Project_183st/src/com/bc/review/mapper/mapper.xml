@@ -5,7 +5,7 @@
  
 <mapper namespace="Review">
 
- 	<select id="reviewList" parameterType="string"
+	<select id="reviewList" parameterType="string"
 			resultType="com.bc.review.vo.ReviewListVO">
 		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG
 		  FROM REVIEWLIST
