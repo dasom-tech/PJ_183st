@@ -1,5 +1,6 @@
 package com.bc.order.model.dao;
 
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -9,6 +10,7 @@ import com.bc.member.model.vo.MemberVo;
 import com.bc.order.model.vo.OrderDetailVO;
 import com.bc.order.model.vo.OrderInfoVO;
 import com.bc.order.model.vo.OrderItemVO;
+import com.bc.order.model.vo.OrderListVO;
 
 public class OrderDAO {
 	
@@ -34,14 +36,6 @@ public class OrderDAO {
 		int result = ss.insert("Order.insertOrder", vo);
 		ss.close();
 		return result;
-	}
-	
-	// 주문처리 시 OrderDetail에 삽입할 주문번호를 select
-	public static String selectOrderId(String id) {
-		SqlSession ss = DBService.getFactory().openSession();
-		String orderid = ss.selectOne("Order.selectOrderid", id);
-		ss.close();
-		return orderid;
 	}
 	
 	// 주문에 대한 물품 정보(OrderDetail) 삽입
@@ -82,6 +76,38 @@ public class OrderDAO {
 		String getSeq = ss.selectOne("Order.getOrderSeq");
 		ss.close();
 		return getSeq;
+	}
+	
+	// 로그인한 사용자의 주문 내역을 불러오기 위한 select
+	public static List<OrderListVO> getOrderList(String id){
+		SqlSession ss = DBService.getFactory().openSession();
+		List<OrderListVO> list = ss.selectList("Order.getOrderList", id);
+		ss.close();
+		return list;
+	}
+	
+	// 주문 내역에 추가할 상품명 리스트 불러오기
+	public static List<String> getOrderProductname(String orderid){
+		SqlSession ss = DBService.getFactory().openSession();
+		List<String> list = ss.selectList("Order.getOrderProductname", orderid);
+		ss.close();
+		return list;
+	}
+	
+	// 주문 상세 내역에서 조회할 상품 정보
+	public static List<OrderDetailVO> getOrderDetail(String orderid){
+		SqlSession ss = DBService.getFactory().openSession();
+		List<OrderDetailVO> list = ss.selectList("Order.getOrderDetail", orderid);
+		ss.close();
+		return list;
+	}
+	
+	// 주문 상세 내역에서 조회할 주문 정보
+	public static OrderInfoVO getOrderInfo(String orderid) {
+		SqlSession ss = DBService.getFactory().openSession();
+		OrderInfoVO info = ss.selectOne("Order.getOrderInfo", orderid);
+		ss.close();
+		return info;
 	}
 	
 }

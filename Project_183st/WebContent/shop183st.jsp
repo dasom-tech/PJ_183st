@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,6 +18,17 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+        <script type="text/javascript">
+        	function logoutChk(){
+        		var chk = confirm("로그아웃 하시겠습니까?");
+        		
+        		if(chk){
+        			location.href="memberController?type=logout";
+        		} else{
+        			return;
+        		}
+        	}
+        </script>
     </head>
     <%-- 
     <div id="loading"></div> 
@@ -34,7 +46,12 @@
                 <div class="wrap">                	
                     <div class="header_menu">
                         <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
+                        <c:if test="${empty sessionScope.id }">
                         <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.id }">
+                        <a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
+                        </c:if>
                     </div>
                     <div class="header_logo">
                         <a href="index.html">183번가</a></div>

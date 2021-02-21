@@ -25,7 +25,7 @@ public class OrderProcCommand implements OrderCommand {
 		String id = (String)session.getAttribute("id");
 		String name = request.getParameter("name");
 		String addr = request.getParameter("addr");
-		String phone = request.getParameter("phone_head") + request.getParameter("phone_1") + request.getParameter("phone_2");
+		String phone = request.getParameter("phone_head") + "-" + request.getParameter("phone_1") + "-" + request.getParameter("phone_2");
 		int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
 		int originPoint = Integer.parseInt(request.getParameter("originPoint"));
 		int usedPoint = Integer.parseInt(request.getParameter("usedPoint"));

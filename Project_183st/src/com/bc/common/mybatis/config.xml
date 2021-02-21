@@ -14,6 +14,7 @@
       <typeAlias type="com.bc.product.ProductVO" alias="ProductVO"/>
       <typeAlias type="com.bc.order.model.vo.OrderInfoVO" alias="OrderInfoVO"/>
       <typeAlias type="com.bc.order.model.vo.OrderDetailVO" alias="OrderDetailVO"/> 
+      <typeAlias type="com.bc.order.model.vo.OrderListVO" alias="OrderListVO"/>
    </typeAliases>
    
   <environments default="development">

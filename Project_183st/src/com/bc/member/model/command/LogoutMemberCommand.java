@@ -13,7 +13,7 @@ public class LogoutMemberCommand implements MemberCommand {
 		session.removeAttribute("pwd");
 		session.invalidate();
 		
-		return "Member/logoutJump.jsp";
+		return "shop183st.jsp";
 	}
 	
 }
