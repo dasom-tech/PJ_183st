@@ -18,54 +18,118 @@
 <head>
 <meta charset="UTF-8">
 <title>상세페이지</title>
-<link href="css/menu.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="path_role" content="MAIN">
+<meta name="author" content="183번가">
+<meta name="description" content="183번가 - 의류 쇼핑몰">
+<meta name="keywords" content="183ST">
+<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="common.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="main.js" defer></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 	table {
 		width: 600px;
-		margin: 30px auto 0; /* 상 좌우 하 */
-		border: 1px solid navy;
+		margin: 35px auto 0; /* 상 좌우 하 */
+		border: 0px solid navy;
 		border-collapse: collapse;
 		font-size: 0.8em;
 	}
-	th, td { border: 1px solid navy; padding: 4px; }
+	th, td { border: 0px solid navy; padding: 3px; }
 	th { background-color: #ddd; }
 	.red { color: red; }
 	
 	.title { width: 30%; }
-	tfoot { text-align: center; height: 3em; }
+	tfoot { text-align: left; height: 3em; }
 </style>
 </head>
 
+<div id="loading"></div> 
+    <div class="header_banner">
+    	<a href="#none" class="xi-close-thin" id="header_close_button"></a>
+	    <ul style="top: 0px;">
+	    	<li style="background-color:violet;"><a href="memberController?type=joinMove" style="color:#fff;">183번가 온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
+	        <li style="background-color:#60da9f;"><a href="http://lmoodc.cafe24.com/product/list.html?cate_no=58" style="color:#fff;">인기 많은 품절 임박 상품 확인하기!</a></li>
+	        <li style="background-color:pink;"><a href="https://www.instagram.com/" style="color:#fff;">인스타그램 @183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
+		</ul>
+	</div>
+	
 <body>
-
+	<div class="body_wrap"> 
+	   <header>
+	       <div class="wrap">                	
+	           <div class="header_menu">
+	               <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
+	               <c:if test="${empty sessionScope.id }">
+	               <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
+	               </c:if>
+	               <c:if test="${!empty sessionScope.id }">
+	               <a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
+	               <!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
+	               </c:if>
+	           </div>
+	           <div class="header_logo">
+	               <a href="index.html">183번가</a></div>
+	           <div class="header_menu">
+	               <a href=""><i class="fas fa-search"></i></a>
+	               <a href="CartController?type=cart"><i class="fas fa-shopping-cart"></i></a>
+	           </div>  
+	       </div>  
+	   </header>
+	   
+	   <nav class="menu">
+	       <div class="wrap">
+	           <ul>
+	           	<li class="title">
+	           		<a href="#none" style="color: black;">STORE</a><br>
+	            	<ul class="sub" style="display: block;">
+	                 <li><a href="product_controller?viewType=list&cPage=1">ALL</a></li><br>		                        
+	                 <li><a href="product_controller?viewType=list&producttype=T&cPage=1">TOP</a></li><br>	
+	                 <li><a href="product_controller?viewType=list&producttype=B&cPage=1">BOTTOM</a></li><br>	
+	            	</ul>
+	            </li>
+	            <br>
+	            <li class="title">
+	               	<a href="#none">BOARD</a><br>
+	               	<ul class="sub" style="display: block;">
+	                 <li><a href="bbsController?type=bbs">Q&A</a></li><br>		                        
+	                 <li><a href="mypage.html">MYPAGE</a></li>
+	           		</ul>
+	          		</li>
+	          	</ul>
+	       </div>
+	   </nav>
 	<form action="CartController?type=insertItem" method="post" id="submitForm">
-		<table border="1" style="height: 300px; width: 400px;">
+		<table style="height: 400px; width: 500px;">
 			<tr>
 				<td>
-					<img src="images/${vo.getImage_s()}" alt="제품이미지" width="340" height="300">
+					<img src="images/${vo.getImage_s()}" alt="제품이미지" width="500" height="400">
 				</td>
 				<td align="center">
-					<table border="1" style="height: 300px; width: 400px;">
+					<table style="height: 400px; width: 500px;">
 					<c:if test="${not empty info}">
 						<tr align="center">
 							<td width="15%">상품번호</td>
-							<td>${info.getProductno()}</td>
+							<td align="left">${info.getProductno()}</td>
 						</tr>
 						<tr align="center">
 							<td width="20%">상품명</td>
-							<td>${info.getProductname()}</td>
+							<td align="left">${info.getProductname()}</td>
 						</tr>
 						<tr align="center">
 							<td width="20%">가격</td>
-							<td>${info.getPrice()}원</td>
+							<td align="left">${info.getPrice()}원</td>
 						</tr>
 						<tr align="center">
 							<td width="20%">재고</td>
-							<td>${info.getStock()}</td>
+							<td align="left">${info.getStock()}</td>
 						</tr>
 						<tr align="center">
 							<td width="20%">상품설명</td>
-							<td>${info.getInfo()}</td>
+							<td align="left">${info.getInfo()}</td>
 						</tr>
 						<tr align="center">
 							<td colspan="2">
@@ -117,7 +181,47 @@
 </div>
 <hr>
 </c:forEach>
-
+	<footer>
+	    <div class="wrap">
+	        <section class="footer_left">
+	            <div class="footer_terms">
+	                <ul>
+	                    <li><a href="">이용약관</a></li>
+	                    <li><a href="">개인정보취급방침</a></li>
+	                    <li><a href="">이용안내</a></li>
+	                    <li><a href="">고객센터</a></li>
+	                    <li><a href="">KG이니시스구매안전서비스</a></li>
+	                </ul>
+	            </div>
+	            <div class="footer_business-info">
+	                <ul>
+	                    <li>183번가</li><li>대표 : 3조</li><li>TEL : 000-1234-5678</li><li>주소 : 서울특별시 서초구</li>
+	                    <li>사업자등록번호 111-11-11111 [사업자정보확인]</li><li>통신판매업신고번호 : 제 2021-서울서초-0000 호</li><li>개인정보관리책임자 : 3조</li>
+	                    <li>대표메일 183ST@183ST.com Copyright © 183ST. All rights reserved.</li>
+	                </ul>
+	            </div>
+	        </section>
+	        <section class="footer_right">
+	            <div class="footer_contact">
+	                <div class="footer_contact_phone">
+	                    고객센터<br>000 000 0000
+	                </div>
+	                <div class="footer_contact_sns">
+	                    <a href=""><i class="fab fa-instagram"></i></a>
+	                    <a href=""><i class="fab fa-youtube"></i></a>
+	                </div>
+	            </div>
+	            <div class="footer_other">
+	                <div class="footer_other_business-hour">
+	                    평일 AM 10:00 - PM 07:00<br>
+	                    점심 PM 01:00 - PM 02:00<br>
+	                    휴무 토 / 일 / 공휴일
+	                </div>
+	                <div class="footer_other_bank">183은행 000-000000-00000 183번가</div>
+	            </div>   
+	        </section>
+	    </div>
+	</footer>
 </body>
 
 <script>

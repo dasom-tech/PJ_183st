@@ -1,32 +1,29 @@
 .main_slide-banner {
     width: 100%;   
     height: 350px;
-    background-image: url("https://images.unsplash.com/photo-1527963841590-34ea3172750d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80;");
     margin-top: 40px;
 }
-
-main {
+.main_slide-banner img {
     width: 100%;
-    background-color: #f0eddf;
-    padding: 30px 30px;
-    display: flex;
-    justify-content: center;
+    height: 350px;
+    object-fit: cover;
 }
 
-main .wrap {
-    display: flex;
-    flex-direction: column;
-}
-
-main div div {
+.recommended-item, .normal-item{
+    width:100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
 
+
 .item_list_title {
     font-size: 18px;
+    background-color: gray;
+    color: white;
+    padding: 7px 20px 10px 20px;
+    border-radius: 10px;
     margin-bottom: 23px;
 }
 
@@ -38,14 +35,32 @@ main div div {
     justify-content: space-between;
 }
 
-.item_box {
+.item {
+    width: 23%;
+    font-size: 12px;
+}
+
+.item a{
     display: flex;
     flex-direction: column;
-    align-content: center;
-    font-size: 14px;
+    justify-content: center;
+}
+
+.item a div {
+    margin: 0 auto;
 }
 
 .item_img {
-    width: 230px;
-    height: 300px;
+    width: 100%;
+    margin-bottom: 2%;
+    object-fit: cover;
+}
+
+.item_name {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.item_price {
+    font-size: 14px;
 }
