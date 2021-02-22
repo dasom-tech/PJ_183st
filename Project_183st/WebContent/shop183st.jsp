@@ -51,6 +51,7 @@
                         </c:if>
                         <c:if test="${!empty sessionScope.id }">
                         <a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
+                        <!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
                         </c:if>
                     </div>
                     <div class="header_logo">
