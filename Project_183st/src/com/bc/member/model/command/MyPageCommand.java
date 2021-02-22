@@ -19,9 +19,11 @@ public class MyPageCommand implements MemberCommand {
 		
 		int OrderCount = MemberDao.getOrderCount(id);
 		int ContactCount = MemberDao.getContactCount(id);
+		int MemberPoint = MemberDao.getMemberPoint(id);
 		
 		request.setAttribute("OrderCount", OrderCount);
 		request.setAttribute("ContactCount", ContactCount);
+		request.setAttribute("MemberPoint", MemberPoint);
 		
 		return "Member/mypage.jsp";
 	}

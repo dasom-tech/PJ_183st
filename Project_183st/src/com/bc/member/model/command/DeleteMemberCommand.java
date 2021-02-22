@@ -28,7 +28,7 @@ public class DeleteMemberCommand implements MemberCommand {
 		session.removeAttribute("id");
 		session.removeAttribute("pwd");
 		
-		return "main.jsp";
+		return "shop183st.jsp";
 	}
 	
 }
