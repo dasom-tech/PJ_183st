@@ -95,12 +95,11 @@
 	</form>
 	
 <%-- 상품에 대한 리뷰 작성 영역 --%>
-<form action="ans_write_ok.jsp" method="post">
-	<p>이름 : <input type="text" name="writer">
-		비밀번호 : <input type="password" name="pwd"></p>
-	<p>내용 : <textarea name="content" rows="4" cols="55"></textarea>
+<form action="reviewController?type=insertReview" method="post">
+	<p>아이디 : <input type="text" name="id">
+	<p>내용 : <textarea name="review" rows="4" cols="55"></textarea>
 	<input type="submit" value="리뷰 저장">
-	<input type="hidden" name="b_idx" value="${bvo.b_idx }">
+	<input type="hidden" name="productno" value="${productno }">
 </form>
 
 <hr>
@@ -112,14 +111,37 @@
 	<form action="ans_del.jsp" method="post">
 		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
 		<p>내용 : ${rvo.review }</p>
-		<input type="submit" value="리뷰 삭제">
-		<!--<input type="hidden" name="delete" value="${commVO.c_idx }"> -->
-		<%-- 리뷰 삭제처리후 상품 상세페이지로 이동 --%>
-		<!--<input type="hidden" name="cPage" value="${commVO.b_idx }"> -->
+		<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
+		<input type="hidden" name="delete" value="${rvo.reviewId }">
 	</form>
 </div>
 <hr>
 </c:forEach>
 
 </body>
+
+<script>
+	function del_review(frm) {
+		var isDelete = confirm("리뷰를 삭제하시겠습니까?");
+		if (isDelete) {
+			frm.action = "reviewController?type=delReview";
+			frm.submit();
+		} else {
+			return;
+		}
+	}
+</script>
+
 </html>
+
+
+
+
+
+
+
+
+
+
+
+

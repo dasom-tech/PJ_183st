@@ -14,7 +14,7 @@
 		// 포인트를 입력하고 사용하는 버튼을 눌렀을 때 수행하는 작업
 		$(".usePoint").click(function(){
 			//alert("테스트");
-			if('${orderedMember.point  }' < $(".inputPoint").val()){
+			if(parseInt('${orderedMember.point  }') < $(".inputPoint").val()){
 				alert("사용할 수 있는 포인트보다 많습니다");
 			} else{
 				var tot = '${total}' - $(".inputPoint").val();
@@ -91,6 +91,8 @@
 				<input type="hidden" name="cartid" value="${list.cartid }"> 
 				<input type="hidden" name="productno" value="${list.productno }">
 				<input type="hidden" name="c_amount" value="${list.c_amount }">
+				<input type="hidden" name="price" value="${list.price }">
+				<input type="hidden" name="productname" value="${list.productname }">
 				<hr>
 			</div>
 			</c:forEach>
@@ -133,6 +135,7 @@
 				포인트 사용 : <input type="number" class="inputPoint" value="0"><input type="button" class="usePoint" value="사용"></p>
 			<p>총 금액 : <label class="finTot">${total }</label> 원</p>
 			<input type="hidden" class="totalPrice" name="totalPrice" value="${total }">
+			<input type="hidden" name="originPoint" value="${orderedMember.point }">
 			<input type="hidden" class="usedPoint" name="usedPoint" value="0">
 			<input type="hidden" name="cartidList" value="${orderItems }">
 			</div>

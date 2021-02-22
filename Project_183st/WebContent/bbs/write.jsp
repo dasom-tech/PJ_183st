@@ -76,7 +76,6 @@
 			<tr>
 				<td colspan="2">
 					<input type="button" value="저 장" onclick="sendData()">
-					<input type="reset" value="다시 작성">
 					<input type="button" value="목 록" onclick="list_go(this.form)">
 				</td>
 			</tr>

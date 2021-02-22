@@ -15,6 +15,7 @@ import com.bc.member.model.command.LoginMemberCommand;
 import com.bc.member.model.command.LogoutMemberCommand;
 import com.bc.member.model.command.MemberCommand;
 import com.bc.member.model.command.ModifyMemberCommand;
+import com.bc.member.model.command.MyPageCommand;
 import com.bc.member.move.DeleteMoveCommand;
 import com.bc.member.move.JoinMoveCommand;
 import com.bc.member.move.LoginMoveCommand;
@@ -71,6 +72,10 @@ public class MemberController extends HttpServlet {
 		}
 		else if("leaveMove".equals(type)) {
 			command = new DeleteMoveCommand();
+			execute(command.execute(request, response), request, response);
+		}
+		else if("myPage".equals(type)) {
+			command = new MyPageCommand();
 			execute(command.execute(request, response), request, response);
 		}
 		//String path = command.execute(request, response);
