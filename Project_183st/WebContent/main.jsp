@@ -9,7 +9,7 @@
 <title>메인</title>
 </head>
 <body>
-	<h1>회원 CRUD 테스트를 위한 메인 페이지</h1>
+	<h1>테스트를 위한 메인 페이지</h1>
 	<hr>
 	<c:if test="${!empty sessionScope.id && !empty sessionScope.pwd }">
 	<h2>${sessionScope.id } 님 환영합니다</h2>
@@ -17,6 +17,7 @@
 	<a id="modify" href="memberController?type=modifyMove">정보 수정</a>
 	<a href="Member/leave.jsp">회원 탈퇴</a>
 	<a href="CartController?type=cart">장바구니</a>
+	<a href="OrderController?type=orderList">주문내역확인</a>
 	</c:if>
 	<c:if test="${empty sessionScope.id && empty sessionScope.pwd }">
 	<a id="login" href="memberController?type=loginMove">로그인</a>

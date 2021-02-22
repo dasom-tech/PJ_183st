@@ -11,9 +11,10 @@
       <typeAlias type="com.bc.member.model.vo.MemberVo" alias="MemberVo"/>
       <typeAlias type="com.bc.cart.model.vo.CartListVO" alias="CartListVO"/>
       <typeAlias type="com.bc.order.model.vo.OrderItemVO" alias="OrderItemVO"/>
+      <typeAlias type="com.bc.product.ProductVO" alias="ProductVO"/>
       <typeAlias type="com.bc.order.model.vo.OrderInfoVO" alias="OrderInfoVO"/>
       <typeAlias type="com.bc.order.model.vo.OrderDetailVO" alias="OrderDetailVO"/> 
-      <typeAlias type="com.bc.product.ProductVO" alias="ProductVO"/>
+      <typeAlias type="com.bc.order.model.vo.OrderListVO" alias="OrderListVO"/>
    </typeAliases>
    
   <environments default="development">
@@ -22,7 +23,7 @@
       <dataSource type="POOLED">
         <property name="driver" value="oracle.jdbc.OracleDriver"/>
         <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-        <property name="username" value="pj_183st"/>
+        <property name="username" value="PJ_183ST"/>
         <property name="password" value="183pw"/>
       </dataSource>
     </environment>

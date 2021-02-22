@@ -38,6 +38,7 @@ public class OrderMoveCommand implements OrderCommand {
 		}
 		//System.out.println("주문 합계 금액 : " + total);
 		System.out.println("주문한 회원의 정보 : " + orderedMember.toString());
+		System.out.println("회원의 포인트 : " + orderedMember.getPoint());
 		
 		request.setAttribute("orderItems", list);
 		request.setAttribute("total", total);

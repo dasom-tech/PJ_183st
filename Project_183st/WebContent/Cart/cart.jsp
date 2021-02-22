@@ -36,11 +36,32 @@
 		});
 
 		$(".sDelete").click(function(){
-	        var sDchk = confirm("해당 상품을 장바구니에서 삭제하시겠습니까?");
+	        var sDchk = confirm("체크된 상품을 장바구니에서 삭제하시겠습니까?");
 	        
-	        if(chk){
-	           if($("input[type=checkbox]").prop("checked")){
-	           }
+	        if(sDchk){
+	        	var checkArr = new Array();
+	        	
+	        	$("input[name='cartid']:checked").each(function(){
+	        		// 반복문 테스트 출력
+	        		//alert($(this).attr("value"));
+	        		//location.href="CartController?type=deleteItem&cid=" + $(this).attr("value");
+	        		checkArr.push($(this).attr("value"));
+	        	});
+	        	var checkData = { "cartid" : checkArr };
+	        	
+	        	$.ajax("CartController?type=deleteChkItems", {
+	        		type : "post",
+	        		dataType : "json",
+	        		data : checkData,
+	        		success : function(result){
+	        			if(result == 1){
+	        				//alert("삭제 성공!");
+	        				location.href="CartController?type=cart";
+	        			} else {
+	        				alert("삭제 중 오류 발생..");
+	        			}
+	        		}
+	        	});
 	        } else{
 	           return;
 	        }
@@ -63,9 +84,10 @@
 <body>
 	<h2>장바구니 페이지</h2>
 	
-	<div>
+	<div id="showcart">
 	<c:if test="${empty UserCart }">
 		<p>장바구니에 상품이 없습니다</p>
+		<p><input type="button" class="return" value="돌아가기"></p>
 	</c:if>
 	<c:if test="${!empty UserCart }">
 	<form action="OrderController?type=orderMove" method="post">

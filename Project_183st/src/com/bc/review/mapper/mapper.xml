@@ -1,17 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
 <mapper namespace="Review">
- 	<select id="reviewList" parameterType="string"
-			resultType="com.bc.review.vo.ReviewVO">
+
+	<select id="reviewList" parameterType="string"
+			resultType="com.bc.review.vo.ReviewListVO">
 		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG
 		  FROM REVIEWLIST
 		 WHERE PRODUCTNO = #{productno}
-		 ORDER BY R_REG DESC;
+		 ORDER BY R_REG DESC
 	</select>
-</mapper>
 
+</mapper>
 
 
 
