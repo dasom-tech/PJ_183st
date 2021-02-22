@@ -4,14 +4,29 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
  
 <mapper namespace="Review">
-
+	
+	<!-- 상품 상세페이지 리뷰 조회 -->
 	<select id="reviewList" parameterType="string"
 			resultType="com.bc.review.vo.ReviewListVO">
 		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG
 		  FROM REVIEWLIST
 		 WHERE PRODUCTNO = #{productno}
-		 ORDER BY R_REG DESC
+		 ORDER BY REVIEWID DESC
 	</select>
+	
+	<!-- 리뷰 생성 -->
+	<insert id="reviewInsert" parameterType="com.bc.review.vo.ReviewListVO">
+		<selectKey keyProperty="reviewId" resultType="String" order="BEFORE">
+    		SELECT REVIEW_SEQ.NEXTVAL FROM DUAL
+  		</selectKey>
+		INSERT INTO REVIEWLIST
+				(REVIEWID, PRODUCTNO, ID, REVIEW, R_REG)
+		VALUES (#{reviewId}, #{productno}, #{id}, #{review}, SYSDATE)
+	</insert>
+	
+	<delete id="reviewDelete" parameterType="string">
+		DELETE FROM REVIELIST WHERE REVIEWID = #{reviewid}
+	</delete>
 
 </mapper>
 

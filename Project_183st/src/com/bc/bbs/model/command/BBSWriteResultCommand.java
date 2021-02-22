@@ -21,14 +21,17 @@ public class BBSWriteResultCommand implements Command {
 		vo.setProductno(request.getParameter("productno"));
 		vo.setSubject(request.getParameter("subject"));
 		vo.setCategory(request.getParameter("category"));
-		vo.setId("dasom");
+		vo.setId("TEST");
 		vo.setContact(request.getParameter("content"));
 		System.out.println("vo : " + vo);
 		
 		BBSDAO.insert(vo);
 		System.out.println("insert vo : " + vo);
 		
+		String bbs_no = vo.getBbs_no();
+		
 		request.setAttribute("vo", vo);
+		request.setAttribute("bbs_no", bbs_no);
 		request.setAttribute("cPage", cPage);
 		
 		return "bbs/detail.jsp";

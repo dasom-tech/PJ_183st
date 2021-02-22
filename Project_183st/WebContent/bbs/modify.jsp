@@ -8,6 +8,19 @@
 <title>게시글 수정</title>
 <script>
 	function sendData(frm) {
+	/*	if(frm.subject.value == "") {
+			alert("test");
+			return;
+		} */
+		var firstForm = frm;
+		for (var i=0; i<firstForm.elements.length; i++) {
+			console.log(firstForm.elements[i]);
+			if (firstForm.elements[i].value.trim() == "") {
+				alert(firstForm.elements[i].title + "을(를) 입력하세요");
+				firstForm.elements[i].focus();
+				return;
+			}
+		}
 		
 		frm.action="bbsController?type=modifyResult";
 		frm.submit();
@@ -69,7 +82,6 @@
 			<tr>
 				<td colspan="2">
 					<input type="button" value="수 정" onclick="sendData(this.form)">
-					<input type="reset" value="다시 작성">
 					<input type="button" value="목 록" onclick="list_go(this.form)">
 				</td>
 			</tr>

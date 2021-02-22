@@ -29,6 +29,7 @@ public class ProductViewCommand implements Command{
 		//2. 응답페이지(list.jsp)에 데이터 전달(request 객체에 속성값으로 전달)
 		request.setAttribute("info", productInfo);
 		request.setAttribute("reviewVO", reviewVO);
+		request.setAttribute("productno", productno);
 		
 		return "productDetailView.jsp";
 	}
