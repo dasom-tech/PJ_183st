@@ -506,7 +506,40 @@ VALUES('B219','B','뉴 슬림 LST 데님',84000,21,'Fabric Information
 클래식 데님의 장점을 극대화하고, 동양인의 체형의 맞춰 패턴화 된 "클래식 크롭핏"***
 제품은 세탁시 손세탁 추천 드립니다','b219s.jpg','b219l.jpg') ;
 ===================================================
+DROP SEQUENCE  REVIEWID;
 
+CREATE SEQUENCE REVIEW_SEQ NOCACHE;
+---------------------------------------------------------
+drop table orderdetail;
+drop table orderinfo;
+drop SEQUENCE ORDER_SEQ;
+drop sequence O_DETAIL_SEQ;
+
+CREATE TABLE ORDERINFO (
+    ORDERID VARCHAR2(100) PRIMARY KEY,
+    ID VARCHAR2(30),
+    NAME VARCHAR2(30),
+    ADDR VARCHAR2(100),
+    PHONE VARCHAR2(30),
+    POINT NUMBER,
+    TOTALPRICE NUMBER
+);
+----------------------------------------------
+CREATE TABLE ORDERDETAIL (
+    O_DETAILID NUMBER PRIMARY KEY,
+    ORDERID VARCHAR2(100),
+    PRODUCTNO   VARCHAR2(50 BYTE),
+    O_AMOUNT NUMBER,
+    PRICE NUMBER,
+    PRODUCTNAME   VARCHAR2(80 BYTE),
+    FOREIGN KEY (ORDERID) REFERENCES ORDERINFO(ORDERID)
+);
+--------------------------------------------
+CREATE SEQUENCE ORDER_SEQ NOCACHE;
+CREATE SEQUENCE O_DETAIL_SEQ NOCACHE;
+
+commit;
+---------------------------------------------------
 
 
 
