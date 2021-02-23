@@ -84,6 +84,11 @@ header .wrap {
     color: white;   
 }
 
+li.title > a{
+	font-style: normal;
+	font-weight: bold;
+}
+
 nav {
     width: 25%;
     height: 100%;

@@ -21,7 +21,65 @@
 	<!-- 주문확인 후 주문 정보를 insert -->
 	<insert id="insertOrder" parameterType="OrderInfoVO">
 		insert into orderinfo
-		values(1, #{id}, #{name}, #{addr}, #{phone}, #{point}, #{totalprice})
+		values(#{orderid}, #{id}, #{name}, #{addr}, #{phone}, #{point}, #{totalprice})
 	</insert>
+	
+	<!-- 주문한 상품 정보(OrderDetail)를 삽입 -->
+	<insert id="insertOrderDetail" parameterType="OrderDetailVO">
+		insert into orderdetail
+		values(o_detail_seq.nextval, #{orderid}, #{productno}, #{o_amount}, #{price}, #{productname})
+	</insert>
+	
+	<!-- 주문한 상품의 갯수만큼 재고량 감소 -->
+	<update id="updateStock" parameterType="Map">
+		update products 
+		set stock = stock - #{c_amount}
+		where productno = #{productno}
+	</update>
+	
+	<!-- 주문 후 포인트 변화 -->
+	<update id="updatePoint">
+		update members
+		set point = #{point}
+		where id = #{id}
+	</update>
+	
+	<!-- 주문 후 주문한 내역을 장바구니에서 삭제 -->
+	<delete id="deleteCart">
+		delete from cartlist where cartid = #{cartid}
+	</delete>
+	
+	<!-- 주문번호 생성을 위한 시퀀스 select -->
+	<select id="getOrderSeq" resultType="String">
+		SELECT order_seq.NEXTVAL seq_num FROM dual
+	</select>
+	
+	<!-- 로그인한 사용자의 주문 내역 불러오기 -->
+	<select id="getOrderList" parameterType="String" resultType="OrderListVO">
+		select orderid,  totalprice
+		from orderinfo
+		where id = #{id}
+	</select>
+	
+	<!-- 주문 내역에 추가할 상품명 내역 불러오기 -->
+	<select id="getOrderProductname" parameterType="String" resultType="String">
+		select productname
+		from orderdetail
+		where orderid = #{orderid}
+	</select>
+	
+	<!-- 주문 상세 내역에서 조회할 상품 정보 -->
+	<select id="getOrderDetail" parameterType="String" resultType="OrderDetailVO">
+		select *
+		from orderdetail
+		where orderid = #{orderid}
+	</select>
+	
+	<!-- 주문 상세 내역에서 조회할 주문 정보 -->
+	<select id="getOrderInfo" parameterType="String" resultType="OrderInfoVO">
+		select *
+		from orderinfo
+		where orderid = #{orderid}
+	</select>
 	
 </mapper>
