@@ -165,7 +165,7 @@
 	
 <%-- 상품에 대한 리뷰 작성 영역 --%>
 <form action="reviewController?type=insertReview" method="post">
-	<p>아이디 : <input type="text" name="id">
+	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }">
 	<p>내용 : <textarea name="review" rows="4" cols="55"></textarea>
 	<input type="submit" value="리뷰 저장">
 	<input type="hidden" name="productno" value="${productno }">
@@ -180,10 +180,12 @@
 	<form method="post">
 		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
 		<p>내용 : ${rvo.review }</p>
+		<c:if test="${!empty sessionScope.id && sessinScope.id == rvo.id }">
 		<input type="button" value="리뷰 수정" class="modifyForm" onclick="modify_review(this.form)">
 		<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
 		<input type="hidden" name="reviewId" value="${rvo.reviewId }">
 		<input type="hidden" name="productno" value="${productno }">
+		</c:if>
 	</form>
 </div>
 <hr>
@@ -229,6 +231,7 @@
 	        </section>
 	    </div>
 	</footer>
+	</div>
 </body>
 
 <script>
