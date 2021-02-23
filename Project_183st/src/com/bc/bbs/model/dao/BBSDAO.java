@@ -19,7 +19,7 @@ public class BBSDAO {
 		
 		return totalCount;
 	}
-	
+
 	//페이지에 해당하는 게시글 조회
 	public static List<QnAListVO> getList(Map<String, Integer> map) {
 		SqlSession ss = DBService.getFactory().openSession();
@@ -37,7 +37,7 @@ public class BBSDAO {
 		
 		return vo;
 	}
-	
+
 	//게시글 작성
 	public static int insert(QnAListVO vo) {
 		SqlSession ss = DBService.getFactory().openSession(true);

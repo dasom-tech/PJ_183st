@@ -6,7 +6,29 @@
 <head>
 <meta charset="UTF-8">
 <title>QnA게시판</title>
+<link href="css/button.css" rel="stylesheet" type="text/css">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="path_role" content="MAIN">
+<meta name="author" content="183번가">
+<meta name="description" content="183번가 - 의류 쇼핑몰">
+<meta name="keywords" content="183ST">
+<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="common.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="css/menu.css" rel="stylesheet" type="text/css">
+<script src="main.js" defer></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
+	* {
+		margin:0; padding:0;
+	}
+	
+	body {
+		font-family:"맑은 고딕"; font-size:1.25em; color:#333
+	}
+
 	#bbs table {
 		width: 580px;
 		margin-left: 10px;
@@ -18,11 +40,24 @@
 		font-weight: bold;
 		margin-bottom: 10px;
 	}
+	
+	#bbs table th {
+		background-color: pink;
+	}
 	#bbs table th, #bbs table td {
 		text-align: center;
-		border: 1px solid black;
+		border-bottom: 1px solid pink;
 		padding: 4px 10px;
 	}
+	
+	#bbs  table td a {
+		text-decoration: none;
+	}
+	
+	#bbs  table td a:hover {
+		text-decoration: underline;
+	}
+	
 	#bbs .align-left { text-align: left; }
 	
 	.title { background-color: lightsteelblue; }
@@ -33,10 +68,13 @@
 	.hit { width: 15%; }
 	
 	/***** 페이지 표시 부분 스타일(시작) ****/
-	.paging { list-style: none; }
+	.paging { 
+		list-style: none;
+	}
 	.paging li {
 		float: left;
 		margin-right: 8px;
+		text-align: center;
 	}
 	.paging li a {
 		text-decoration: none;
@@ -54,97 +92,229 @@
 	.paging .now {
 		border: 1px solid #ff4aa5;
 		padding: 3px 7px;
-		background-color: #ff4aa5;
+		background-color: #ff4aa2;
 	}
 	.paging li a:hover {
 		background-color: #00B3DC;
 		color: white;
 	}
-	/***** 페이지 표시 부분 스타일(끝) ****/
 </style>
+<script>
+	function errorWrite(frm) {
+		alert("로그인 후 문의하기를 작성할 수 있습니다");
+	}
+</script>
 </head>
 <body>
-<div id="bbs">
-<table>
-	<caption>문의게시판</caption>
-	<thead>
-		<tr>
-			<th>번호</th>
-			<th>제목</th>
-			<th>작성자</th>
-			<th>문의종류</th>
-			<th>날짜</th>
-		</tr>
-	</thead>
-	<tbody>
-	<c:if test="${empty list }">
-		<tr>
-			<td colspan="5">
-				<p>현재 등록된 게시글이 없습니다</p>
-			</td>
-		</tr>
-	</c:if>
-	<c:if test="${not empty list }">
-		<c:forEach var="vo" items="${list }">
-			<tr>
-				<td>${vo.bbs_no }</td>
-				<td>
-					<a href="bbsController?type=detail&bbs_no=${vo.bbs_no }&cPage=${page.nowPage }">${vo.subject }</a>
-				</td>
-				<td>${vo.id }</td>
-				<td>${vo.category }</td>
-				<td>${vo.q_reg.substring(0,10) }</td>
-			</tr>
-		</c:forEach>
-	</c:if>
-	</tbody>
-	<tfoot>
-		<tr>
-			<td colspan="4">
-				<ol class="paging">
-			<%--[이전으로]에 대한 사용 여부처리 : 시작페이지 1인 경우 비활성화 --%>	
-			<c:choose>
-				<c:when test="${page.beginPage == 1 }">
-					<li class="disable">이전으로</li>
-				</c:when>
-				<c:otherwise>
-					<li><a href="bbsController?type=bbs&cPage=${page.beginPage - 1 }">이전으로</a></li>
-				</c:otherwise>
-			</c:choose>
-			<%-- 블록내에 표시할 페이지 태그 작성(시작페이지 ~ 끝페이지)
-				현재페이지와 페이지 번호 같으면 현재페이지 처리 --%>
-			<c:forEach var="pageNo" begin="${page.beginPage }" end="${page.endPage }">
-				<c:if test="${pageNo == page.nowPage }">
-					<li class="now">${pageNo }</li>	
-				</c:if>
-				<c:if test="${pageNo != page.nowPage }">
-					<li>
-						<a href="bbsController?type=bbs&cPage=${pageNo }">${pageNo }</a>
-					</li>
-				</c:if>
-			</c:forEach>
-			<%--[다음으로]에 대한 사용여부 처리 : endPage가 전체페이지수(totalPage)보다 작은경우 활성화--%>
-			<c:if test="${page.endPage < page.totalPage }">
-				<li>
-					<a href="bbsController?type=bbs&cPage=${page.endPage + 1 }">다음으로</a>
-				</li>
-			</c:if>
-			<c:if test="${page.endPage >= page.totalPage }">
-				<li class="disable">다음으로</li>
-			</c:if>
-				</ol>
-			</td>
-			<td>
-			<form action="bbsController?type=write" method="post">
-				<input type="submit" value="글쓰기">
-				<input type="hidden" name="cPage" value="${page.nowPage }"/>	
-			</form>
-			</td>
-		</tr>
-	</tfoot>
-</table>
+	<div class="body_wrap">
+		<header>
+			<div id="loading"></div>
+			<!-- <div class="header_banner">
+				<a href="#none" class="xi-close-thin" id="header_close_button"></a>
+				<ul style="top: 0px;">
+					<li style="background-color: violet;"><a
+						href="memberController?type=joinMove" style="color: #fff;">183번가
+							온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
+					<li style="background-color: #60da9f;"><a
+						href="http://lmoodc.cafe24.com/product/list.html?cate_no=58"
+						style="color: #fff;">인기 많은 품절 임박 상품 확인하기!</a></li>
+					<li style="background-color: pink;"><a
+						href="https://www.instagram.com/" style="color: #fff;">인스타그램
+							@183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
+				</ul>
+			</div>  -->
+			<div class="wrap">
+				<div class="header_menu">
+					<a href="#" class="toggle"><i class="fas fa-bars"></i></a>
+					<c:if test="${empty sessionScope.id }">
+						<a href="memberController?type=loginMove"><i
+							class="fas fa-user"></i></a>
+					</c:if>
+					<c:if test="${!empty sessionScope.id }">
+						<a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
+						<a href="memberController?type=myPage">마이 페이지</a>
+						<!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
+					</c:if>
+				</div>
+				<div class="header_logo">
+					<a href="shop183st.jsp">183번가</a>
+				</div>
+				<div class="header_menu">
+					<a href=""><i class="fas fa-search"></i></a>
+					<c:if test="${!empty sessionScope.id }">
+						<a href="CartController?type=cart"><i
+							class="fas fa-shopping-cart"></i></a>
+					</c:if>
+					<c:if
+						test="${empty sessionScope.id || sessionScope.id == '' || sessionScope.id == 'null' || sessionScope.id eq null }">
+						<a href="#" onclick="needLogin()"><i
+							class="fas fa-shopping-cart"></i></a>
+					</c:if>
+				</div>
+			</div>
+		</header>
 
-</div>
-	
+		<nav class="menu">
+			<div class="wrap">
+				<ul>
+					<li class="title"><a href="#none" style="color: black;">STORE</a><br>
+						<ul class="sub" style="display: block;">
+							<li><a href="product_controller?viewType=list&cPage=1">ALL</a></li>
+							<br>
+							<li><a
+								href="product_controller?viewType=list&producttype=T&cPage=1">TOP</a></li>
+							<br>
+							<li><a
+								href="product_controller?viewType=list&producttype=B&cPage=1">BOTTOM</a></li>
+							<br>
+						</ul></li>
+					<br>
+					<li class="title"><a href="#none" style="color: black;">BOARD</a><br>
+						<ul class="sub" style="display: block;">
+							<li><a href="bbsController?type=bbs">Q&A</a></li>
+							<br>
+							<li><a href="mypage.html">MYPAGE</a></li>
+						</ul></li>
+				</ul>
+			</div>
+		</nav>
+		<div id="bbs">
+			<table>
+				<caption>183st 문의게시판</caption>
+				<thead>
+					<tr>
+						<th>번호</th>
+						<th>제목</th>
+						<th>작성자</th>
+						<th>문의종류</th>
+						<th>날짜</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:if test="${empty list }">
+						<tr>
+							<td colspan="5">
+								<p>현재 등록된 게시글이 없습니다</p>
+							</td>
+						</tr>
+					</c:if>
+					<c:if test="${not empty list }">
+						<c:forEach var="vo" items="${list }">
+							<tr>
+								<td>${vo.bbs_no }</td>
+								<td><a
+									href="bbsController?type=detail&bbs_no=${vo.bbs_no }&cPage=${page.nowPage }">${vo.subject }</a>
+								</td>
+								<td>${vo.id }</td>
+								<td>${vo.category }</td>
+								<td>${vo.q_reg.substring(0,10) }</td>
+							</tr>
+						</c:forEach>
+					</c:if>
+				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="4">
+							<ol class="paging">
+								<%--[이전으로]에 대한 사용 여부처리 : 시작페이지 1인 경우 비활성화 --%>
+								<c:choose>
+									<c:when test="${page.beginPage == 1 }">
+										<li class="disable">이전으로</li>
+									</c:when>
+									<c:otherwise>
+										<li><a
+											href="bbsController?type=bbs&cPage=${page.beginPage - 1 }">이전으로</a></li>
+									</c:otherwise>
+								</c:choose>
+								<%-- 블록내에 표시할 페이지 태그 작성(시작페이지 ~ 끝페이지)
+				현재페이지와 페이지 번호 같으면 현재페이지 처리 --%>
+								<c:forEach var="pageNo" begin="${page.beginPage }"
+									end="${page.endPage }">
+									<c:if test="${pageNo == page.nowPage }">
+										<li class="now">${pageNo }</li>
+									</c:if>
+									<c:if test="${pageNo != page.nowPage }">
+										<li><a href="bbsController?type=bbs&cPage=${pageNo }">${pageNo }</a>
+										</li>
+									</c:if>
+								</c:forEach>
+								<%--[다음으로]에 대한 사용여부 처리 : endPage가 전체페이지수(totalPage)보다 작은경우 활성화--%>
+								<c:if test="${page.endPage < page.totalPage }">
+									<li><a
+										href="bbsController?type=bbs&cPage=${page.endPage + 1 }">다음으로</a>
+									</li>
+								</c:if>
+								<c:if test="${page.endPage >= page.totalPage }">
+									<li class="disable">다음으로</li>
+								</c:if>
+							</ol>
+						</td>
+						<td>
+							<form action="bbsController?type=write" method="post">
+								<c:if test="${empty sessionScope.id }">
+									<input type="button" value="문의하기" class="button"
+										onclick="errorWrite(this.form)">
+								</c:if>
+								<c:if test="${!empty sessionScope.id }">
+									<input type="submit" value="문의하기">
+									<input type="hidden" name="cPage" value="${page.nowPage }" />
+								</c:if>
+							</form>
+						</td>
+					</tr>
+				</tfoot>
+			</table>
+
+		</div>
+		<footer>
+			<div class="wrap">
+				<section class="footer_left">
+					<div class="footer_terms">
+						<ul>
+							<li><a href="">이용약관</a></li>
+							<li><a href="">개인정보취급방침</a></li>
+							<li><a href="">이용안내</a></li>
+							<li><a href="">고객센터</a></li>
+							<li><a href="">KG이니시스구매안전서비스</a></li>
+						</ul>
+					</div>
+					<div class="footer_business-info">
+						<ul>
+							<li>183번가</li>
+							<li>대표 : 3조</li>
+							<li>TEL : 000-1234-5678</li>
+							<li>주소 : 서울특별시 서초구</li>
+							<li>사업자등록번호 111-11-11111 [사업자정보확인]</li>
+							<li>통신판매업신고번호 : 제 2021-서울서초-0000 호</li>
+							<li>개인정보관리책임자 : 3조</li>
+							<li>대표메일 183ST@183ST.com Copyright © 183ST. All rights
+								reserved.</li>
+						</ul>
+					</div>
+				</section>
+				<section class="footer_right">
+					<div class="footer_contact">
+						<div class="footer_contact_phone">
+							고객센터<br>000 000 0000
+						</div>
+						<div class="footer_contact_sns">
+							<a href=""><i class="fab fa-instagram"></i></a> <a href=""><i
+								class="fab fa-youtube"></i></a>
+						</div>
+					</div>
+					<div class="footer_other">
+						<div class="footer_other_business-hour">
+							평일 AM 10:00 - PM 07:00<br> 점심 PM 01:00 - PM 02:00<br>
+							휴무 토 / 일 / 공휴일
+						</div>
+						<div class="footer_other_bank">183은행 000-000000-00000 183번가</div>
+					</div>
+				</section>
+			</div>
+		</footer>
+		<div class="chat-bot">
+			<i class="fas fa-comments"></i>
+		</div>
+	</div>
 </body>
 </html>

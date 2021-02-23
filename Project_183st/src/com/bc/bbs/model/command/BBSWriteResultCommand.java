@@ -6,6 +6,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.bc.bbs.model.dao.BBSDAO;
 import com.bc.bbs.vo.QnAListVO;
@@ -16,12 +17,14 @@ public class BBSWriteResultCommand implements Command {
 			throws ServletException, IOException {
 		String cPage = request.getParameter("cPage");
 		System.out.println("cPage : " + cPage);
+		HttpSession session = request.getSession();
+		String id = (String)session.getAttribute("id");
 		
 		QnAListVO vo = new QnAListVO();
 		vo.setProductno(request.getParameter("productno"));
 		vo.setSubject(request.getParameter("subject"));
 		vo.setCategory(request.getParameter("category"));
-		vo.setId("TEST");
+		vo.setId(id);
 		vo.setContact(request.getParameter("content"));
 		System.out.println("vo : " + vo);
 		

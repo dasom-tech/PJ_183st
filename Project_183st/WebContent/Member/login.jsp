@@ -8,17 +8,18 @@
 <title>로그인</title>
 <!-- style적용을 위한 설정 -->
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="path_role" content="MAIN">
-<meta name="author" content="183번가">
-<meta name="description" content="183번가 - 의류 쇼핑몰">
-<meta name="keywords" content="183ST">
-<link rel="stylesheet" type="text/css" href="reset.css">
-<link rel="stylesheet" type="text/css" href="common.css">
-<link rel="stylesheet" type="text/css" href="style.css">
-<script src="main.js" defer></script>
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+        <meta name="path_role" content="MAIN">
+        <meta name="author" content="183번가">
+        <meta name="description" content="183번가 - 의류 쇼핑몰">
+        <meta name="keywords" content="183ST">
+        <link rel="stylesheet" type="text/css" href="reset.css">
+        <link rel="stylesheet" type="text/css" href="common.css">
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="css/menu.css" rel="stylesheet" type="text/css">
+        <script src="main.js" defer></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 
 	#loginBtn {

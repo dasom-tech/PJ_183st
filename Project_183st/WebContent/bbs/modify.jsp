@@ -8,10 +8,6 @@
 <title>게시글 수정</title>
 <script>
 	function sendData(frm) {
-	/*	if(frm.subject.value == "") {
-			alert("test");
-			return;
-		} */
 		var firstForm = frm;
 		for (var i=0; i<firstForm.elements.length; i++) {
 			console.log(firstForm.elements[i]);

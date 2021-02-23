@@ -16,6 +16,7 @@ import com.bc.bbs.model.command.BBSPageCommand;
 import com.bc.bbs.model.command.BBSWriteCommand;
 import com.bc.bbs.model.command.BBSWriteResultCommand;
 import com.bc.bbs.model.command.Command;
+import com.bc.member.model.command.MyPageCommand;
 
 @WebServlet("/bbsController")
 public class BBSFrontController extends HttpServlet {
@@ -41,7 +42,8 @@ public class BBSFrontController extends HttpServlet {
 			command = new BBSModifyResultCommand();
 		} else if ("deleteResult".equals(type)) {
 			command = new BBSDeleteResultCommand();
-		}
+		} 
+		
 		
 		String path = command.execute(request, response);
 		request.getRequestDispatcher(path).forward(request, response);

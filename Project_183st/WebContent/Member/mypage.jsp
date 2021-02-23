@@ -201,7 +201,7 @@
 						<a href="memberController?type=modifyMove">정보 수정</a>
 					</li>
 					<li>
-						<a href="#">문의 내역</a>
+						<a href="bbsController?type=myPage">문의 내역</a>
 					</li>
 				</ul>
 			</div>

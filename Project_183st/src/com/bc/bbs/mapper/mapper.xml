@@ -6,7 +6,7 @@
 	
 	<!-- 전제 게시글 수 조회 -->
 	<select id="totalCount" resultType="int">
-		SELECT COUNT(*) AS CNT
+		SELECT COUNT(*)
 		FROM QNALIST
 	</select>
 	
@@ -14,7 +14,7 @@
 	<select id="list" resultType="com.bc.bbs.vo.QnAListVO"
 			parameterType="Map">
 		SELECT BBS_NO, PRODUCTNO, ID, CONTACT, CATEGORY, SUBJECT, Q_REG
-		  FROM ( SELECT ROWNUM AS RN, B.*
+		  FROM ( SELECT ROWNUM AS RN, B.* 
 				   FROM ( SELECT *
 				   			FROM QNALIST
 				   		   ORDER BY BBS_NO DESC
@@ -24,7 +24,8 @@
 	</select>
 	
 	<!-- 게시글 하나 조회 (상세페이지)-->
-	<select id="one" parameterType="string" resultType="com.bc.bbs.vo.QnAListVO">
+	<select id="one" parameterType="string" 
+			resultType="com.bc.bbs.vo.QnAListVO">
 		SELECT BBS_NO, PRODUCTNO, ID, CONTACT, CATEGORY, SUBJECT, Q_REG
 	  	  FROM QNALIST
 	 	 WHERE BBS_NO = #{bbs_no}
