@@ -57,5 +57,11 @@
 		where id = #{id}
 	</select>
 	
+	<!-- 마이페이지 접속 시 현재 보유 포인트 조회 -->
+	<select id="getMemberPoint" parameterType="String" resultType="Integer">
+		select point
+		from members
+		where id = #{id}
+	</select>
 	
 </mapper>
