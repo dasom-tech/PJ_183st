@@ -85,9 +85,15 @@
 		<tfoot>
 			<tr>
 				<td colspan="2">
+				<c:if test="${empty sessionScope.id || sessionScope.id != vo.id }">
+					<input type="button" value="목 록" onclick="list_go(this.form)">
+				</c:if>
+				<c:if test="${!empty sessionScope.id && sessionScope.id == vo.id }">
 					<input type="button" value="수 정" onclick="modify_go(this.form)">
 					<input type="button" value="삭 제" onclick="delete_go(this.form)">
 					<input type="button" value="목 록" onclick="list_go(this.form)">
+					<input type="hidden" value="tag">
+				</c:if>
 				</td>
 			</tr>
 		</tfoot>

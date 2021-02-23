@@ -36,7 +36,7 @@
 		margin: 35px auto 0; /* 상 좌우 하 */
 		border: 0px solid navy;
 		border-collapse: collapse;
-		font-size: 0.8em;
+		font-size: 1.0em;
 	}
 	th, td { border: 0px solid navy; padding: 3px; }
 	th { background-color: #ddd; }
@@ -44,6 +44,18 @@
 	
 	.title { width: 30%; }
 	tfoot { text-align: left; height: 3em; }
+	.submitBtn {
+		background-color: #008CBA;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
 </style>
 </head>
 
@@ -111,24 +123,29 @@
 				<td align="center">
 					<table style="height: 400px; width: 500px;">
 					<c:if test="${not empty info}">
-						<tr align="center">
-							<td width="15%">상품번호</td>
+						<tr align="left">
+							<td width="15%" style="font-size: 18px">상품번호</td>
 							<td align="left">${info.getProductno()}</td>
 						</tr>
-						<tr align="center">
-							<td width="20%">상품명</td>
+						<tr align="left">
+							<td width="20%" style="font-size: 18px">상품명</td>
 							<td align="left">${info.getProductname()}</td>
 						</tr>
-						<tr align="center">
-							<td width="20%">가격</td>
+						<tr align="left">
+							<td width="20%" style="font-size: 18px">가격</td>
 							<td align="left">${info.getPrice()}원</td>
 						</tr>
-						<tr align="center">
-							<td width="20%">재고</td>
+						<c:if test="${info.getStock()<=5}">
+							<tr style="color: red;">
+								<td align="center" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;품절 임박 상품!! 재고가 5개 이하입니다~^^</td>
+							</tr>
+						</c:if>
+						<tr align="left">
+							<td width="20%" style="font-size: 18px">재고</td>
 							<td align="left">${info.getStock()}</td>
 						</tr>
-						<tr align="center">
-							<td width="20%">상품설명</td>
+						<tr align="left">
+							<td width="20%" style="font-size: 18px">상품설명</td>
 							<td align="left">${info.getInfo()}</td>
 						</tr>
 						<tr align="center">
@@ -139,8 +156,8 @@
 											<option value="${i}">${i}</option>
 										</c:forEach>
 									</select>&nbsp;개
-								<input type="submit" value="장바구니에 담기">
-								<input type="submit" value="주문하기"><br><br>
+								<input type="submit" value="장바구니에 담기" class="submitBtn">
+								<input type="submit" value="주문하기" class="submitBtn"><br><br>
 							</td>
 						</tr>
 						</c:if>
@@ -160,7 +177,7 @@
 	
 <%-- 상품에 대한 리뷰 작성 영역 --%>
 <form action="reviewController?type=insertReview" method="post">
-	<p>아이디 : <input type="text" name="id">
+	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly>
 	<p>내용 : <textarea name="review" rows="4" cols="55"></textarea>
 	<input type="submit" value="리뷰 저장">
 	<input type="hidden" name="productno" value="${productno }">
@@ -169,16 +186,19 @@
 <hr>
 <p>리뷰</p>
 <hr>
+
 <%-- 상품에 작성된 리뷰 표시 영역 --%>
 <c:forEach var="rvo" items="${reviewVO }">
 <div class="comment">
 	<form method="post">
 		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
 		<p>내용 : ${rvo.review }</p>
+		<c:if test="${!empty sessionScope.id && sessinScope.id == rvo.id }">
 		<input type="button" value="리뷰 수정" class="modifyForm" onclick="modify_review(this.form)">
 		<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
 		<input type="hidden" name="reviewId" value="${rvo.reviewId }">
 		<input type="hidden" name="productno" value="${productno }">
+		</c:if>
 	</form>
 </div>
 <hr>

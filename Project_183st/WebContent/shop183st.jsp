@@ -98,7 +98,7 @@
 	                    </li>
 	                    <br>
 	                    <li class="title">
-                        	<a href="#none">BOARD</a><br>
+                        	<a href="#none" style="color: black;">BOARD</a><br>
                         	<ul class="sub" style="display: block;">
 		                        <li><a href="bbsController?type=bbs">Q&A</a></li><br>		                        
 		                        <li><a href="mypage.html">MYPAGE</a></li>
@@ -119,7 +119,7 @@
 	                        <ul class="item_list">
 	                            <li class="item">
 	                            	<div class="item_box">                         	
-		                                <a href="">
+		                                <a href="product_controller?viewType=info&productno=T108">
 			                                <img class="item_img" alt="" src="images/t108s.jpg">
 			                                <div class="item_name">아머 니트 베스트 MOCHA BEIGE</div>
 			                                <div class="item_price">90,300원</div>
@@ -128,7 +128,7 @@
 	                            </li>
 	                            <li class="item">
 	                            	<div class="item_box">
-	                            		<a href="">
+	                            		<a href="product_controller?viewType=info&productno=B206">
 	                            			<img class="item_img" alt="" src="images/b206s.jpg">
 	                            			<div class="item_name">에센셜 우븐 트랙 팬츠 CLOUD</div>
 	                            			<div class="item_price">43,200원</div>
@@ -137,7 +137,7 @@
 	                            </li>
 	                            <li class="item">
 	                            	<div class="item_box">
-	                            		<a href="">
+	                            		<a href="product_controller?viewType=info&productno=T110">
 	                            			<img class="item_img" alt="" src="images/t110s.jpg">
 	                            			<div class="item_name">대한 캐시미어 니트 MELANGE GRAY</div>
 	                            			<div class="item_price">118,300원</div>
@@ -146,7 +146,7 @@
 	                            </li>
 	                            <li class="item">
 	                            	<div class="item_box">
-	                            		<a href="">
+	                            		<a href="product_controller?viewType=info&productno=B219">
 	                            			<img class="item_img" alt="" src="images/b219s.jpg">
 	                            			<div class="item_name">뉴 슬림 LST 데님</div>
 	                            			<div class="item_price">84,000원</div>
