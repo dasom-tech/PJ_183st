@@ -540,8 +540,10 @@ CREATE SEQUENCE O_DETAIL_SEQ NOCACHE;
 
 commit;
 ---------------------------------------------------
-
-
+alter table orderdetail
+add (image_s varchar2(500));
+commit;
+---------------------------------------
 
 
 
