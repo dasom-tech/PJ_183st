@@ -32,7 +32,7 @@
 	</insert>
 	
 	<!-- 리뷰 수정 -->
-	<update id="reviewUpdate" parameterType="com.bc.review.vo.reviewListVO">
+	<update id="reviewUpdate" parameterType="com.bc.review.vo.ReviewListVO">
 		UPDATE REVIEWLIST
 		   SET REVIEW = #{review}
 		 WHERE REVIEWID = #{reviewId}  
