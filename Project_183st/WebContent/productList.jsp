@@ -75,6 +75,9 @@
 		background-color: #00B3DC;
 		color: white;
 	}
+	.center {
+		text-align: center;
+	}
 	/***** 페이지 표시 부분 스타일(끝) ****/
 </style>
 <script>
@@ -138,8 +141,8 @@
 				</c:if>	
 			</tbody>
 			<tfoot>
-				<tr>
-					<td colspan="5">
+				<tr align="center">
+					<td colspan="5" align="center">
 						<ol class="paging" id="paging">
 							<c:forEach var="i" begin="1" end="${totalPage}">
 								<c:choose>
