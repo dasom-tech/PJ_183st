@@ -26,10 +26,15 @@ public class ProductViewCommand implements Command{
 		List<ReviewListVO> reviewVO = ReviewDAO.getRivewList(productno);
 		System.out.println("reviewVO : " + reviewVO);
 		
+		//리뷰 갯수 가져오기
+		int count = ReviewDAO.getTotalCount(productno);
+		System.out.println("count : " + count);
+		
 		//2. 응답페이지(list.jsp)에 데이터 전달(request 객체에 속성값으로 전달)
 		request.setAttribute("info", productInfo);
 		request.setAttribute("reviewVO", reviewVO);
 		request.setAttribute("productno", productno);
+		request.setAttribute("count", count);
 		
 		return "productDetailView.jsp";
 	}

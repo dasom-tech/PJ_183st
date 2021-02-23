@@ -21,10 +21,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
-	* {
-		margin:0; padding:0;
-	}
-	
+
 	body {
 		font-family:"맑은 고딕"; font-size:1.25em; color:#333
 	}
@@ -101,7 +98,12 @@
 </style>
 <script>
 	function errorWrite(frm) {
-		alert("로그인 후 문의하기를 작성할 수 있습니다");
+		alert("회원에게만 글쓰기 권한이 있습니다. \n 로그인 후 이용해 주세요");
+	}
+	
+	function writeBBS(frm) {
+		frm.action="bbsController?type=write"
+		frm.submit();
 	}
 </script>
 </head>
@@ -127,8 +129,8 @@
 				<div class="header_menu">
 					<a href="#" class="toggle"><i class="fas fa-bars"></i></a>
 					<c:if test="${empty sessionScope.id }">
-						<a href="memberController?type=loginMove"><i
-							class="fas fa-user"></i></a>
+						<a href="memberController?type=loginMove">
+						<i class="fas fa-user"></i></a>
 					</c:if>
 					<c:if test="${!empty sessionScope.id }">
 						<a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
@@ -226,8 +228,7 @@
 											href="bbsController?type=bbs&cPage=${page.beginPage - 1 }">이전으로</a></li>
 									</c:otherwise>
 								</c:choose>
-								<%-- 블록내에 표시할 페이지 태그 작성(시작페이지 ~ 끝페이지)
-				현재페이지와 페이지 번호 같으면 현재페이지 처리 --%>
+								<%-- 블록내에 표시할 페이지 태그 작성(시작페이지 ~ 끝페이지) 현재페이지와 페이지 번호 같으면 현재페이지 처리 --%>
 								<c:forEach var="pageNo" begin="${page.beginPage }"
 									end="${page.endPage }">
 									<c:if test="${pageNo == page.nowPage }">
@@ -252,11 +253,10 @@
 						<td>
 							<form action="bbsController?type=write" method="post">
 								<c:if test="${empty sessionScope.id }">
-									<input type="button" value="문의하기" class="button"
-										onclick="errorWrite(this.form)">
+									<input type="button" value="문의하기" class="button" onclick="errorWrite(this.form)">
 								</c:if>
 								<c:if test="${!empty sessionScope.id }">
-									<input type="submit" value="문의하기">
+									<input type="button" value="문의하기" class="button" onclick="writeBBS(this.form)">
 									<input type="hidden" name="cPage" value="${page.nowPage }" />
 								</c:if>
 							</form>

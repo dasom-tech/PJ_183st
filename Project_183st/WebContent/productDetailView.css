@@ -46,12 +46,6 @@
     color: rgb(85, 85, 85);
     padding-right: 7px;
     border-right:1px solid rgb(189, 189, 189);
-    line-height:1.8;
-    
-}
-
-.review_info hr {
-    border:1px solid rgb(2, 7, 21);
 }
 
 .review_date {
@@ -101,4 +95,3 @@
     line-height: 20px;
     text-align: center;
 }
-

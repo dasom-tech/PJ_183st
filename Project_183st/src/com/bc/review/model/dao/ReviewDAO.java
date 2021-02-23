@@ -20,10 +20,10 @@ public class ReviewDAO {
 		return list;
 	}
 	
-	//게시글의 전체 갯수 조회
+	//상품번호에 따른 리뷰 갯수 조회
 	public static int getTotalCount(String productno) {
 		SqlSession ss = DBService.getFactory().openSession();
-		int totalCount = ss.selectOne("Review.totalCount");
+		int totalCount = ss.selectOne("Review.totalCount", productno);
 		ss.close();
 			
 		return totalCount;
