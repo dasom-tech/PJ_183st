@@ -13,7 +13,7 @@ public class DeleteMoveCommand implements MemberCommand {
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		return "Member.leave.jsp";
+		return "Member/leave.jsp";
 	}
 	
 }
