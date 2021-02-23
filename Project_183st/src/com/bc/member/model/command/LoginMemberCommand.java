@@ -49,7 +49,7 @@ public class LoginMemberCommand implements MemberCommand {
 			session.setAttribute("pwd", pwd);
 		}*/
 		
-		return "main.jsp";
+		return "shop183st.jsp";
 	}
 	
 }

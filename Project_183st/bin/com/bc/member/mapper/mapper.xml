@@ -43,5 +43,19 @@
 		delete from members where id = #{id}
 	</delete>
 	
+	<!-- 마이페이지 접속 시 주문 건수 조회 -->
+	<select id="getOrderCount" parameterType="String" resultType="Integer">
+		select count(*)
+		from orderinfo
+		where id = #{id}
+	</select>
+	
+	<!-- 마이페이지 접속 시 문의 건수 조회 -->
+	<select id="getContactCount" parameterType="String" resultType="Integer">
+		select count(*)
+		from qnalist
+		where id = #{id}
+	</select>
+	
 	
 </mapper>

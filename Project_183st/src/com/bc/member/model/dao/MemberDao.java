@@ -79,4 +79,28 @@ public class MemberDao {
 		return result;
 	}
 	
+	// 마이페이지 접속 시 주문 건수 조회
+	public static int getOrderCount(String id) {
+		SqlSession ss = DBService.getFactory().openSession();
+		int count = ss.selectOne("Member.getOrderCount", id);
+		ss.close();
+		return count;
+	}
+	
+	// 마이페이지 접속 시 문의 건수 조회
+	public static int getContactCount(String id) {
+		SqlSession ss = DBService.getFactory().openSession();
+		int count = ss.selectOne("Member.getContactCount", id);
+		ss.close();
+		return count;
+	}
+	
+	// 마이페이지 접속 시 보유 포인트 조회
+	public static int getMemberPoint(String id) {
+		SqlSession ss = DBService.getFactory().openSession();
+		int point = ss.selectOne("Member.getMemberPoint", id);
+		ss.close();
+		return point;
+	}
+	
 }

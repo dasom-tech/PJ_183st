@@ -33,6 +33,8 @@ public class CartMove implements CartCommand {
 		session.setAttribute("total", total);
 		session.setAttribute("UserCart", list);
 		
+		System.out.println("id : " + id);
+		
 		return "Cart/cart.jsp";
 	}
 	

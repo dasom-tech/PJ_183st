@@ -1,6 +1,7 @@
 package com.bc.product;
 
 public class ProductVO {
+
 	private String productno, producttype, productname, info, image_s, image_l;
 	private int price, stock;
 

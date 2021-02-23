@@ -1,72 +1,43 @@
 package com.bc.order.model.vo;
 
 public class OrderListVO {
-	// 주문완료 시 insert하는 타입
-	private String orderno,	productno,	id,	o_amount,	o_addr,	o_phone;
+	private String orderid, productname,	totalprice;
 	
 	public OrderListVO() {	}
 
-	public OrderListVO(String orderno, String productno, String id, String o_amount, String o_addr, String o_phone) {
-		this.orderno = orderno;
-		this.productno = productno;
-		this.id = id;
-		this.o_amount = o_amount;
-		this.o_addr = o_addr;
-		this.o_phone = o_phone;
+	public OrderListVO(String orderid, String productname, String totalprice) {
+		this.orderid = orderid;
+		this.productname = productname;
+		this.totalprice = totalprice;
 	}
 
-	public String getOrderno() {
-		return orderno;
+	public String getOrderid() {
+		return orderid;
 	}
 
-	public void setOrderno(String orderno) {
-		this.orderno = orderno;
+	public void setOrderid(String orderid) {
+		this.orderid = orderid;
 	}
 
-	public String getProductno() {
-		return productno;
+	public String getProductname() {
+		return productname;
 	}
 
-	public void setProductno(String productno) {
-		this.productno = productno;
+	public void setProductname(String productname) {
+		this.productname = productname;
 	}
 
-	public String getId() {
-		return id;
+	public String getTotalprice() {
+		return totalprice;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getO_amount() {
-		return o_amount;
-	}
-
-	public void setO_amount(String o_amount) {
-		this.o_amount = o_amount;
-	}
-
-	public String getO_addr() {
-		return o_addr;
-	}
-
-	public void setO_addr(String o_addr) {
-		this.o_addr = o_addr;
-	}
-
-	public String getO_phone() {
-		return o_phone;
-	}
-
-	public void setO_phone(String o_phone) {
-		this.o_phone = o_phone;
+	public void setTotalprice(String totalprice) {
+		this.totalprice = totalprice;
 	}
 
 	@Override
 	public String toString() {
-		return "OrderListVO [orderno=" + orderno + ", productno=" + productno + ", id=" + id + ", o_amount=" + o_amount
-				+ ", o_addr=" + o_addr + ", o_phone=" + o_phone + "]";
+		return "OrderListVO [orderid=" + orderid + ", productname=" + productname + ", totalprice=" + totalprice + "]";
 	}
 	
 }
