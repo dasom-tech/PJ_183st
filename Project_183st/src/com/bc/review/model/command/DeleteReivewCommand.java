@@ -20,6 +20,7 @@ public class DeleteReivewCommand implements Command{
 		
 		//아이디가 일치할 경우만 삭제 (미구현)
 		
+		
 		ReviewDAO.reviewDelete(reviewId);
 		
 		return "product_controller?viewType=info&productno=" + productno;
