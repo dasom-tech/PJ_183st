@@ -14,6 +14,26 @@
 		 ORDER BY REVIEWID DESC
 	</select>
 	
+	<!-- 상품번호에 따른 리뷰 수 조회 -->
+	<select id="totalCount" parameterType="string" resultType="int">
+		SELECT COUNT(*)
+		  FROM REVIEWLIST
+		 WHERE PRODUCTNO = #{productno}
+	</select>
+	
+	<!-- 해당상품에 해당하는 리뷰 가져오기 -->
+	<select id="list" resultType="com.bc.review.vo.ReviewListVO"
+			parameterType="Map">
+		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG
+		  FROM ( SELECT ROWNUM AS RN, B.* 
+				   FROM ( SELECT *
+				   			FROM REVIEWLIST
+				   		   ORDER BY REVIEWID DESC
+				   		) B	  
+		  		)
+		 WHERE RN BETWEEN #{begin} AND ${end}
+	</select>
+	
 	<select id="reviewSelectOne" parameterType="string"
 			resultType="com.bc.review.vo.ReviewListVO">
 		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG

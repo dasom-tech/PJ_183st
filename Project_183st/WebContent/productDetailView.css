@@ -2,7 +2,6 @@
     width: 100%;
 }
 
-
 .product-page_review table caption{
     background-color: black;
     border: black 1px solid;
@@ -29,12 +28,18 @@
     margin-bottom: 10px;
 }
 
-.review_info span {
+.review_info div {
     font-size: 9px;
     color: rgb(85, 85, 85);
     padding-left: 5px;
     padding-right: 5px;
     border-right:1px solid rgb(189, 189, 189);
+    line-height:1.8;
+    
+}
+
+.review_info hr {
+    border:1px solid rgb(2, 7, 21);
 }
 
 .review_reply{

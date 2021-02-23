@@ -79,8 +79,6 @@
                         <c:if test="${empty sessionScope.id || sessionScope.id == '' || sessionScope.id eq null }">
                         <a href="#" onclick="needLogin()"><i class="fas fa-shopping-cart"></i></a>
                         </c:if>
-                        
-                        
                     </div>  
                 </div>  
             </header>

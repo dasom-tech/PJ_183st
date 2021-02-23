@@ -202,7 +202,7 @@
 </div>
 <hr>
 </c:forEach>
-	<footer>
+		<footer>
 	    <div class="wrap">
 	        <section class="footer_left">
 	            <div class="footer_terms">

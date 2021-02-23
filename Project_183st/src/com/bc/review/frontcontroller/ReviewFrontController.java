@@ -33,7 +33,7 @@ public class ReviewFrontController extends HttpServlet {
 			command = new InsertReviewCommand();
 		} else if ("delReview".equals(type)) {
 			command = new DeleteReivewCommand();
-		}
+		} 
 		
 		String path = command.execute(request, response);
 		response.sendRedirect(path);
