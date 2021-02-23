@@ -1,0 +1,90 @@
+.product-page_review table {
+    width: 100%;
+}
+
+
+.product-page_review table caption{
+    background-color: black;
+    border: black 1px solid;
+    color:white;
+    padding: 4px
+}
+
+.product-page_review table thead tr th {
+    padding: 15px 0px 8px 7px;
+    color: black;
+    font-weight: bold;
+    font-size: 14px;
+    text-align: left;
+}
+
+.product-page_review table > th, td {
+    border-top: 1px solid #9c9c9c;
+    padding: 10px;
+}
+
+.product-page_review table tbody > .review_title {
+    font-size: 14px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+.review_info span {
+    font-size: 9px;
+    color: rgb(85, 85, 85);
+    padding-left: 5px;
+    padding-right: 5px;
+    border-right:1px solid rgb(189, 189, 189);
+}
+
+.review_reply{
+    background-color: rgb(97, 118, 119);
+    color: white;
+    padding: 1px 5px;
+    margin-left: 5px;
+    font-size: 9px;
+    margin: 2px;
+}
+
+.review_hit{
+    background-color: rgb(38, 133, 34);
+    color: white;
+    padding: 1px 5px;
+    font-size:9px;
+    margin: 2px;
+}
+
+.review_edit-buttons, .review_page-buttons{
+    display: flex;
+    flex-direction:row;
+    justify-content: space-around;
+    padding: 5px 0px;
+}
+
+.review_write-button {
+    width: 48%;
+    background-color: black;
+    border: black 1px solid;
+    color:white;
+    padding: 4px
+}
+
+.review_list-button {
+    width: 48%;
+    background-color: white;
+    border: black 1px solid;
+    color:black;
+    padding: 4px
+}
+
+.review_page-buttons ol li{
+    color: rgb(59, 59, 59);
+    font-size: 15px;
+    border: 1px solid rgb(184, 184, 184);
+    width: 25px;
+    height: 25px;
+    border-radius: 2px;
+    line-height: 20px;
+    text-align: center;
+}
+
