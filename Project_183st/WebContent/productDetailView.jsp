@@ -160,7 +160,7 @@
 	
 <%-- 상품에 대한 리뷰 작성 영역 --%>
 <form action="reviewController?type=insertReview" method="post">
-	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }">
+	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly>
 	<p>내용 : <textarea name="review" rows="4" cols="55"></textarea>
 	<input type="submit" value="리뷰 저장">
 	<input type="hidden" name="productno" value="${productno }">
@@ -169,6 +169,7 @@
 <hr>
 <p>리뷰</p>
 <hr>
+
 <%-- 상품에 작성된 리뷰 표시 영역 --%>
 <c:forEach var="rvo" items="${reviewVO }">
 <div class="comment">

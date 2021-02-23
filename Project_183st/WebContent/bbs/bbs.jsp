@@ -6,7 +6,17 @@
 <head>
 <meta charset="UTF-8">
 <title>QnA게시판</title>
+<link href="css/button.css" rel="stylesheet" type="text/css">
+
 <style>
+	* {
+		margin:0; padding:0;
+	}
+	
+	body {
+		font-family:"맑은 고딕"; font-size:1.25em; color:#333
+	}
+
 	#bbs table {
 		width: 580px;
 		margin-left: 10px;
@@ -18,11 +28,24 @@
 		font-weight: bold;
 		margin-bottom: 10px;
 	}
+	
+	#bbs table th {
+		background-color: pink;
+	}
 	#bbs table th, #bbs table td {
 		text-align: center;
-		border: 1px solid black;
+		border-bottom: 1px solid pink;
 		padding: 4px 10px;
 	}
+	
+	#bbs  table td a {
+		text-decoration: none;
+	}
+	
+	#bbs  table td a:hover {
+		text-decoration: underline;
+	}
+	
 	#bbs .align-left { text-align: left; }
 	
 	.title { background-color: lightsteelblue; }
@@ -33,10 +56,13 @@
 	.hit { width: 15%; }
 	
 	/***** 페이지 표시 부분 스타일(시작) ****/
-	.paging { list-style: none; }
+	.paging { 
+		list-style: none;
+	}
 	.paging li {
 		float: left;
 		margin-right: 8px;
+		text-align: center;
 	}
 	.paging li a {
 		text-decoration: none;
@@ -54,19 +80,23 @@
 	.paging .now {
 		border: 1px solid #ff4aa5;
 		padding: 3px 7px;
-		background-color: #ff4aa5;
+		background-color: #ff4aa2;
 	}
 	.paging li a:hover {
 		background-color: #00B3DC;
 		color: white;
 	}
-	/***** 페이지 표시 부분 스타일(끝) ****/
 </style>
+<script>
+	function errorWrite(frm) {
+		alert("로그인 후 문의하기를 작성할 수 있습니다");
+	}
+</script>
 </head>
 <body>
 <div id="bbs">
 <table>
-	<caption>문의게시판</caption>
+	<caption>183st 문의게시판</caption>
 	<thead>
 		<tr>
 			<th>번호</th>
@@ -136,8 +166,13 @@
 			</td>
 			<td>
 			<form action="bbsController?type=write" method="post">
-				<input type="submit" value="글쓰기">
+			<c:if test="${empty sessionScope.id }">
+				<input type="button" value="문의하기" class="button" onclick="errorWrite(this.form)">
+			</c:if>
+			<c:if test="${!empty sessionScope.id }">
+				<input type="submit" value="문의하기">
 				<input type="hidden" name="cPage" value="${page.nowPage }"/>	
+			</c:if>
 			</form>
 			</td>
 		</tr>
