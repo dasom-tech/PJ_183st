@@ -95,7 +95,7 @@
 	                    </li>
 	                    <br>
 	                    <li class="title">
-                        	<a href="#none">BOARD</a><br>
+                        	<a href="#none" style="color: black;">BOARD</a><br>
                         	<ul class="sub" style="display: block;">
 		                        <li><a href="bbsController?type=bbs">Q&A</a></li><br>		                        
 		                        <li><a href="mypage.html">MYPAGE</a></li>

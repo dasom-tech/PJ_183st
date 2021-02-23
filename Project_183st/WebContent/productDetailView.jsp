@@ -123,6 +123,11 @@
 							<td width="20%">가격</td>
 							<td align="left">${info.getPrice()}원</td>
 						</tr>
+						<c:if test="${info.getStock()<=5}">
+							<tr style="color: red;">
+								<td>품절 임박 상품!! 재고가 5개 이하입니다~^^</td>
+							</tr>
+						</c:if>
 						<tr align="center">
 							<td width="20%">재고</td>
 							<td align="left">${info.getStock()}</td>

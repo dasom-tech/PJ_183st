@@ -84,6 +84,10 @@ header .wrap {
     color: white;   
 }
 
+a:hover {
+  color: grey;
+}
+
 li.title > a{
 	font-style: normal;
 	font-weight: bold;
