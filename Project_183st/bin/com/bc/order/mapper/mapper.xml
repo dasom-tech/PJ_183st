@@ -6,7 +6,7 @@
 	
 	<!-- 주문 창에서 필요한 상품 주문 정보 검색 -->
 	<select id="orderInfo" parameterType="String" resultType="OrderItemVO">
-		select cartid, p.productno, productname, price, c_amount
+		select cartid, p.productno, productname, price, c_amount, p.image_s
 		from cartlist, products p
 		where cartlist.productno = p.productno and cartid = #{cartid}
 	</select>
