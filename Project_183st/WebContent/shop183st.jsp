@@ -72,12 +72,15 @@
                         <a href="shop183st.jsp">183번가</a></div>
                     <div class="header_menu">
                         <a href=""><i class="fas fa-search"></i></a>
+                        
                         <c:if test="${!empty sessionScope.id }">
                         <a href="CartController?type=cart"><i class="fas fa-shopping-cart"></i></a>
                         </c:if>
-                        <c:if test="${empty sessionScope.id || sessionScope.id == '' || sessionScope.id == 'null' || sessionScope.id eq null }">
+                        <c:if test="${empty sessionScope.id || sessionScope.id == '' || sessionScope.id eq null }">
                         <a href="#" onclick="needLogin()"><i class="fas fa-shopping-cart"></i></a>
                         </c:if>
+                        
+                        
                     </div>  
                 </div>  
             </header>

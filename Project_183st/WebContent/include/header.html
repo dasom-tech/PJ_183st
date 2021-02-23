@@ -1,0 +1,40 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<header>
+            	<div id="loading"></div> 
+			    <div class="header_banner">
+			    	<a href="#none" class="xi-close-thin" id="header_close_button"></a>
+				    <ul style="top: 0px;">
+				    	<li style="background-color:violet;"><a href="memberController?type=joinMove" style="color:#fff;">183번가 온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
+				        <li style="background-color:#60da9f;"><a href="http://lmoodc.cafe24.com/product/list.html?cate_no=58" style="color:#fff;">인기 많은 품절 임박 상품 확인하기!</a></li>
+				        <li style="background-color:pink;"><a href="https://www.instagram.com/" style="color:#fff;">인스타그램 @183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
+					</ul>
+				</div>
+                <div class="wrap">                	
+                    <div class="header_menu">
+                        <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
+                        <c:if test="${empty sessionScope.id }">
+                        <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
+                        </c:if>
+                        <c:if test="${!empty sessionScope.id }">
+                        <a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
+                        <a href="memberController?type=myPage">마이 페이지</a>
+                        <!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
+                        </c:if>
+                    </div>
+                    <div class="header_logo">
+                        <a href="shop183st.jsp">183번가</a></div>
+                    <div class="header_menu">
+                        <a href=""><i class="fas fa-search"></i></a>
+                        
+                        <c:if test="${!empty sessionScope.id }">
+                        <a href="CartController?type=cart"><i class="fas fa-shopping-cart"></i></a>
+                        </c:if>
+                        <c:if test="${empty sessionScope.id || sessionScope.id == '' || sessionScope.id eq null }">
+                        <a href="#" onclick="needLogin()"><i class="fas fa-shopping-cart"></i></a>
+                        </c:if>
+                        
+                        
+                    </div>  
+                </div>  
+            </header>
