@@ -1,18 +1,20 @@
 package com.bc.order.model.vo;
 
 public class OrderDetailVO {
-	private String o_detailid,	orderid,	productno,	o_amount,	price,	productname;
+	private String o_detailid,	orderid,	productno,	o_amount,	price,	productname, image_s;
 	
 	public OrderDetailVO() {	}
 
 	public OrderDetailVO(String o_detailid, String orderid, String productno, String o_amount, String price,
-			String productname) {
+			String productname, String image_s) {
+		super();
 		this.o_detailid = o_detailid;
 		this.orderid = orderid;
 		this.productno = productno;
 		this.o_amount = o_amount;
 		this.price = price;
 		this.productname = productname;
+		this.image_s = image_s;
 	}
 
 	public String getO_detailid() {
@@ -62,11 +64,20 @@ public class OrderDetailVO {
 	public void setProductname(String productname) {
 		this.productname = productname;
 	}
+	
+	public String getImage_s() {
+		return image_s;
+	}
+
+	public void setImage_s(String image_s) {
+		this.image_s = image_s;
+	}
 
 	@Override
 	public String toString() {
 		return "OrderDetailVO [o_detailid=" + o_detailid + ", orderid=" + orderid + ", productno=" + productno
-				+ ", o_amount=" + o_amount + ", price=" + price + ", productname=" + productname + "]";
+				+ ", o_amount=" + o_amount + ", price=" + price + ", productname=" + productname + ", image_s="
+				+ image_s + "]";
 	}
 	
 }

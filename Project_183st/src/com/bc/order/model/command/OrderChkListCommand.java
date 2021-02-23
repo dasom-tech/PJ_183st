@@ -23,9 +23,9 @@ public class OrderChkListCommand implements OrderCommand {
 		
 		for (OrderListVO vo : list) {
 			List<String> pname = OrderDAO.getOrderProductname(vo.getOrderid());
-			
+			System.out.println("orderid : " + vo.getOrderid());
 			if(pname.size() > 1) {
-				vo.setProductname(pname.get(0) + "외" + (pname.size() - 1));
+				vo.setProductname(pname.get(0) + " 외" + (pname.size() - 1));
 			} else {
 				vo.setProductname(pname.get(0));
 			}

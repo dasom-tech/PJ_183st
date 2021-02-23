@@ -242,6 +242,17 @@
 	        }
 	     });
 	     
+	     $(".placeorder").click(function(){
+	    	 
+	    	 if(!$("input[name=cartid]").prop("checked")){
+	    		 alert("현재 선택한 상품이 없습니다");
+	    		 return;
+	    	 } else {
+	    		 $("#orderinfo").submit();
+	    	 }
+	    	 
+	     });
+	     
 	     $(".return").click(function(){
 	        history.back();
 	     });
@@ -331,7 +342,7 @@
 				</div>
 			</c:if>
 			<c:if test="${!empty UserCart }">
-			<form action="OrderController?type=orderMove" method="post">
+			<form action="OrderController?type=orderMove" id="orderinfo" method="post">
 				<c:forEach var="list" items="${UserCart }">
 				
 				
@@ -373,7 +384,7 @@
 			
 			<div>
 				<p>
-					<input type="submit" class="placeorder" value="주문하기">
+					<input type="button" class="placeorder" value="주문하기">
 					<input type="button" class="return" value="돌아가기">
 				</p>
 			</div>

@@ -39,6 +39,7 @@ public class OrderProcCommand implements OrderCommand {
 		String []c_amount = request.getParameterValues("c_amount");
 		String []price = request.getParameterValues("price");
 		String []productname = request.getParameterValues("productname");
+		String []image_s = request.getParameterValues("image_s");
 		
 		// 주문번호 생성을 위한 처리
 		java.util.Date now = new java.util.Date();
@@ -59,7 +60,7 @@ public class OrderProcCommand implements OrderCommand {
 		orderinfo.setTotalprice("" + totalPrice);
 		
 		int result = OrderDAO.insertOrderInfo(orderinfo);
-		System.out.println("주문 처리 건수 : " + result);
+		//System.out.println("주문 처리 건수 : " + result);
 		
 		// 주문정보 출력 테스트
 		//System.out.println("orderinfo : " + orderinfo.toString());
@@ -73,6 +74,7 @@ public class OrderProcCommand implements OrderCommand {
 			vo.setPrice(price[i]);
 			vo.setProductno(productno[i]);
 			vo.setProductname(productname[i]);
+			vo.setImage_s(image_s[i]);
 			
 			int result2 = OrderDAO.insertOrderDetail(vo);
 			//System.out.println("result2 : " + result2);

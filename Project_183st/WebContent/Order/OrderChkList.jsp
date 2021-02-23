@@ -43,16 +43,27 @@
 	#orderlist {
 		display: block;
 		margin: 0 auto;
-		margin-top: 0px;
 		width: 950px;
 		height: 1650;
 		item-align: center;
 		box-sizing: border-box;
 	}
 	
+	.list_table {
+		margin-top: 10px;
+	}
+	
 	.list_table tr {
 		width: 950px;
 		height: 48px;
+	}
+	
+	.list_table tr:nth-child(2n+2){
+		background-color: #FFF;
+	}
+	
+	.list_table tr:nth-child(2n+3){
+		background-color: #DDD;
 	}
 	
 	.list_table th {
@@ -68,7 +79,27 @@
 	.list_table a {
 		
 	}
-
+	
+	.list_header {
+		background-color: #CCC;
+		border-bottom: 1px solid #BBB;
+	}
+	
+	#return_btn {
+		margin-top: 10px;
+		text-align: center;
+	}
+	
+	#return_btn button {
+		width: 271px;
+		height: 38px;
+		color: #000000;
+		background-color: #FFFFFF;
+		text-align: center;
+		font-family: 'Nanum Gothic', sans-serif;
+	}
+	
+	
 </style>
 <script>
 
@@ -124,7 +155,7 @@
 	     	
 	     	<div id="orderlist">
 			<table class="list_table">
-			<tr>
+			<tr class="list_header">
 				<th>주문번호</th>
 				<th>상품명</th>
 				<th>결제금액</th>
@@ -139,8 +170,9 @@
 			</table>
 			</div>
 			
-			
+			<div id="return_btn">
 			<button onclick="location.href='memberController?type=myPage'">돌아가기</button>
+			</div>
 	
 		</section>
 	 </div>
