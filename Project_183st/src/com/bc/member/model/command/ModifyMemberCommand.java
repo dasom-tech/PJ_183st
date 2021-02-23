@@ -35,7 +35,7 @@ public class ModifyMemberCommand implements MemberCommand {
 		int result = MemberDao.modMember(vo);
 		System.out.println(">> result : " + result);
 		
-		return "main.jsp";
+		return "shop183st.jsp";
 	}
 	
 }

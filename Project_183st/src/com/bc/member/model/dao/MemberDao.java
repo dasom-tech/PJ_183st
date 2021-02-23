@@ -95,4 +95,12 @@ public class MemberDao {
 		return count;
 	}
 	
+	// 마이페이지 접속 시 보유 포인트 조회
+	public static int getMemberPoint(String id) {
+		SqlSession ss = DBService.getFactory().openSession();
+		int point = ss.selectOne("Member.getMemberPoint", id);
+		ss.close();
+		return point;
+	}
+	
 }

@@ -20,7 +20,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <style>
 	#title_Area {
-		position: relative;
+		display: flex;
+		margin: 0 auto;
 		align-items: center;
 		width: 500px;
 		height: 31px;
@@ -29,6 +30,7 @@
 	}
 	
 	#title_Area h2 {
+		margin: auto;
 		padding: 0 61px 10px 61px;
 	    line-height: 20px;
 	    font-size: 15px;
@@ -39,26 +41,97 @@
 	}
 	
 	#join {
-		position: absolute;
+		display: block;
+		margin: 0 auto;
+		margin-top: 0px;
 		width: 950px;
 		height: 1650;
 		item-align: center;
+		box-sizing: border-box;
+	}
+	
+	#join tr {
+		height: 45px;
+	}
+	
+	#join th {
+		padding: 7px;
+		text-align : left;
+		font-size: 11px;
+		font-family: 'Nanum Gothic', sans-serif;
+	}
+	
+	#join td > input, select {
+		margin-left: 5px;
+		padding: 7px;
+		height: 29px;
+	}
+	
+	.join_div {
+		box-sizing: border-box;
+		margin: 0px;
+	}
+	
+	.join_form {
+		display: block;
+		margin: 0 auto;
+		width: auto;
+		table-layout: fixed;
+	}
+	
+	.join_form tr {
+		border: 1px solid #CCC;
+		border-collapse: collapse;
+	}
+	
+	.join_form th {
+		width: 110px;
+	}
+	
+	.join_form td {
+		width: 840px;
 	}
 	
 	.titlaArea {
 		display: flex;
 		height: 45px;
-		padding: 13px 0px 0px 14px;
+		padding: 0px;
+		margin-bottom: 0px;
 		border-style: 1px solid #070707;
 		item-align: center;
+		box-sizing: border-box;
 	}
 	
 	.titleArea h3 {
-		padding: 0 61px 10px 61px;
+		margin-top: 10px;
+		margin-bottom: 0px;
+		border: 1px solid #CCC;
+		color: white;
+		
+		width: 951px;
+		height: 45px;
+		
+		background-color: #8f5b52;
+		padding: 12px 61px 10px 61px;
 	    line-height: 20px;
 	    font-size: 13px;
 		text-align: center;
-		height: 45px;
+	}
+	
+	#submitBtn {
+		display: block;
+		margin: 0 auto;
+		item-align: center;
+		text-align: center;
+	}
+	
+	.submit {
+		width: 951px;
+		height: 38px;
+		color: #FFFFFF;
+		background-color: #000000;
+		text-align: center;
+		font-family: 'Nanum Gothic', sans-serif;
 	}
 
 </style>
@@ -83,15 +156,18 @@
 					if("true" == isOverlap.result){
 						$("#id_check").text("이미 사용중인 아이디입니다.");
 						$("#id_check").css("color", "red");
+						$("#id_check").css("display", "block");
 						$(".submit").attr("disabled", true);
 						return;
 					} else {
 						if(chkid == ""){
 							$("#id_check").text("아이디를 입력해주세요");
 							$("#id_check").css("color", "red");
+							$("#id_check").css("display", "block");
 							$(".submit").attr("disabled", true);
 						}else{
 							$("#id_check").text("");
+							$("#id_check").css("display", "hidden");
 							$(".submit").attr("disabled", false);
 						}
 					}
@@ -108,9 +184,11 @@
 			if($(".pwd").val() != $(".pwdchk").val()){
 				$("#pwd_check").text("비밀번호가 일치하지 않습니다");
 				$("#pwd_check").css("color", "#d40000");
+				$("#pwd_check").css("display", "block");
 				$(".submit").attr("disabled", true);
 			} else{
 				$("#pwd_check").text("");
+				$("#pwd_check").css("display", "hidden");
 				$(".submit").attr("disabled", false);
 			}
 		});
@@ -148,13 +226,24 @@
 	    <div class="wrap">                	
 	        <div class="header_menu">
 	            <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
-	            <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
+	            <c:if test="${empty sessionScope.id }">
+                <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
+                </c:if>
+                <c:if test="${!empty sessionScope.id }">
+                <a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
+                <!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
+                </c:if>
 	        </div>
 	        <div class="header_logo">
-	            <a href="index.html">183번가</a></div>
+	            <a href="shop183st.jsp">183번가</a></div>
 	        <div class="header_menu">
 	            <a href=""><i class="fas fa-search"></i></a>
-	            <a href="CartController?type=cart"><i class="fas fa-shopping-cart"></i></a>
+	            <c:if test="${!empty sessionScope.id }">
+                <a href="CartController?type=cart"><i class="fas fa-shopping-cart"></i></a>
+                </c:if>
+                <c:if test="${empty sessionScope.id || sessionScope.id == '' || sessionScope.id == 'null' || sessionScope.id eq null }">
+                <a href="#" onclick="needLogin()"><i class="fas fa-shopping-cart"></i></a>
+                </c:if>
 	        </div>  
 	    </div>  
 	</header>
@@ -179,77 +268,83 @@
 				<h2>회원가입</h2>
 			</div>
 			
-			<form id="join" method="post">
-			<div class="titleArea">
+			<div class="titleArea" style="margin-bottom: 0px;">
 			<h3>정보 입력</h3>
 			</div>
 			
-			<table class="join_form">
-			<tbody>
-				<tr>
-					<th>아이디*</th> 
-					<td>
-					<input type="text" class="user_id" name="id" placeholder="ID" required>
-					<div id="id_check"></div>
-					</td>
-				</tr>
-				<tr>
-					<th>비밀번호*</th>
-					<td> 
-					<input type="password" class="pwd" placeholder="비밀번호는 4글자 이상의 영문 및 숫자, 특수문자로 입력해주세요" name="pwd">
-					</td>
-				</tr>
-				<tr>
-					<th>
-					비밀번호 확인*
-					</th> 
-					<td>
-					<input type="password" class="pwdchk">
-					<div id="pwd_check"></div>
-					</td>
-				</tr>
-				
-				<tr>
-					<th>이름*</th> 
-					<td>
-					<input type="text" class="name" placeholder="이름" name="name">
-					</td>
-				</tr>
-				
-				<tr>
-					<th>이메일</th>
-					<td> 
-					<input type="text" name="email">
-					</td>
-				</tr>
-				
-				<tr>
-					<th>주소</th>
-					<td> 
-					<input type="text" name="addr">
-					</td>
-				</tr>
-				
-				<tr>
-					<th>전화번호</th>
-					<td> 
-						<select name="phone_head">
-							<option value="010">010</option>
-							<option value="011">011</option>
-							<option value="016">016</option>
-							<option value="017">017</option>
-							<option value="018">018</option>
-							<option value="019">019</option>
-						</select>-
-						<input type="text" name="phone_1" width="50px">-
-						<input type="text" name="phone_2" width="50px">
-					</td>
-				</tr>
-				
-			</tbody>
-			</table>
-				<input type="button" class="submit" value="회원 가입" onclick="join_go(this.form)">
+			<div class="join_div">
+			<form id="join" method="post">
+				<fieldset>
+				<table class="join_form">
+				<tbody>
+					<tr>
+						<th>아이디*</th> 
+						<td>
+						<input type="text" class="user_id" name="id" placeholder="ID" required>
+						<div id="id_check" style="display:none;"></div>
+						</td>
+					</tr>
+					<tr>
+						<th>비밀번호*</th>
+						<td> 
+						<input type="password" class="pwd" placeholder="비밀번호는 4글자 이상의 영문 및 숫자, 특수문자로 입력해주세요" name="pwd">
+						</td>
+					</tr>
+					<tr>
+						<th>
+						비밀번호 확인*
+						</th> 
+						<td>
+						<input type="password" class="pwdchk">
+						<div id="pwd_check" style="display:none;"></div>
+						</td>
+					</tr>
+					
+					<tr>
+						<th>이름*</th> 
+						<td>
+						<input type="text" class="name" placeholder="이름" name="name">
+						</td>
+					</tr>
+					
+					<tr>
+						<th>이메일</th>
+						<td> 
+						<input type="text" name="email">
+						</td>
+					</tr>
+					
+					<tr>
+						<th>주소</th>
+						<td> 
+						<input type="text" name="addr">
+						</td>
+					</tr>
+					
+					<tr>
+						<th>전화번호</th>
+						<td> 
+							<select name="phone_head">
+								<option value="010">010</option>
+								<option value="011">011</option>
+								<option value="016">016</option>
+								<option value="017">017</option>
+								<option value="018">018</option>
+								<option value="019">019</option>
+							</select>&nbsp;-
+							<input type="text" name="phone_1" width="50px">&nbsp;-
+							<input type="text" name="phone_2" width="50px">
+						</td>
+					</tr>
+					
+				</tbody>
+				</table>
+				<div class="submitBtn" style="margin-top: 10px;">
+					<input type="button" class="submit" value="가입하기" onclick="join_go(this.form)">
+				</div>
+			</fieldset>
 			</form>
+			</div>
 		</section>
 	</div>
 	</main>

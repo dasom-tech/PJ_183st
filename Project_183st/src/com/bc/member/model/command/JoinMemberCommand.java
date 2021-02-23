@@ -26,7 +26,7 @@ public class JoinMemberCommand implements MemberCommand {
 		MemberDao.joinMember(vo);
 		request.setAttribute("member", vo);
 		
-		return "main.jsp";
+		return "shop183st.jsp";
 	}
 	
 }

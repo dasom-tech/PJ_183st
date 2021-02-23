@@ -16,6 +16,7 @@ import com.bc.bbs.model.command.BBSPageCommand;
 import com.bc.bbs.model.command.BBSWriteCommand;
 import com.bc.bbs.model.command.BBSWriteResultCommand;
 import com.bc.bbs.model.command.Command;
+import com.bc.review.model.command.DeleteReivewCommand;
 import com.bc.review.model.command.InsertReviewCommand;
 
 @WebServlet("/reviewController")
@@ -30,15 +31,12 @@ public class ReviewFrontController extends HttpServlet {
 		Command command = null;
 		if ("insertReview".equals(type)) {
 			command = new InsertReviewCommand();
-			String path = command.execute(request, response);
-			response.sendRedirect(path);
 		} else if ("delReview".equals(type)) {
-			String path = command.execute(request, response);
-			request.getRequestDispatcher(path).forward(request, response);
+			command = new DeleteReivewCommand();
 		}
 		
-		
-		
+		String path = command.execute(request, response);
+		response.sendRedirect(path);
 	}
 	
 	@Override

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -129,13 +130,24 @@
 	    <div class="wrap">                	
 	        <div class="header_menu">
 	            <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
-	            <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
+	            <c:if test="${empty sessionScope.id }">
+                <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
+                </c:if>
+                <c:if test="${!empty sessionScope.id }">
+                <a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
+                <!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
+                </c:if>
 	        </div>
 	        <div class="header_logo">
-	            <a href="index.html">183번가</a></div>
+	            <a href="shop183st.jsp">183번가</a></div>
 	        <div class="header_menu">
 	            <a href=""><i class="fas fa-search"></i></a>
-	            <a href="CartController?type=cart"><i class="fas fa-shopping-cart"></i></a>
+	            <c:if test="${!empty sessionScope.id }">
+                <a href="CartController?type=cart"><i class="fas fa-shopping-cart"></i></a>
+                </c:if>
+                <c:if test="${empty sessionScope.id || sessionScope.id == '' || sessionScope.id == 'null' || sessionScope.id eq null }">
+                <a href="#" onclick="needLogin()"><i class="fas fa-shopping-cart"></i></a>
+                </c:if>
 	        </div>  
 	    </div>  
 	</header>

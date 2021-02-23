@@ -172,11 +172,13 @@
 <%-- 상품에 작성된 리뷰 표시 영역 --%>
 <c:forEach var="rvo" items="${reviewVO }">
 <div class="comment">
-	<form action="ans_del.jsp" method="post">
+	<form method="post">
 		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
 		<p>내용 : ${rvo.review }</p>
+		<input type="button" value="리뷰 수정" class="modifyForm" onclick="modify_review(this.form)">
 		<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
-		<input type="hidden" name="delete" value="${rvo.reviewId }">
+		<input type="hidden" name="reviewId" value="${rvo.reviewId }">
+		<input type="hidden" name="productno" value="${productno }">
 	</form>
 </div>
 <hr>
@@ -225,6 +227,11 @@
 </body>
 
 <script>
+	function modify_review(frm) {
+		e.preventDefault();
+		url = $(this).attr('')
+	}
+
 	function del_review(frm) {
 		var isDelete = confirm("리뷰를 삭제하시겠습니까?");
 		if (isDelete) {
@@ -234,6 +241,7 @@
 			return;
 		}
 	}
+	
 </script>
 
 </html>
