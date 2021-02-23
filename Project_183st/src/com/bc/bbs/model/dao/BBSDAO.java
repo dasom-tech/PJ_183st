@@ -37,6 +37,15 @@ public class BBSDAO {
 		
 		return vo;
 	}
+	
+	//상품번호 조회
+	public static List<String> prono() {
+		SqlSession ss = DBService.getFactory().openSession();
+		List<String> pList = ss.selectList("BBS.prono");
+		ss.close();
+		
+		return pList;
+	}
 
 	//게시글 작성
 	public static int insert(QnAListVO vo) {
