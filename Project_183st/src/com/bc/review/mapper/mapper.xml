@@ -14,6 +14,13 @@
 		 ORDER BY REVIEWID DESC
 	</select>
 	
+	<select id="reviewSelectOne" parameterType="string"
+			resultType="com.bc.review.vo.ReviewListVO">
+		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG
+		  FROM REVIEWLIST
+		 WHERE REVIEWID = #{reviewId}
+	</select>
+	
 	<!-- 리뷰 생성 -->
 	<insert id="reviewInsert" parameterType="com.bc.review.vo.ReviewListVO">
 		<selectKey keyProperty="reviewId" resultType="String" order="BEFORE">
@@ -24,8 +31,16 @@
 		VALUES (#{reviewId}, #{productno}, #{id}, #{review}, SYSDATE)
 	</insert>
 	
+	<!-- 리뷰 수정 -->
+	<update id="reviewUpdate" parameterType="com.bc.review.vo.reviewListVO">
+		UPDATE REVIEWLIST
+		   SET REVIEW = #{review}
+		 WHERE REVIEWID = #{reviewId}  
+	</update>
+	
+	<!-- 리뷰 삭제 -->
 	<delete id="reviewDelete" parameterType="string">
-		DELETE FROM REVIELIST WHERE REVIEWID = #{reviewid}
+		DELETE FROM REVIEWLIST WHERE REVIEWID = #{reviewId}
 	</delete>
 
 </mapper>
