@@ -30,6 +30,12 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="text/javascript">
+   	function needLogin(){
+   		alert("로그인이 필요한 기능입니다");
+   		location.href="memberController?type=loginMove";
+   	}
+</script>
 <style>
 	table {
 		width: 600px;
@@ -124,15 +130,15 @@
 					<table style="height: 400px; width: 500px;">
 					<c:if test="${not empty info}">
 						<tr align="left">
-							<td width="15%" style="font-size: 18px">상품번호</td>
+							<td width="15%" style="font-size: 18px; font-weight: bold;">상품번호</td>
 							<td align="left">${info.getProductno()}</td>
 						</tr>
 						<tr align="left">
-							<td width="20%" style="font-size: 18px">상품명</td>
+							<td width="20%" style="font-size: 18px; font-weight: bold;">상품명</td>
 							<td align="left">${info.getProductname()}</td>
 						</tr>
 						<tr align="left">
-							<td width="20%" style="font-size: 18px">가격</td>
+							<td width="20%" style="font-size: 18px; font-weight: bold;">가격</td>
 							<td align="left">${info.getPrice()}원</td>
 						</tr>
 						<c:if test="${info.getStock()<=5}">
@@ -141,11 +147,11 @@
 							</tr>
 						</c:if>
 						<tr align="left">
-							<td width="20%" style="font-size: 18px">재고</td>
+							<td width="20%" style="font-size: 18px; font-weight: bold;">재고</td>
 							<td align="left">${info.getStock()}</td>
 						</tr>
 						<tr align="left">
-							<td width="20%" style="font-size: 18px">상품설명</td>
+							<td width="20%" style="font-size: 18px; font-weight: bold;">상품설명</td>
 							<td align="left">${info.getInfo()}</td>
 						</tr>
 						<tr align="center">
@@ -157,7 +163,6 @@
 										</c:forEach>
 									</select>&nbsp;개
 								<input type="submit" value="장바구니에 담기" class="submitBtn">
-								<input type="submit" value="주문하기" class="submitBtn"><br><br>
 							</td>
 						</tr>
 						</c:if>
@@ -172,9 +177,8 @@
 		</table>
 		<div>
 			<img src="images/${vo.getImage_l() }" alt="제품이미지">
-		</div>		
+		</div>
 	</form>
-	
 <%-- 상품에 대한 리뷰 작성 영역 --%>
 <form action="reviewController?type=insertReview" method="post">
 	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly>

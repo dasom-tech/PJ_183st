@@ -6,7 +6,7 @@
 	
 	<!-- 장바구니 클릭 시 페이지에 가져올 상품 목록 select -->
 	<select id="cartList" parameterType="String" resultType="CartListVO">
-		select cartid, c.productno, id, c_amount, p.productname, p.price
+		select cartid, c.productno, id, c_amount, p.productname, p.price, p.image_s
 		from cartlist c, products p
 		where c.productno = p.productno and id = #{id}
 	</select>
