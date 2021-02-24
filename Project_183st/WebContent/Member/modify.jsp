@@ -145,6 +145,7 @@
 	}
 	
 	.leave{
+		margin-top: 10px;
 		width: 951px;
 		height: 38px;
 		color: #000000;
@@ -153,11 +154,45 @@
 		font-family: 'Nanum Gothic', sans-serif;
 	}
 	
+	#pwd {
+		width: 500px;
+	}
+	
+	#pwdchk {
+		width: 500px;
+	}
+	
 </style>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script>
 	
 	$(function(){
+		
+		$("#pwd").on("propertychange change keyup paste input", function(){
+			
+			var pw = $("#pwd").val();
+			var num = pw.search(/[0-9]/g);
+			var eng = pw.search(/[a-z]/ig);
+			var spe = pw.search(/[`~!@@#$%^&*|₩₩₩'₩";:₩/?]/gi);
+			
+			if(pw.length < 8 || pw.length > 20){
+				$(".pwd_validation").text("8자리 ~ 20자리 이내로 입력해주세요");
+				$(".pwd_validation").css("color", "#d40000");
+				$(".pwd_validation").css("display", "block");
+			}else if(pw.search(/\s/) != -1){
+				$(".pwd_validation").text("비밀번호는 공백 없이 입력해주세요");
+				$(".pwd_validation").css("color", "#d40000");
+				$(".pwd_validation").css("display", "block");
+			}else if(num < 0 || eng < 0 || spe < 0 ){
+				$(".pwd_validation").text("영문,숫자, 특수문자를 혼합하여 입력해주세요");
+				$(".pwd_validation").css("color", "#d40000");
+				$(".pwd_validation").css("display", "block");
+			}else {
+				$(".pwd_validation").text("");
+				$(".pwd_validation").css("display", "hidden");
+			}
+			
+		});
 		
 		$("#pwdchk").blur(function(){
 			
@@ -271,12 +306,14 @@
 					</tr>
 					<tr>
 						<th>비밀번호</th>
-						<td><input type="password" id="pwd" name="pwd"></td>
+						<td><input type="password" id="pwd" name="pwd">
+							<div class="pwd_validation" style="display:none; margin-top: 2px; margin-bottom: 2px;"></div>
+						</td>
 					</tr>
 					<tr>
 						<th>비밀번호 확인</th>
 						<td><input type="password" id="pwdchk">
-							<div class="pwdmatch"></div>
+							<div class="pwdmatch" style="display:none; margin-top: 2px; margin-bottom: 2px;"></div>
 						</td>
 					</tr>
 					<tr>
