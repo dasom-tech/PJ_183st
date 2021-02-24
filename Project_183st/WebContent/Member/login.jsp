@@ -44,6 +44,15 @@
 		font-family: 'Nanum Gothic', sans-serif;
 	}
 	
+	.login_field {
+		text-align: center;
+	}
+	
+	.join_field {
+		margin-top: 10px;
+		text-align: center;
+	}
+	
 	#userAccount {
 		padding: 10px;
 		align-items: center;
@@ -183,8 +192,8 @@
 						<div class="pwdchk"></div>
 						</div>
 						
-						<div><input type="button" value="로그인" id="loginBtn"></div>
-						<div><input type="button" value="회원가입" id="joinBtn"></div>
+						<div class="login_field"><input type="button" value="로그인" id="loginBtn"></div>
+						<div class="join_field"><input type="button" value="회원가입" id="joinBtn"></div>
 					</fieldset>
 			</form>
 		</section>

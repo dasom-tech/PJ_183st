@@ -21,11 +21,12 @@
 <style>
 	
 	#title_Area {
-		align-items: center;
 		width: 950px;
 		height: 31px;
 		border-bottom: 1px solid #000000;
 		margin-top: 20px;
+		margin-bottom: 10px;
+		text-align: center;
 	}
 	
 	#title_Area h2 {
@@ -34,7 +35,7 @@
 	    font-size: 15px;
 	    color: #2e2e2e;
 	    text-align: center;
-	    width: 500px;
+	    width: auto;
 		height: 30px;
 	}
 	
@@ -97,7 +98,7 @@
     
     #memberfunc {
     	display: block; clear: both; content: "";
-    	
+    	margin-top: 10px;
     	width: 100%;
     }
     
