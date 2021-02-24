@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.bc.order.model.command.OrderChkListCommand;
 import com.bc.order.model.command.OrderCommand;
 import com.bc.order.model.command.OrderDetailViewCommand;
+import com.bc.order.model.command.OrderOneCommand;
 import com.bc.order.model.command.OrderProcCommand;
 import com.bc.order.move.OrderMoveCommand;
 
@@ -35,6 +36,9 @@ public class OrderController extends HttpServlet {
 			break;
 		case "orderDetail":
 			command = new OrderDetailViewCommand();
+			break;
+		case "orderOne":
+			command = new OrderOneCommand();
 			break;
 		}
 		String path = command.execute(request, response);
