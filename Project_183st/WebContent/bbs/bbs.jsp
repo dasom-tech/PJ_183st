@@ -16,94 +16,11 @@
 <link rel="stylesheet" type="text/css" href="common.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link href="css/menu.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="bbs.css">
 <script src="main.js" defer></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-<style>
-
-	body {
-		font-family:"맑은 고딕"; font-size:1.25em; color:#333
-	}
-
-	#bbs table {
-		width: 680px;
-		height: 720px;
-		margin-left: 10px;
-		border-collapse: separate;
-		font-size: 14px;
-		table-layout: fixed;
-		border-spacing: 2px;
-	}
-	#bbs table caption {
-		font-size: 20px;
-		font-weight: bold;
-		margin-bottom: 10px;
-	}
-	
-	#bbs table th {
-		background-color: pink;
-	}
-	
-	#bbs table tr {
-		height: 25px;
-	}
-
-	#bbs table th, #bbs table td {
-		text-align: center;
-		border-bottom: 3px solid pink;
-		padding: 1px 1px;
-		height: 5px;
-		width: 10px;
-	}
-	
-	#bbs  table td a {
-		text-decoration: none;
-	}
-	
-	#bbs  table td a:hover {
-		text-decoration: underline;
-	}
-	
-	#bbs .align-left { text-align: left; }
-	
-	.no { width: 10%; }
-	.writer { width: 15%; }
-	.regdate { width: 20%; }
-	.hit { width: 15%; }
-	
-	/***** 페이지 표시 부분 스타일(시작) ****/
-	.paging { 
-		list-style: none;
-	}
-	.paging li {
-		float: left;
-		margin-right: 8px;
-		text-align: center;
-	}
-	.paging li a {
-		text-decoration: none;
-		display: block;
-		padding: 3px 7px;
-		border: 1px solid #00B3DC;
-		font-weight: bold;
-		color: black;
-	}
-	.paging .disable {
-		border: 1px solid silver;
-		padding: 3px 7px;
-		color: silver;
-	}
-	.paging .now {
-		border: 1px solid #ff4aa5;
-		padding: 3px 7px;
-		background-color: #ff4aa2;
-	}
-	.paging li a:hover {
-		background-color: #00B3DC;
-		color: white;
-	}
-</style>
 <script>
 	function errorWrite(frm) {
 		alert("회원에게만 글쓰기 권한이 있습니다. \n 로그인 후 이용해 주세요");
@@ -222,6 +139,7 @@
 								<td>${vo.category }</td>
 								<td>${vo.q_reg.substring(0,10) }</td>
 							</tr>
+							<tr class="tr_last-for-empty-space"></tr>
 						</c:forEach>
 					</c:if>
 				</tbody>
