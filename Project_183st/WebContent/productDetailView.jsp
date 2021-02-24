@@ -169,24 +169,11 @@
 	});
 
 </script>
-
-
-
 </head>
-
-<div id="loading"></div> 
-    <div class="header_banner">
-    	<a href="#none" class="xi-close-thin" id="header_close_button"></a>
-	    <ul style="top: 0px;">
-	    	<li style="background-color:violet;"><a href="memberController?type=joinMove" style="color:#fff;">183번가 온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
-	        <li style="background-color:#60da9f;"><a href="bbsController?type=bbs" style="color:#fff;">183번가 "Q&A"</a></li>
-	        <li style="background-color:pink;"><a href="https://www.instagram.com/" style="color:#fff;">인스타그램 @183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
-		</ul>
-	</div>
-	
 <body>
 	<div class="body_wrap"> 
 	   <header>
+	   	<div id="loading"></div> 
 	       <div class="wrap">                	
 	           <div class="header_menu">
 	               <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
@@ -223,7 +210,7 @@
 	               	<a href="#none">BOARD</a><br>
 	               	<ul class="sub" style="display: block;">
 	                 <li><a href="bbsController?type=bbs">Q&A</a></li><br>		                        
-	                 <li><a href="mypage.html">MYPAGE</a></li>
+	                 <li><a href="memberController?type=myPage">MYPAGE</a></li>
 	           		</ul>
 	          		</li>
 	          	</ul>
