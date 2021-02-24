@@ -18,6 +18,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상세페이지</title>
+<link href="css/button.css" rel="stylesheet" type="text/css">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="path_role" content="MAIN">
 <meta name="author" content="183번가">
@@ -63,7 +64,114 @@
 		margin: 4px 2px;
 		cursor: pointer;
 	}
+	
+	.order_one {
+		background-color: #008CBA;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
 </style>
+
+<!-- 주문하기 처리 -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+
+	$(function(){
+		
+		
+		$(".order_one").click(function(){
+			var id = '${sessionScope.id }';
+			
+			if(id == "" || id == null){
+				alert("로그인 후 이용해주세요");
+				return;
+			}
+			
+			var pno = "<c:out value='${vo.productno}'/>";
+			
+			$.ajax("CartController?type=selectCartItem&productno=" + pno, {
+				type : "get",
+				async: false,
+				datatype : "json",
+				success : function(data, textStatus, jqXHR){
+					var result = JSON.parse(data);
+					//alert(result.result);
+					
+					if("true" == result.result){
+						var chk = confirm("동일한 제품이 장바구니에 들어 있습니다.\n 장바구니로 이동하시겠습니까?");
+						
+						if(chk){
+							location.href="CartController?type=cart";
+						} else{
+							return;
+						}
+					} else {
+						var c_amount = $("select[name=amount]").val();
+						location.href="OrderController?type=orderOne&productno=" + pno + "&c_amount=" + c_amount;
+					}
+					
+				},
+				error : function(jqXHR, textStatus, errThrown){
+					alert("Error");
+				}
+			});
+			
+		});
+		
+		
+		$(".submitBtn").click(function(){
+			
+			var id = '${sessionScope.id}';
+			
+			if(id == "" || id == null){
+				alert("로그인 후 이용해주세요");
+				return;
+			}
+				
+			var pno = "<c:out value='${vo.productno}'/>";
+			
+			$.ajax("CartController?type=selectCartItem&productno=" + pno, {
+				type : "get",
+				async: false,
+				datatype : "json",
+				success : function(data, textStatus, jqXHR){
+					var result = JSON.parse(data);
+					//alert(result.result);
+					
+					if("true" == result.result){
+						var chk = confirm("동일한 제품이 장바구니에 들어 있습니다.\n 장바구니로 이동하시겠습니까?");
+						
+						if(chk){
+							location.href="CartController?type=cart";
+						} else{
+							return;
+						}
+					} else {
+						$("#submitForm").submit();
+					}
+					
+				},
+				error : function(jqXHR, textStatus, errThrown){
+					alert("Error");
+				}
+			});
+			
+		});
+		
+		
+	});
+
+</script>
+
+
+
 </head>
 
 <div id="loading"></div> 
@@ -163,7 +271,8 @@
 											<option value="${i}">${i}</option>
 										</c:forEach>
 									</select>&nbsp;개
-								<input type="submit" value="장바구니에 담기" class="submitBtn">
+								<input type="button" value="장바구니에 담기" class="submitBtn">
+								<input type="button" value="주문하기" class="order_one">
 							</td>
 						</tr>
 						</c:if>
@@ -180,7 +289,6 @@
 			<img src="images/${vo.getImage_l() }" alt="제품이미지">
 		</div>
 	</form>
-<<<<<<< HEAD
 		<main>
 			<div class="product-page_review">
 				<table>
@@ -216,10 +324,11 @@
 									<span class="review_author"> ${rvo.id }</span> 
 									<span class="review_date">${rvo.r_reg }</span>
 							<c:if test="${!empty sessionScope.id && sessionScope.id == rvo.id }">
-								<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
+								<input type="button" value="리뷰 삭제" class="button" onclick="del_review(this.form)">
 								<input type="hidden" name="reviewId" value="${rvo.reviewId }">
 								<input type="hidden" name="productno" value="${productno }">
 							</c:if>
+								<hr>
 								</div>
 								</form>
 							</div>
@@ -229,51 +338,47 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td>
-								<div class="review_page-buttons">
-									<ol>
-										<li>◀</li>
-										<li>1</li>
-										<li>▶</li>
-									</ol>
-								</div>
-							</td>
+							<td colspan="4">
+							<ol class="paging">
+								<%--[이전으로]에 대한 사용 여부처리 : 시작페이지 1인 경우 비활성화 --%>
+								<c:choose>
+									<c:when test="${page.beginPage == 1 }">
+										<li class="disable">◀</li>
+									</c:when>
+									<c:otherwise>
+										<li>
+										<a href="product_controller?viewType=info&productno=${productno }&cPage=${page.beginPage - 1 }">◀</a></li>
+									</c:otherwise>
+								</c:choose>
+								<%-- 블록내에 표시할 페이지 태그 작성(시작페이지 ~ 끝페이지) 현재페이지와 페이지 번호 같으면 현재페이지 처리 --%>
+								<c:forEach var="pageNo" begin="${page.beginPage }"
+									end="${page.endPage }">
+									<c:if test="${pageNo == page.nowPage }">
+										<li class="now">${pageNo }</li>
+									</c:if>
+									<c:if test="${pageNo != page.nowPage }">
+										<li>
+											<a href="product_controller?viewType=info&productno=${productno }&cPage=${pageNo }">${pageNo }</a>
+										</li>
+									</c:if>
+								</c:forEach>
+								<%--[다음으로]에 대한 사용여부 처리 : endPage가 전체페이지수(totalPage)보다 작은경우 활성화--%>
+								<c:if test="${page.endPage < page.totalPage }">
+									<li>
+										<a href="product_controller?viewType=info&productno=${productno }&cPage=${page.endPage + 1 }">▶</a>
+									</li>
+								</c:if>
+								<c:if test="${page.endPage >= page.totalPage }">
+									<li class="disable">▶</li>
+								</c:if>
+							</ol>
+						</td>
 						</tr>
 					</tfoot>
 				</table>
 			</div>
 		</main>
 		<footer>
-=======
-<%-- 상품에 대한 리뷰 작성 영역 --%>
-<form action="reviewController?type=insertReview" method="post">
-	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly>
-	<p>내용 : <textarea name="review" rows="4" cols="55"></textarea>
-	<input type="submit" value="리뷰 저장">
-	<input type="hidden" name="productno" value="${productno }">
-</form>
-
-<hr>
-<p>리뷰</p>
-<hr>
-
-<%-- 상품에 작성된 리뷰 표시 영역 --%>
-<c:forEach var="rvo" items="${reviewVO }">
-<div class="comment">
-	<form method="post">
-		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
-		<p>내용 : ${rvo.review }</p>
-		<c:if test="${!empty sessionScope.id && sessinScope.id == rvo.id }">
-		<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
-		<input type="hidden" name="reviewId" value="${rvo.reviewId }">
-		<input type="hidden" name="productno" value="${productno }">
-		</c:if>
-	</form>
-</div>
-<hr>
-</c:forEach>
-	<footer>
->>>>>>> cc7aaa4d59adcb7b819157ce35dce4d9275c20b0
 	    <div class="wrap">
 	        <section class="footer_left">
 	            <div class="footer_terms">

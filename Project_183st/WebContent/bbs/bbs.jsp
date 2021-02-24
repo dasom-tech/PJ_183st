@@ -16,86 +16,11 @@
 <link rel="stylesheet" type="text/css" href="common.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link href="css/menu.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="bbs/bbs.css">
 <script src="main.js" defer></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-<style>
-
-	body {
-		font-family:"맑은 고딕"; font-size:1.25em; color:#333
-	}
-
-	#bbs table {
-		width: 580px;
-		margin-left: 10px;
-		border-collapse: collapse;
-		font-size: 14px;
-	}
-	#bbs table caption {
-		font-size: 20px;
-		font-weight: bold;
-		margin-bottom: 10px;
-	}
-	
-	#bbs table th {
-		background-color: pink;
-	}
-	#bbs table th, #bbs table td {
-		text-align: center;
-		border-bottom: 1px solid pink;
-		padding: 4px 10px;
-	}
-	
-	#bbs  table td a {
-		text-decoration: none;
-	}
-	
-	#bbs  table td a:hover {
-		text-decoration: underline;
-	}
-	
-	#bbs .align-left { text-align: left; }
-	
-	.title { background-color: lightsteelblue; }
-	
-	.no { width: 10%; }
-	.writer { width: 15%; }
-	.regdate { width: 20%; }
-	.hit { width: 15%; }
-	
-	/***** 페이지 표시 부분 스타일(시작) ****/
-	.paging { 
-		list-style: none;
-	}
-	.paging li {
-		float: left;
-		margin-right: 8px;
-		text-align: center;
-	}
-	.paging li a {
-		text-decoration: none;
-		display: block;
-		padding: 3px 7px;
-		border: 1px solid #00B3DC;
-		font-weight: bold;
-		color: black;
-	}
-	.paging .disable {
-		border: 1px solid silver;
-		padding: 3px 7px;
-		color: silver;
-	}
-	.paging .now {
-		border: 1px solid #ff4aa5;
-		padding: 3px 7px;
-		background-color: #ff4aa2;
-	}
-	.paging li a:hover {
-		background-color: #00B3DC;
-		color: white;
-	}
-</style>
 <script>
 	function errorWrite(frm) {
 		alert("회원에게만 글쓰기 권한이 있습니다. \n 로그인 후 이용해 주세요");
@@ -111,32 +36,16 @@
 	<div class="body_wrap">
 		<header>
 			<div id="loading"></div>
-			<!-- <div class="header_banner">
-				<a href="#none" class="xi-close-thin" id="header_close_button"></a>
-				<ul style="top: 0px;">
-					<li style="background-color: violet;"><a
-						href="memberController?type=joinMove" style="color: #fff;">183번가
-							온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
-					<li style="background-color: #60da9f;"><a
-						href="http://lmoodc.cafe24.com/product/list.html?cate_no=58"
-						style="color: #fff;">인기 많은 품절 임박 상품 확인하기!</a></li>
-					<li style="background-color: pink;"><a
-						href="https://www.instagram.com/" style="color: #fff;">인스타그램
-							@183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
-				</ul>
-			</div>  -->
 			<div class="wrap">
 				<div class="header_menu">
 					<a href="#" class="toggle"><i class="fas fa-bars"></i></a>
 					<c:if test="${empty sessionScope.id }">
-						<a href="memberController?type=loginMove">
-						<i class="fas fa-user"></i></a>
-					</c:if>
-					<c:if test="${!empty sessionScope.id }">
-						<a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
-						<a href="memberController?type=myPage">마이 페이지</a>
-						<!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
-					</c:if>
+                        <a href="memberController?type=loginMove" style="font-size: 13px">LOGIN</a>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.id }">
+                        <a href="#" onclick="logoutChk()" style="font-size: 13px">LOGOUT</a>
+                       	<a href="memberController?type=myPage" style="font-size: 13px">MYPAGE</a>
+                    </c:if>
 				</div>
 				<div class="header_logo">
 					<a href="shop183st.jsp">183번가</a>
@@ -176,10 +85,14 @@
 							<li><a href="bbsController?type=bbs">Q&A</a></li>
 							<br>
 							<li><a href="mypage.html">MYPAGE</a></li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</nav>
+		
+	<main>
+	<div class="warp" style="min-height: 820px;">
 		<div id="bbs">
 			<table>
 				<caption>183st 문의게시판</caption>
@@ -264,8 +177,10 @@
 					</tr>
 				</tfoot>
 			</table>
-
+			</div>
 		</div>
+		</main>
+		
 		<footer>
 			<div class="wrap">
 				<section class="footer_left">

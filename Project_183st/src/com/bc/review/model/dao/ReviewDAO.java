@@ -30,7 +30,8 @@ public class ReviewDAO {
 	}
 	
 	//페이지에 해당하는 리뷰 조회
-	public static List<ReviewListVO> reviewList(Map<String, Integer> map) {
+	public static List<ReviewListVO> reviewList(Map<String, Object> map) {
+		System.out.println("Map " + map);
 		SqlSession ss = DBService.getFactory().openSession();
 		List<ReviewListVO> list = ss.selectList("Review.list", map);
 		ss.close();

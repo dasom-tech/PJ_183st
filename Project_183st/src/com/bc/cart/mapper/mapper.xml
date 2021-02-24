@@ -34,6 +34,24 @@
 		insert into cartlist(cartid, productno, id, c_amount)
 		values (cartid.nextval, #{productno}, #{id}, #{c_amount})		
 	</insert>
+	
+	<!-- 주문하기 시 단일 삽입 처리 -->
+	<insert id="insertOneItem" parameterType="Map">
+		<selectKey keyProperty="cartid" resultType="String" order="BEFORE">  
+        select cartid.nextval FROM dual
+     	</selectKey>
+		insert into cartlist(cartid, productno, id, c_amount)
+		values (#{cartid}, #{productno}, #{id}, #{c_amount})
+	</insert>
+	
+	<!-- 주문하기 클릭 시 장바구니 탐색 -->
+	<select id="selectCartItem" parameterType="Map" resultType="String">
+		select cartid
+		from cartlist
+		where id = #{id} and productno = #{productno}
+	</select>
+	
+	
 </mapper>
 
 

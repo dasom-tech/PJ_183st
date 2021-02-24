@@ -22,14 +22,15 @@
 	</select>
 	
 	<!-- 해당상품에 해당하는 리뷰 가져오기 -->
-	<select id="list" resultType="com.bc.review.vo.ReviewListVO"
-			parameterType="Map">
+	<select id="list" parameterType="Map" 
+			resultType="com.bc.review.vo.ReviewListVO">
 		SELECT REVIEWID, PRODUCTNO, ID, REVIEW, R_REG
 		  FROM ( SELECT ROWNUM AS RN, B.* 
 				   FROM ( SELECT *
 				   			FROM REVIEWLIST
+				   		   WHERE PRODUCTNO = #{productno}
 				   		   ORDER BY REVIEWID DESC
-				   		) B	  
+				   		) B 
 		  		)
 		 WHERE RN BETWEEN #{begin} AND ${end}
 	</select>
