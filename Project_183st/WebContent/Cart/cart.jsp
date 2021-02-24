@@ -260,7 +260,7 @@
 	     
 	     $(".placeorder").click(function(){
 	    	 
-	    	 if(!$("input[name=cartid]").prop("checked")){
+	    	 if($("input[name=cartid]:checked").length == 0).prop("checked")){
 	    		 alert("현재 선택한 상품이 없습니다");
 	    		 return;
 	    	 } else {

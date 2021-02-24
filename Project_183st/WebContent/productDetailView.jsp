@@ -165,8 +165,11 @@
 			
 		});
 		
-		
 	});
+	
+	function errorM() {
+		alert("로그인 후 한 줄 리뷰작성이 가능합니다.");
+	}
 
 </script>
 
@@ -298,8 +301,13 @@
 										<textarea name="review" rows="3" required placeholder="한 줄 리뷰"></textarea>
 									</div>
 									<div class="review_write_submit">
+									<c:if test="${empty sessionScope.id }">
+										<input type="button" value="등록" onclick="errorM()">
+									</c:if>
+									<c:if test="${!empty sessionScope.id }">
 										<input type="submit" value="등록">
 										<input type="hidden" name="productno" value="${productno }">
+									</c:if>
 									</div>
 								</form>
 							</th>
