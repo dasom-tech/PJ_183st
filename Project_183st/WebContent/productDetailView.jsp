@@ -124,6 +124,47 @@
 			
 		});
 		
+		
+		$(".submitBtn").click(function(){
+			
+			var id = '${sessionScope.id}';
+			
+			if(id == "" || id == null){
+				alert("로그인 후 이용해주세요");
+				return;
+			}
+				
+			var pno = "<c:out value='${vo.productno}'/>";
+			
+			$.ajax("CartController?type=selectCartItem&productno=" + pno, {
+				type : "get",
+				async: false,
+				datatype : "json",
+				success : function(data, textStatus, jqXHR){
+					var result = JSON.parse(data);
+					//alert(result.result);
+					
+					if("true" == result.result){
+						var chk = confirm("동일한 제품이 장바구니에 들어 있습니다.\n 장바구니로 이동하시겠습니까?");
+						
+						if(chk){
+							location.href="CartController?type=cart";
+						} else{
+							return;
+						}
+					} else {
+						$("#submitForm").submit();
+					}
+					
+				},
+				error : function(jqXHR, textStatus, errThrown){
+					alert("Error");
+				}
+			});
+			
+		});
+		
+		
 	});
 
 </script>
@@ -229,7 +270,7 @@
 											<option value="${i}">${i}</option>
 										</c:forEach>
 									</select>&nbsp;개
-								<input type="submit" value="장바구니에 담기" class="submitBtn">
+								<input type="button" value="장바구니에 담기" class="submitBtn">
 								<input type="button" value="주문하기" class="order_one">
 							</td>
 						</tr>
