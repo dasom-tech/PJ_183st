@@ -31,7 +31,6 @@
 <div id="bbs">
 <form action="bbsController?type=writeResult" method="post">
 <input type="hidden" name="cPage" value="${cPage}" >
-<input type="hidden" name="tag" value="${tag}" >
 	<table>
 		<caption>게시판 글쓰기</caption>
 		<tbody>

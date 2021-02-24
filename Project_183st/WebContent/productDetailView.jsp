@@ -26,6 +26,7 @@
 <link rel="stylesheet" type="text/css" href="reset.css">
 <link rel="stylesheet" type="text/css" href="common.css">
 <link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="productDetailView.css">
 <script src="main.js" defer></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -179,6 +180,71 @@
 			<img src="images/${vo.getImage_l() }" alt="제품이미지">
 		</div>
 	</form>
+<<<<<<< HEAD
+		<main>
+			<div class="product-page_review">
+				<table>
+					<caption>
+						REVIEW(<span>${count }</span>)
+					</caption>
+					<thead>
+						<tr>
+							<th>
+								<form action="reviewController?type=insertReview" method="post">
+									<div class="review_write_id">
+										아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly>
+									</div>
+									<div class="review_write_review">
+										<textarea name="review" rows="3" required placeholder="한 줄 리뷰"></textarea>
+									</div>
+									<div class="review_write_submit">
+										<input type="submit" value="등록">
+										<input type="hidden" name="productno" value="${productno }">
+									</div>
+								</form>
+							</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+							<c:forEach var="rvo" items="${reviewVO }">
+							<div class="comment">
+								<form method="post">
+								<div class="review_title">${rvo.review }</div>
+								<div class="review_info">
+									<span class="review_author"> ${rvo.id }</span> 
+									<span class="review_date">${rvo.r_reg }</span>
+							<c:if test="${!empty sessionScope.id && sessionScope.id == rvo.id }">
+								<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
+								<input type="hidden" name="reviewId" value="${rvo.reviewId }">
+								<input type="hidden" name="productno" value="${productno }">
+							</c:if>
+								</div>
+								</form>
+							</div>
+							</c:forEach>
+							</td>
+						</tr>
+					</tbody>
+					<tfoot>
+						<tr>
+							<td>
+								<div class="review_page-buttons">
+									<ol>
+										<li>◀</li>
+										<li>1</li>
+										<li>▶</li>
+									</ol>
+								</div>
+							</td>
+						</tr>
+					</tfoot>
+				</table>
+			</div>
+		</main>
+		<footer>
+=======
 <%-- 상품에 대한 리뷰 작성 영역 --%>
 <form action="reviewController?type=insertReview" method="post">
 	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly>
@@ -207,6 +273,7 @@
 <hr>
 </c:forEach>
 	<footer>
+>>>>>>> cc7aaa4d59adcb7b819157ce35dce4d9275c20b0
 	    <div class="wrap">
 	        <section class="footer_left">
 	            <div class="footer_terms">

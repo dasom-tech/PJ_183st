@@ -1,9 +1,11 @@
 package com.bc.review.model.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
+import com.bc.bbs.vo.QnAListVO;
 import com.bc.common.mybatis.DBService;
 import com.bc.review.vo.ReviewListVO;
 
@@ -15,6 +17,24 @@ public class ReviewDAO {
 		List<ReviewListVO> list = ss.selectList("Review.reviewList", productno);
 		ss.close();
 		
+		return list;
+	}
+	
+	//상품번호에 따른 리뷰 갯수 조회
+	public static int getTotalCount(String productno) {
+		SqlSession ss = DBService.getFactory().openSession();
+		int totalCount = ss.selectOne("Review.totalCount", productno);
+		ss.close();
+			
+		return totalCount;
+	}
+	
+	//페이지에 해당하는 리뷰 조회
+	public static List<ReviewListVO> reviewList(Map<String, Integer> map) {
+		SqlSession ss = DBService.getFactory().openSession();
+		List<ReviewListVO> list = ss.selectList("Review.list", map);
+		ss.close();
+			
 		return list;
 	}
 	
