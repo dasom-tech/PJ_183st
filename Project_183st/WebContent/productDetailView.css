@@ -2,7 +2,6 @@
     width: 100%;
 }
 
-
 .product-page_review table caption{
     background-color: black;
     border: black 1px solid;
@@ -11,11 +10,24 @@
 }
 
 .product-page_review table thead tr th {
-    padding: 15px 0px 8px 7px;
+    padding: 5px 0px;
+}
+
+.review_write_id input {
     color: black;
     font-weight: bold;
     font-size: 14px;
     text-align: left;
+    background-color:inherit;
+    border: none;
+}
+
+.review_write_review textarea {
+    width:100%;
+}
+
+.review_write_submit input{
+    width: 100%;
 }
 
 .product-page_review table > th, td {
@@ -27,23 +39,19 @@
     font-size: 14px;
     color: black;
     margin-bottom: 10px;
-}
+} 
 
-.review_info span {
+.review_author {
     font-size: 9px;
     color: rgb(85, 85, 85);
-    padding-left: 5px;
-    padding-right: 5px;
+    padding-right: 7px;
     border-right:1px solid rgb(189, 189, 189);
 }
 
-.review_reply{
-    background-color: rgb(97, 118, 119);
-    color: white;
-    padding: 1px 5px;
-    margin-left: 5px;
+.review_date {
     font-size: 9px;
-    margin: 2px;
+    color: rgb(85, 85, 85);
+    padding-left: 5px;
 }
 
 .review_hit{

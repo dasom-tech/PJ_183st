@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.bc.cart.model.dao.CartDAO;
-import com.bc.product.ProductVO;
 
 public class InsertItemCommand implements CartCommand {
 
@@ -30,7 +29,10 @@ public class InsertItemCommand implements CartCommand {
 		int result = CartDAO.insertItem(map);
 		System.out.println("처리 건 수 : " + result);
 		
-		return "testpage.jsp";
+		if(id == null || "".equals(id)) {
+			return "Member/login.jsp";
+		} else {
+			return "addCartAlert.jsp";
+		}
 	}
-	
 }

@@ -24,12 +24,18 @@
                             <caption>REVIEW(<span>2</span>)</caption>
                             <thead>
                                 <tr>
-                                    <th colspan="2">REVIEW</th>
+                                    <th>
+                                        <form action="reviewController?type=insertReview" method="post">
+                                        <div class="review_write_id"><input type="text" name="id" value="${sessionScope.id }" readonly></div>
+                                        <div class="review_write_review"><textarea name="review" rows="3" required placeholder="한 줄 리뷰"></textarea></div>
+                                        <div class="review_write_submit"><input type="submit" value="등록"><input type="hidden" name="productno" value="${productno }"></div>
+                                        </form>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td colspan="2">
+                                    <td>
                                         <div class="review_title">
                                             <span class="review_hit">HIT</span>
                                             좋네요!
@@ -37,15 +43,17 @@
                                         <div class="review_info">
                                             <span class="review_author">김철수</span>
                                             <span class="review_date">2021-01-01 00:00:00</span>
-                                            <span class="review_viewcount">조회 5</span>
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td colspan="2"><div class="review_title">색이 예뻐요.</div><div class="review_info"><span class="review_author">이영희</span><span class="review_date">2021-02-02 00:00:00</span><span class="review_viewcount">조회 3</span></div></td>
-                                </tr>
-                                <tr>
-                                    <td colspan="2"><div class="review_title"><span class="review_reply">RE</span>색이 예뻐요.</div><div class="review_info"><span class="review_author">183번가</span><span class="review_date">2021-02-03 00:00:00</span><span class="review_viewcount">조회 2</span></div></td>
+                                    <td>
+                                        <div class="review_title">색이 예뻐요.</div>
+                                        <div class="review_info">
+                                            <span class="review_author">이영희</span>
+                                            <span class="review_date">2021-02-02 00:00:00</span>
+                                        </div>
+                                    </td>
                                 </tr>
                             </tbody>
                             <tfoot>

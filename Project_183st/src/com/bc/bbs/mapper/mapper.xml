@@ -31,6 +31,13 @@
 	 	 WHERE BBS_NO = #{bbs_no}
 	</select>
 	
+	<!-- 상품번호 조회 -->
+	<select id="prono" resultType="string">
+		SELECT PRODUCTNO
+		  FROM PRODUCTS
+		 ORDER BY PRODUCTNO
+	</select>
+	
 	<!-- 게시글 작성 -->
 	<insert id="insert" parameterType="com.bc.bbs.vo.QnAListVO">
 		<selectKey keyProperty="bbs_no" resultType="String" order="BEFORE">
