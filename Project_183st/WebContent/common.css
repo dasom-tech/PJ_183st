@@ -11,6 +11,11 @@ body {
     position: absolute;
 }
 
+
+li {
+    display: inline-block;
+}
+
 .wrap {
     max-width: 1200px;
     margin: 0 auto;

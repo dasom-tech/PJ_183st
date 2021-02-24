@@ -169,21 +169,26 @@
 	});
 
 </script>
+
+
+
 </head>
+
+<div id="loading"></div> 
+	
 <body>
 	<div class="body_wrap"> 
 	   <header>
-	   	<div id="loading"></div> 
 	       <div class="wrap">                	
 	           <div class="header_menu">
 	               <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
 	               <c:if test="${empty sessionScope.id }">
-	               <a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
-	               </c:if>
-	               <c:if test="${!empty sessionScope.id }">
-	               <a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
-	               <!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
-	               </c:if>
+                       <a href="memberController?type=loginMove" style="font-size: 13px">LOGIN</a>
+                   </c:if>
+                   <c:if test="${!empty sessionScope.id }">
+                       <a href="#" onclick="logoutChk()" style="font-size: 13px">LOGOUT</a>
+                       <a href="memberController?type=myPage" style="font-size: 13px">MYPAGE</a>
+                   </c:if>
 	           </div>
 	           <div class="header_logo">
 	               <a href="shop183st.jsp">183번가</a></div>
