@@ -2,21 +2,27 @@
 	body {
 		font-family:"맑은 고딕"; font-size:1.25em; color:#333
 	}
+	
+	#bbs {
+		height: 720px;
+	}
 
 	#bbs table {
-		width: 680px;
-		height: 720px;
 		margin-left: 10px;
 		border-collapse: separate;
 		font-size: 14px;
 		table-layout: fixed;
 		border-spacing: 2px;
         overflow: hidden;
+        text-align: center;
+        display: table;
+        width: 50%;
+        margin-left: 25%;
 	}
 	#bbs table caption {
 		font-size: 20px;
 		font-weight: bold;
-		margin-bottom: 10px;
+		margin: 10px;
 	}
 	
 	#bbs table th {
@@ -24,19 +30,13 @@
 	}
 	
 	#bbs table tr {
-		height: 25px;
+		height: 60px;
 	}
-
-    #bbs table tr.tr_last-for-empty-space {
-        height: auto;
-    }
 
 	#bbs table th, #bbs table td {
 		text-align: center;
 		border-bottom: 3px solid pink;
 		padding: 1px 1px;
-		height: 5px;
-		width: 10px;
 	}
 	
 	#bbs  table td a {

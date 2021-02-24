@@ -28,13 +28,15 @@
 	}
 
 	#bbs table {
-		width: 680px;
-		height: 720px;
 		margin-left: 10px;
 		border-collapse: separate;
 		font-size: 14px;
 		table-layout: fixed;
 		border-spacing: 2px;
+		text-align: center;
+        display: table;
+        width: 50%;
+        margin-left: 25%;
 	}
 	#bbs table caption {
 		font-size: 20px;
@@ -202,7 +204,7 @@
 			</div>
 		</nav>
 		<main>
-		<div class="wrap">
+		<div class="warp" style="min-height: 820px;">
 				<div id="bbs">
 					<form method="post">
 						<input type="hidden" name="bbs_no" value="${bbs_no}" /> 

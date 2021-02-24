@@ -28,13 +28,15 @@
 	}
 
 	#bbs table {
-		width: 680px;
-		height: 720px;
 		margin-left: 10px;
 		border-collapse: separate;
 		font-size: 14px;
 		table-layout: fixed;
 		border-spacing: 2px;
+		text-align: center;
+        display: table;
+        width: 50%;
+        margin-left: 25%;
 	}
 	#bbs table caption {
 		font-size: 20px;
@@ -48,7 +50,10 @@
 	}
 	
 	#bbs table tr {
-		height: 25px;
+	}
+	
+	.contact-tr {
+		height: 500px;	
 	}
 
 	#bbs table th, #bbs table td {
@@ -203,7 +208,7 @@
 			</div>
 		</nav>
 		<main>
-		<div class="wrap">
+		<div class="warp" style="min-height: 820px;">
 				<div id="bbs">
 					<form method="post">
 						<input type="hidden" name="bbs_no" value="${bbs_no}" /> <input
@@ -211,32 +216,28 @@
 						<table>
 							<caption>상세보기</caption>
 							<tbody>
-								<tr>
+								<tr style="height:40px;">
 									<th>상품번호</th>
 									<td>${vo.productno }</td>
-								</tr>
-								<tr>
-									<th>제목</th>
-									<td>${vo.subject }</td>
-								</tr>
-								<tr>
 									<th>작성자</th>
 									<td>${vo.id }</td>
-								</tr>
-								<tr>
 									<th>문의종류</th>
 									<td>${vo.category }</td>
 								</tr>
 								<tr>
+									<th>제목</th>
+									<td colspan="5" style="height:40px;">${vo.subject }</td>
+								</tr>
+								<tr class="contact-tr">
 									<th>내용</th>
-									<td>${vo.contact }</td>
+									<td colspan="5" style="text-align: left; height:inherit;">${vo.contact }</td>
 								</tr>
 							</tbody>
 							<tfoot>
 								<tr>
 									<td colspan="2">
 									<c:if test="${empty sessionScope.id || sessionScope.id != vo.id }">
-										<input type="button" value="목 록" onclick="list_go(this.form)">
+										<input type="button" value="목 록" class="button" onclick="list_go(this.form)">
 									</c:if> 
 									<c:if test="${!empty sessionScope.id && sessionScope.id == vo.id }">
 										<input type="button" value="수 정" class="button" onclick="modify_go(this.form)">

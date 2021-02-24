@@ -28,11 +28,11 @@
 		  FROM ( SELECT ROWNUM AS RN, B.* 
 				   FROM ( SELECT *
 				   			FROM REVIEWLIST
+				   		   WHERE PRODUCTNO = #{productno}
 				   		   ORDER BY REVIEWID DESC
-				   		) B	  
+				   		) B 
 		  		)
 		 WHERE RN BETWEEN #{begin} AND ${end}
-		   AND WHERE PRODUCTNO = #{productno}
 	</select>
 	
 	<select id="reviewSelectOne" parameterType="string"

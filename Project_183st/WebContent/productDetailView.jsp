@@ -18,6 +18,7 @@
 <head>
 <meta charset="UTF-8">
 <title>상세페이지</title>
+<link href="css/button.css" rel="stylesheet" type="text/css">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="path_role" content="MAIN">
 <meta name="author" content="183번가">
@@ -215,10 +216,11 @@
 									<span class="review_author"> ${rvo.id }</span> 
 									<span class="review_date">${rvo.r_reg }</span>
 							<c:if test="${!empty sessionScope.id && sessionScope.id == rvo.id }">
-								<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
+								<input type="button" value="리뷰 삭제" class="button" onclick="del_review(this.form)">
 								<input type="hidden" name="reviewId" value="${rvo.reviewId }">
 								<input type="hidden" name="productno" value="${productno }">
 							</c:if>
+								<hr>
 								</div>
 								</form>
 							</div>
@@ -228,15 +230,41 @@
 					</tbody>
 					<tfoot>
 						<tr>
-							<td>
-								<div class="review_page-buttons">
-									<ol>
-										<li>◀</li>
-										<li>1</li>
-										<li>▶</li>
-									</ol>
-								</div>
-							</td>
+							<td colspan="4">
+							<ol class="paging">
+								<%--[이전으로]에 대한 사용 여부처리 : 시작페이지 1인 경우 비활성화 --%>
+								<c:choose>
+									<c:when test="${page.beginPage == 1 }">
+										<li class="disable">◀</li>
+									</c:when>
+									<c:otherwise>
+										<li>
+										<a href="product_controller?viewType=info&productno=${productno }&cPage=${page.beginPage - 1 }">◀</a></li>
+									</c:otherwise>
+								</c:choose>
+								<%-- 블록내에 표시할 페이지 태그 작성(시작페이지 ~ 끝페이지) 현재페이지와 페이지 번호 같으면 현재페이지 처리 --%>
+								<c:forEach var="pageNo" begin="${page.beginPage }"
+									end="${page.endPage }">
+									<c:if test="${pageNo == page.nowPage }">
+										<li class="now">${pageNo }</li>
+									</c:if>
+									<c:if test="${pageNo != page.nowPage }">
+										<li>
+											<a href="product_controller?viewType=info&productno=${productno }&cPage=${pageNo }">${pageNo }</a>
+										</li>
+									</c:if>
+								</c:forEach>
+								<%--[다음으로]에 대한 사용여부 처리 : endPage가 전체페이지수(totalPage)보다 작은경우 활성화--%>
+								<c:if test="${page.endPage < page.totalPage }">
+									<li>
+										<a href="product_controller?viewType=info&productno=${productno }&cPage=${page.endPage + 1 }">▶</a>
+									</li>
+								</c:if>
+								<c:if test="${page.endPage >= page.totalPage }">
+									<li class="disable">▶</li>
+								</c:if>
+							</ol>
+						</td>
 						</tr>
 					</tfoot>
 				</table>

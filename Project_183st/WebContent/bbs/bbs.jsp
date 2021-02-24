@@ -16,7 +16,7 @@
 <link rel="stylesheet" type="text/css" href="common.css">
 <link rel="stylesheet" type="text/css" href="style.css">
 <link href="css/menu.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="bbs.css">
+<link rel="stylesheet" type="text/css" href="bbs/bbs.css">
 <script src="main.js" defer></script>
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -101,13 +101,14 @@
 							<li><a href="bbsController?type=bbs">Q&A</a></li>
 							<br>
 							<li><a href="mypage.html">MYPAGE</a></li>
-						</ul></li>
+						</ul>
+					</li>
 				</ul>
 			</div>
 		</nav>
 		
 	<main>
-	<div class="wrap">
+	<div class="warp" style="min-height: 820px;">
 		<div id="bbs">
 			<table>
 				<caption>183st 문의게시판</caption>
@@ -139,7 +140,6 @@
 								<td>${vo.category }</td>
 								<td>${vo.q_reg.substring(0,10) }</td>
 							</tr>
-							<tr class="tr_last-for-empty-space"></tr>
 						</c:forEach>
 					</c:if>
 				</tbody>
