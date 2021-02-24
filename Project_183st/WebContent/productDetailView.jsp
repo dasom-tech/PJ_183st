@@ -4,8 +4,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%-- 전달받은 제품번호를 사용해서 DB데이터 조회 후 화면 표시 --%>
-	<%-- 액션태그 useBean scope 상에 id명 속성값이 
-		있으면 사용하고, 없으면 클래스 속성 타입의 객체 생성 + scope 등록--%>
+<%-- 액션태그 useBean scope 상에 id명 속성값이 
+	있으면 사용하고, 없으면 클래스 속성 타입의 객체 생성 + scope 등록--%>
 	<jsp:useBean id="dao" class="com.bc.product.ProductDAO" scope="session" />
 <%
 	//전달 받은 값 추출(파라미터 값)
@@ -41,11 +41,11 @@
 	table {
 		width: 600px;
 		margin: 35px auto 0; /* 상 좌우 하 */
-		border: 0px solid navy;
 		border-collapse: collapse;
 		font-size: 1.0em;
+		border-bottom: 1px solid #ddd;
 	}
-	th, td { border: 0px solid navy; padding: 3px; }
+	th, td { border-bottom: 1px solid #ddd; padding: 3px; }
 	th { background-color: #ddd; }
 	.red { color: red; }
 	
@@ -71,7 +71,7 @@
     	<a href="#none" class="xi-close-thin" id="header_close_button"></a>
 	    <ul style="top: 0px;">
 	    	<li style="background-color:violet;"><a href="memberController?type=joinMove" style="color:#fff;">183번가 온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
-	        <li style="background-color:#60da9f;"><a href="http://lmoodc.cafe24.com/product/list.html?cate_no=58" style="color:#fff;">인기 많은 품절 임박 상품 확인하기!</a></li>
+	        <li style="background-color:#60da9f;"><a href="bbsController?type=bbs" style="color:#fff;">183번가 "Q&A"</a></li>
 	        <li style="background-color:pink;"><a href="https://www.instagram.com/" style="color:#fff;">인스타그램 @183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
 		</ul>
 	</div>
