@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.bc.cart.model.command.CartChkCommand;
 import com.bc.cart.model.command.CartCommand;
 import com.bc.cart.model.command.ChangeAmountCommand;
 import com.bc.cart.model.command.DeleteCheckedItems;
@@ -44,6 +45,10 @@ public class CartController extends HttpServlet {
 			break;
 		case "deleteChkItems":
 			command = new DeleteCheckedItems();
+			command.execute(request, response);
+			break;
+		case "selectCartItem":
+			command = new CartChkCommand();
 			command.execute(request, response);
 			break;
 		}

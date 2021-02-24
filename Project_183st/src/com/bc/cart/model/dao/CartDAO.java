@@ -56,5 +56,20 @@ public class CartDAO {
 			return result;
 		}
 	
+	// 상품 페이지에서 주문하기 클릭 시 단일 품목 삽입
+	public static int insertOneItem(Map<String, String> map) {
+		SqlSession ss = DBService.getFactory().openSession(true);
+		int result = ss.insert("Cart.insertOneItem", map);
+		ss.close();
+		return result;
+	}
+		
+	public static String selectCartItem(Map<String, String> map) {
+		SqlSession ss = DBService.getFactory().openSession();
+		String cartid = ss.selectOne("Cart.selectCartItem", map);
+		ss.close();
+		return cartid;
+	}
+	
 	
 }
