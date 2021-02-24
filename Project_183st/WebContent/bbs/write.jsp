@@ -136,7 +136,6 @@
 			<div class="wrap">
 				<div class="header_menu">
 					<a href="#" class="toggle"><i class="fas fa-bars"></i></a>
-					<a href="#" class="toggle"><i class="fas fa-bars"></i></a>
 					<c:if test="${empty sessionScope.id }">
                         <a href="memberController?type=loginMove" style="font-size: 13px">LOGIN</a>
                     </c:if>
