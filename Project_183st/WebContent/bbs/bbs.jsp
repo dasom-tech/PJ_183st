@@ -139,7 +139,6 @@
 								<td>${vo.category }</td>
 								<td>${vo.q_reg.substring(0,10) }</td>
 							</tr>
-							<tr class="tr_last-for-empty-space"></tr>
 						</c:forEach>
 					</c:if>
 				</tbody>

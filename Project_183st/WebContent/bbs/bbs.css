@@ -27,7 +27,7 @@
 		height: 25px;
 	}
 
-    #bbs table tr.tr_last-for-empty-space {
+    #bbs table tbody tr:last-child {
         height: auto;
     }
 
