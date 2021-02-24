@@ -196,7 +196,7 @@
                         	<a href="#none" style="color: black;">BOARD</a><br>
                         	<ul class="sub" style="display: block;">
 		                        <li><a href="bbsController?type=bbs">Q&A</a></li>	                        
-		                        <li><a href="mypage.html">MYPAGE</a></li>
+		                        <li><a href="memberController?type=myPage">MYPAGE</a></li>
                     		</ul>
                    		</li>
                    	</ul>

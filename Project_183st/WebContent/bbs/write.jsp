@@ -181,7 +181,7 @@
 						<ul class="sub" style="display: block;">
 							<li><a href="bbsController?type=bbs">Q&A</a></li>
 							<br>
-							<li><a href="mypage.html">MYPAGE</a></li>
+							<li><a href="memberController?type=myPage">MYPAGE</a></li>
 						</ul></li>
 				</ul>
 			</div>
