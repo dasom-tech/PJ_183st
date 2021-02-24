@@ -229,11 +229,11 @@
                     <div class="header_menu">
                         <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
                         	<c:if test="${empty sessionScope.id }">
-                        		<a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
+                        		<a href="memberController?type=loginMove" style="font-size: 13px">LOGIN</a>
                         	</c:if>
                         	<c:if test="${!empty sessionScope.id }">
-                        		<a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
-                       			<a href="memberController?type=myPage">마이 페이지</a>
+                        		<a href="#" onclick="logoutChk()" style="font-size: 13px">LOGOUT</a>
+                       			<a href="memberController?type=myPage" style="font-size: 13px">MYPAGE</a>
                        		</c:if>
                     </div>
                     <div class="header_logo">
