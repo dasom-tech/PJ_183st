@@ -31,6 +31,12 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="text/javascript">
+   	function needLogin(){
+   		alert("로그인이 필요한 기능입니다");
+   		location.href="memberController?type=loginMove";
+   	}
+</script>
 <style>
 	table {
 		width: 600px;
@@ -125,15 +131,15 @@
 					<table style="height: 400px; width: 500px;">
 					<c:if test="${not empty info}">
 						<tr align="left">
-							<td width="15%" style="font-size: 18px">상품번호</td>
+							<td width="15%" style="font-size: 18px; font-weight: bold;">상품번호</td>
 							<td align="left">${info.getProductno()}</td>
 						</tr>
 						<tr align="left">
-							<td width="20%" style="font-size: 18px">상품명</td>
+							<td width="20%" style="font-size: 18px; font-weight: bold;">상품명</td>
 							<td align="left">${info.getProductname()}</td>
 						</tr>
 						<tr align="left">
-							<td width="20%" style="font-size: 18px">가격</td>
+							<td width="20%" style="font-size: 18px; font-weight: bold;">가격</td>
 							<td align="left">${info.getPrice()}원</td>
 						</tr>
 						<c:if test="${info.getStock()<=5}">
@@ -142,11 +148,11 @@
 							</tr>
 						</c:if>
 						<tr align="left">
-							<td width="20%" style="font-size: 18px">재고</td>
+							<td width="20%" style="font-size: 18px; font-weight: bold;">재고</td>
 							<td align="left">${info.getStock()}</td>
 						</tr>
 						<tr align="left">
-							<td width="20%" style="font-size: 18px">상품설명</td>
+							<td width="20%" style="font-size: 18px; font-weight: bold;">상품설명</td>
 							<td align="left">${info.getInfo()}</td>
 						</tr>
 						<tr align="center">
@@ -158,7 +164,6 @@
 										</c:forEach>
 									</select>&nbsp;개
 								<input type="submit" value="장바구니에 담기" class="submitBtn">
-								<input type="submit" value="주문하기" class="submitBtn"><br><br>
 							</td>
 						</tr>
 						</c:if>
@@ -173,8 +178,9 @@
 		</table>
 		<div>
 			<img src="images/${vo.getImage_l() }" alt="제품이미지">
-		</div>		
+		</div>
 	</form>
+<<<<<<< HEAD
 		<main>
 			<div class="product-page_review">
 				<table>
@@ -238,6 +244,36 @@
 			</div>
 		</main>
 		<footer>
+=======
+<%-- 상품에 대한 리뷰 작성 영역 --%>
+<form action="reviewController?type=insertReview" method="post">
+	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly>
+	<p>내용 : <textarea name="review" rows="4" cols="55"></textarea>
+	<input type="submit" value="리뷰 저장">
+	<input type="hidden" name="productno" value="${productno }">
+</form>
+
+<hr>
+<p>리뷰</p>
+<hr>
+
+<%-- 상품에 작성된 리뷰 표시 영역 --%>
+<c:forEach var="rvo" items="${reviewVO }">
+<div class="comment">
+	<form method="post">
+		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
+		<p>내용 : ${rvo.review }</p>
+		<c:if test="${!empty sessionScope.id && sessinScope.id == rvo.id }">
+		<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
+		<input type="hidden" name="reviewId" value="${rvo.reviewId }">
+		<input type="hidden" name="productno" value="${productno }">
+		</c:if>
+	</form>
+</div>
+<hr>
+</c:forEach>
+	<footer>
+>>>>>>> cc7aaa4d59adcb7b819157ce35dce4d9275c20b0
 	    <div class="wrap">
 	        <section class="footer_left">
 	            <div class="footer_terms">

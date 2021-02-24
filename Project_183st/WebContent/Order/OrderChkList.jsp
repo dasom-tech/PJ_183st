@@ -80,6 +80,10 @@
 		
 	}
 	
+	.order_totalprice {
+		text-align: center;
+	}
+	
 	.list_header {
 		background-color: #CCC;
 		border-bottom: 1px solid #BBB;
@@ -164,7 +168,7 @@
 			<tr>
 				<td><a href="OrderController?type=orderDetail&orderid=${list.orderid }">${list.orderid }</a></td>
 				<td>${list.productname }</td>
-				<td>${list.totalprice }</td>
+				<td class="order_totalprice">${list.totalprice }원</td>
 			</tr>
 			</c:forEach>
 			</table>
