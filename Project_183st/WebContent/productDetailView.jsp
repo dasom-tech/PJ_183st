@@ -288,7 +288,6 @@
 			<img src="images/${vo.getImage_l() }" alt="제품이미지">
 		</div>
 	</form>
-<<<<<<< HEAD
 		<main>
 			<div class="product-page_review">
 				<table>
@@ -352,36 +351,6 @@
 			</div>
 		</main>
 		<footer>
-=======
-<%-- 상품에 대한 리뷰 작성 영역 --%>
-<form action="reviewController?type=insertReview" method="post">
-	<p>아이디 : <input type="text" name="id" value="${sessionScope.id }" readonly>
-	<p>내용 : <textarea name="review" rows="4" cols="55"></textarea>
-	<input type="submit" value="리뷰 저장">
-	<input type="hidden" name="productno" value="${productno }">
-</form>
-
-<hr>
-<p>리뷰</p>
-<hr>
-
-<%-- 상품에 작성된 리뷰 표시 영역 --%>
-<c:forEach var="rvo" items="${reviewVO }">
-<div class="comment">
-	<form method="post">
-		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
-		<p>내용 : ${rvo.review }</p>
-		<c:if test="${!empty sessionScope.id && sessinScope.id == rvo.id }">
-		<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
-		<input type="hidden" name="reviewId" value="${rvo.reviewId }">
-		<input type="hidden" name="productno" value="${productno }">
-		</c:if>
-	</form>
-</div>
-<hr>
-</c:forEach>
-	<footer>
->>>>>>> cc7aaa4d59adcb7b819157ce35dce4d9275c20b0
 	    <div class="wrap">
 	        <section class="footer_left">
 	            <div class="footer_terms">

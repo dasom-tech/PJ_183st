@@ -27,10 +27,13 @@
 	}
 
 	#bbs table {
-		width: 580px;
+		width: 680px;
+		height: 720px;
 		margin-left: 10px;
-		border-collapse: collapse;
+		border-collapse: separate;
 		font-size: 14px;
+		table-layout: fixed;
+		border-spacing: 2px;
 	}
 	#bbs table caption {
 		font-size: 20px;
@@ -41,10 +44,17 @@
 	#bbs table th {
 		background-color: pink;
 	}
+	
+	#bbs table tr {
+		height: 25px;
+	}
+
 	#bbs table th, #bbs table td {
 		text-align: center;
-		border-bottom: 1px solid pink;
-		padding: 4px 10px;
+		border-bottom: 3px solid pink;
+		padding: 1px 1px;
+		height: 5px;
+		width: 10px;
 	}
 	
 	#bbs  table td a {
@@ -56,8 +66,6 @@
 	}
 	
 	#bbs .align-left { text-align: left; }
-	
-	.title { background-color: lightsteelblue; }
 	
 	.no { width: 10%; }
 	.writer { width: 15%; }
@@ -180,6 +188,9 @@
 				</ul>
 			</div>
 		</nav>
+		
+	<main>
+	<div class="wrap">
 		<div id="bbs">
 			<table>
 				<caption>183st 문의게시판</caption>
@@ -264,8 +275,10 @@
 					</tr>
 				</tfoot>
 			</table>
-
+			</div>
 		</div>
+		</main>
+		
 		<footer>
 			<div class="wrap">
 				<section class="footer_left">
