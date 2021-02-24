@@ -46,6 +46,10 @@
 	#bbs  table td a:hover {
 		text-decoration: underline;
 	}
+
+    #bbs table tfoot{
+        height: 30px;
+    }
 	
 	#bbs .align-left { text-align: left; }
 	
