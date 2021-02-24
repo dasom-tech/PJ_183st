@@ -18,6 +18,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <style>
 	#title_Area {
 		display: flex;
@@ -39,8 +40,161 @@
 	    width: 500px;
 		height: 30px;
 	}
+	
+	.user_name {
+		margin-top: 10px;
+		text-align: center;
+	}
+	
+	#order_list {
+		text-align: center;
+	}
+	
+	.orderItem {
+		position: relative;
+		padding: 7px 0 0 90px;
+		margin-left: 20px;
+		margin-top: 25px;
+		margin-bottom: 25px;
+		height: 80px;
+	}
+	
+	.orderItem li {
+		display: flex;
+		list-style: none;
+	}
+	
+	.des_img {
+		position: absolute;
+		left: 0;
+		width: 85px;
+	}
+	
+	.des_text {
+		display: flex;
+	}
+	
+	.titlaArea {
+		display: flex;
+		height: 45px;
+		padding: 0px;
+		margin-bottom: 0px;
+		border-style: 1px solid #070707;
+		item-align: center;
+		box-sizing: border-box;
+	}
+	
+	.titleArea h3 {
+		margin-top: 10px;
+		margin-bottom: 0px;
+		border: 1px solid #CCC;
+		color: white;
+		
+		width: 100%;
+		height: 45px;
+		
+		background-color: #8f5b52;
+		padding: 12px 61px 10px 61px;
+	    line-height: 20px;
+	    font-size: 13px;
+		text-align: center;
+	}
+	
+	#orderInfo {
+		box-sizing: border-box;
+		margin: 0px;
+		magin-bottom: 10px;
+	}
+	
+	.order_form {
+		display: table;
+		margin: 0 auto;
+		width: 575px;
+		table-layout: fixed;
+		margin-bottom: 10px;
+	}
+	
+	.order_form tr {
+		border: 1px solid #CCC;
+		border-collapse: collapse;
+		height: 45px;
+	}
+	
+	.order_form th {
+		width: 20%;
+		padding: 5px;
+	}
+	
+	.order_form td {
+		width: 100%;
+		padding: 5px;
+	}
+	
+	#receipt {
+		box-sizing: border-box;
+		margin: 0px;
+		magin-bottom: 10px;
+	}
+	
+	.receipt_form {
+		display: table;
+		margin: 0 auto;
+		width: 576px;
+		table-layout: fixed;
+		margin-bottom: 10px;
+	}
+	
+	.receipt_form tbody {
+		width: auto;
+		box-sizing: border-box;
+	}
+	
+	.receipt_form tr {
+		border: 1px solid #CCC;
+		border-collapse: collapse;
+		height: 45px;
+		width: auto;
+	}
+	
+	.receipt_form th {
+		width: 20%;
+	}
+	
+	.receipt_form td {
+		width: 100%;
+		padding: 5px;
+		padding-left: 20px;
+	}
+	
+	#btn_field {
+		text-align: center;
+	}
+	
+	.return_btn {
+		position: relative:
+		display: flex;
+		width: 271px;
+		height: 38px;
+		color: #000000;
+		background-color: #FFFFFF;
+		text-align: center;
+		font-family: 'Nanum Gothic', sans-serif;
+	}
 
 </style>
+<script>
+
+	$(function(){
+		
+		$(".return_btn").click(function(){
+			
+			history.back();
+			
+		});
+		
+	});
+
+</script>
 </head>
 <body>
 	<header>
@@ -89,28 +243,78 @@
 	     	<h2>주문 상세</h2>
 	     	</div>
 	
-			<p>${OrderInfo.name }님의 주문 내역입니다</p>
+			<h3 class="user_name">${OrderInfo.name }님의 주문 내역입니다</h3>
 			
-			<ul>
+				<div id="order_list">
 				<c:forEach var="list" items="${OrderDetail }">
-					<li>
-						<div>
-							<p>상품명 : ${list.productname }</p>
-							<p>가격 : ${list.price}</p>
-							<p>주문 수량 : ${list.o_amount }
+						<div class="orderItem">
+							<p class="des_img">
+							<a href="product_controller?viewType=info&productno=${list.productno }">
+								<img src="images/${list.image_s }" style="width: 85px; height: 85px;">
+							</a>
+							</p>
+							
+							<strong class="des_text">
+							<a href="product_controller?viewType=info&productno=${list.productno }">${list.productname }</a>
+							</strong>
+							
+							<ul>
+								<li>가격 : ${list.price }원</li>
+								<li class="amount">주문수량 : ${list.o_amount }</li>
+							</ul>
 						</div>
-					</li>
+						
+						<hr>
 				</c:forEach>
-			</ul>
-			<p>사용한 포인트 : ${OrderInfo.point }</p>
-			<p>총 결제 금액 : ${OrderInfo.totalprice }</p>
-			<hr>
-			<h3>배송 정보</h3>
-			<div>
-				<p>이름 : ${OrderInfo.name }</p>
-				<p>주소 : ${OrderInfo.addr }</p>
-				<p>전화번호 : ${OrderInfo.phone }</p>
-			</div>
+				</div>
+				
+				<div id="orderInfo">
+					
+					<div class="titleArea" style="margin-bottom: 0px;">
+					<h3>배송 정보</h3>
+					</div>
+					
+					<table class="order_form">
+						<tr>
+							<th>주문자</th>
+							<td>${OrderInfo.name }</td>
+						</tr>
+						<tr>
+							<th>주소</th>
+							<td>${OrderInfo.addr }</td>
+						</tr>
+						<tr>
+							<th>전화번호</th>
+							<td>${OrderInfo.phone }</td>
+						</tr>
+					</table>
+					</div>
+					<hr>
+					
+					<div id="receipt">
+						<div class="titleArea" style="margin-bottom: 0px;">
+						<h3>결제 정보</h3>
+						</div>
+						
+						<table class="receipt_form">
+							<tr>
+								<th>포인트</th>
+								<td>
+									사용한 포인트 : ${OrderInfo.point }
+								</td>
+							</tr>
+							
+							<tr>
+								<th>총 결제 금액</th>
+								<td>${OrderInfo.totalprice } 원</td>
+							</tr>
+							
+						</table>
+					</div>
+					
+					<div id="btn_field">
+						<input type="button" class="return_btn" value="돌아가기">
+					</div>
 	
 		</section>
 	 </div>

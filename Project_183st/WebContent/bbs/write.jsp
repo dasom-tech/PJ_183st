@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,8 +40,9 @@
 				<td>
 					<select name="productno" title="상품번호">
 						<option selected disabled value="">::상품번호</option>
-						<option>T102</option>
-						<option>T103</option>
+						<c:forEach var="no" items="${plist }">
+						<option>${no }</option>
+						</c:forEach>
 					</select>
 				</td>
 			</tr>

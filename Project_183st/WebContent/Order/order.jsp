@@ -125,13 +125,15 @@
 	#orderInfo {
 		box-sizing: border-box;
 		margin: 0px;
+		magin-bottom: 10px;
 	}
 	
 	.order_form {
-		display: block;
+		display: table;
 		margin: 0 auto;
 		width: auto;
 		table-layout: fixed;
+		margin-bottom: 10px;
 	}
 	
 	.order_form tr {
@@ -142,10 +144,12 @@
 	
 	.order_form th {
 		width: 20%;
+		padding: 5px;
 	}
 	
 	.order_form td {
-		width: 80%;
+		width: 100%;
+		padding: 5px;
 	}
 	
 	#order_radiofrm {
@@ -168,6 +172,90 @@
 	
 	#order_radiofrm input {
 		margin-top: 12px;
+	}
+	
+	.name {
+		width: 130px;
+		height: 29px;
+	}
+	
+	.addr {
+		width: 490px;
+		height: 29px;
+	}
+	
+	.phone_head {
+		width: 120px;
+		height: 29px;
+	}
+	
+	.phone_1, .phone_2 {
+		width: 120px;
+		height: 29px;
+	}
+	
+	#receipt {
+		box-sizing: border-box;
+		margin: 0px;
+		magin-bottom: 10px;
+	}
+	
+	.receipt_form {
+		display: table;
+		margin: 0 auto;
+		width: 576px;
+		table-layout: fixed;
+		margin-bottom: 10px;
+	}
+	
+	.receipt_form tbody {
+		width: auto;
+		box-sizing: border-box;
+	}
+	
+	.receipt_form tr {
+		border: 1px solid #CCC;
+		border-collapse: collapse;
+		height: 45px;
+		width: auto;
+	}
+	
+	.receipt_form th {
+		width: 20%;
+	}
+	
+	.receipt_form td {
+		width: 100%;
+		padding: 5px;
+		padding-left: 20px;
+	}
+	
+	.inputPoint {
+		width: 120px;
+		height: 29px;
+	}
+	
+	.usePoint {
+		width: 70px;
+		height: 29px;
+		margin-left: 10px;
+		margin-top: 5px;
+	}
+	
+	#order_btn {
+		display: block;
+		margin: 0 auto;
+		item-align: center;
+		text-align: center;
+	}
+	
+	.orderConfirm {
+		width: 576px;
+		height: 38px;
+		color: #FFFFFF;
+		background-color: #000000;
+		text-align: center;
+		font-family: 'Nanum Gothic', sans-serif;
 	}
 	
 </style>
@@ -341,6 +429,7 @@
 						<input type="hidden" name="c_amount" value="${list.c_amount }">
 						<input type="hidden" name="price" value="${list.price }">
 						<input type="hidden" name="productname" value="${list.productname }">
+						<input type="hidden" name="image_s" value="${list.image_s }">
 					</div>
 					
 					<hr>
@@ -388,16 +477,39 @@
 					</table>
 					</div>
 					<hr>
+					
 					<div id="receipt">
-					<p>사용할 수 있는 포인트 : <label class="totPoint">${orderedMember.point }</label>&nbsp;
-						포인트 사용 : <input type="number" class="inputPoint" value="0"><input type="button" class="usePoint" value="사용"></p>
-					<p>총 금액 : <label class="finTot">${total }</label> 원</p>
-					<input type="hidden" class="totalPrice" name="totalPrice" value="${total }">
-					<input type="hidden" name="originPoint" value="${orderedMember.point }">
-					<input type="hidden" class="usedPoint" name="usedPoint" value="0">
-					<input type="hidden" name="cartidList" value="${orderItems }">
+						<div class="titleArea" style="margin-bottom: 0px;">
+						<h3>결제 정보</h3>
+						</div>
+						
+						<table class="receipt_form">
+							<tr>
+								<th>포인트</th>
+								<td>
+									사용가능 포인트 : <label class="totPoint">${orderedMember.point }</label>
+									<p>
+										포인트 사용 : <input type="number" class="inputPoint" value="0"><input type="button" class="usePoint" value="사용">
+									</p>
+								</td>
+							</tr>
+							
+							<tr>
+								<th>총 결제 금액</th>
+								<td><label class="finTot">${total }</label> 원</td>
+							</tr>
+							
+						</table>
+						
+						<input type="hidden" class="totalPrice" name="totalPrice" value="${total }">
+						<input type="hidden" name="originPoint" value="${orderedMember.point }">
+						<input type="hidden" class="usedPoint" name="usedPoint" value="0">
+						<input type="hidden" name="cartidList" value="${orderItems }">
 					</div>
+					
+					<div id="order_btn">
 					<input type="button" class="orderConfirm" value="주문하기">
+					</div>
 				</form>
 			</div>
 		</section>

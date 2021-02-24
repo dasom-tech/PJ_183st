@@ -36,15 +36,6 @@ public class ReviewDAO {
 		return result;
 	}
 	
-	//리뷰 수정
-	public static int reviewUpdate(ReviewListVO vo) {
-		SqlSession ss = DBService.getFactory().openSession(true);
-		int result = ss.update("Review.reviewUpdate", vo);
-		ss.close();
-		
-		return result;
-	}
-	
 	//리뷰 삭제
 	public static int reviewDelete(String reviewId) {
 		SqlSession ss = DBService.getFactory().openSession(true);

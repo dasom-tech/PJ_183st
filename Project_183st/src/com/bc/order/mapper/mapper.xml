@@ -27,7 +27,7 @@
 	<!-- 주문한 상품 정보(OrderDetail)를 삽입 -->
 	<insert id="insertOrderDetail" parameterType="OrderDetailVO">
 		insert into orderdetail
-		values(o_detail_seq.nextval, #{orderid}, #{productno}, #{o_amount}, #{price}, #{productname})
+		values(o_detail_seq.nextval, #{orderid}, #{productno}, #{o_amount}, #{price}, #{productname}, #{image_s})
 	</insert>
 	
 	<!-- 주문한 상품의 갯수만큼 재고량 감소 -->

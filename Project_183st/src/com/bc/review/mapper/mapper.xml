@@ -31,13 +31,6 @@
 		VALUES (#{reviewId}, #{productno}, #{id}, #{review}, SYSDATE)
 	</insert>
 	
-	<!-- 리뷰 수정 -->
-	<update id="reviewUpdate" parameterType="com.bc.review.vo.ReviewListVO">
-		UPDATE REVIEWLIST
-		   SET REVIEW = #{review}
-		 WHERE REVIEWID = #{reviewId}  
-	</update>
-	
 	<!-- 리뷰 삭제 -->
 	<delete id="reviewDelete" parameterType="string">
 		DELETE FROM REVIEWLIST WHERE REVIEWID = #{reviewId}

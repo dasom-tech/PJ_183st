@@ -198,7 +198,6 @@
 		<p>아이디 : ${rvo.id } &nbsp; 날짜: ${rvo.r_reg }</p>
 		<p>내용 : ${rvo.review }</p>
 		<c:if test="${!empty sessionScope.id && sessinScope.id == rvo.id }">
-		<input type="button" value="리뷰 수정" class="modifyForm" onclick="modify_review(this.form)">
 		<input type="button" value="리뷰 삭제" onclick="del_review(this.form)">
 		<input type="hidden" name="reviewId" value="${rvo.reviewId }">
 		<input type="hidden" name="productno" value="${productno }">
@@ -252,11 +251,6 @@
 </body>
 
 <script>
-	function modify_review(frm) {
-		e.preventDefault();
-		url = $(this).attr('')
-	}
-
 	function del_review(frm) {
 		var isDelete = confirm("리뷰를 삭제하시겠습니까?");
 		if (isDelete) {
