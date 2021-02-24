@@ -17,16 +17,17 @@ public class ProductListCommand implements Command{
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 				Page p = new Page();
-				String producttype = request.getParameter("producttype");
+				String producttype = request.getParameter("producttype");				
+				String image_s = request.getParameter("image_s");
 				
 				HashMap<String,Object> paramMap = new HashMap<String,Object>();
 				if(producttype != null && !"".equals(producttype)) {
-					paramMap.put("producttype", producttype);	
+					paramMap.put("producttype", producttype);
 				}
 				
 				int productCnt = ProductDAO.getCntProductListByType(paramMap);
 				p.setTotalRecord(productCnt);
-				p.setPageSize(10);
+				p.setPageSize(5);
 				p.setTotalPage();
 				
 				String cPage = request.getParameter("cPage");
@@ -69,6 +70,7 @@ public class ProductListCommand implements Command{
 				List<ProductVO> list = ProductDAO.getProductListByType(paramMap);
 				request.setAttribute("list", list);
 				request.setAttribute("producttype", producttype);
+				request.setAttribute("image_s", image_s);
 				request.setAttribute("totalPage", p.getTotalPage());
 				request.setAttribute("cPage", cPage);
 				

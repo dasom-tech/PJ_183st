@@ -70,7 +70,7 @@ main section {
 }
 
 .main_slide-banner {
-    height:350px;
+    height:250px;
     background-image: url("https://images.unsplash.com/photo-1527963841590-34ea3172750d?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80;");
 }
 
@@ -84,7 +84,7 @@ main section {
 }
 
 .item_list {
-    width: 100%;
+    width: 600px;
     display:flex;
     flex-direction: row;
     justify-content: space-between;

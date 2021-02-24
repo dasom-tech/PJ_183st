@@ -51,33 +51,40 @@
 	.join_form tr { border:1px solid black; border-style: solid none; }
 </style>
 <style>
-	#bbs table {
-		width: 580px;
-		margin-left: 10px;
+	table {
+		width: 600px;
+		margin: 35px auto 0; /* 상 좌우 하 */
 		border-collapse: collapse;
-		font-size: 14px;
+		font-size: 1.0em;
+		border-bottom: 1px solid #ddd;
 	}
-	#bbs table caption {
-		font-size: 20px;
-		font-weight: bold;
-		margin-bottom: 10px;
-	}
-	#bbs table th, #bbs table td {
+	th, td { border-bottom: 1px solid #ddd; padding: 3px; }
+	th { background-color: #ddd; }
+	.red { color: red; }
+	
+	.title { width: 30%; }
+	tfoot { text-align: left; height: 3em; }
+	.submitBtn {
+		background-color: #008CBA;
+		border: none;
+		color: white;
+		padding: 15px 32px;
 		text-align: center;
-		border: 1px solid black;
-		padding: 4px 10px;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
 	}
-	#bbs .align-left { text-align: left; }
-	
-	.title { background-color: lightsteelblue; }
-	
+</style>
+<style>
 	.no { width: 10%; }
 	.writer { width: 15%; }
 	.regdate { width: 20%; }
 	.hit { width: 15%; }
 	
 	/***** 페이지 표시 부분 스타일(시작) ****/
-	.paging { list-style: none; }
+	.paging { list-style: none; text-align: center;}
 	.paging li {
 		float: left;
 		margin-right: 8px;
@@ -174,81 +181,94 @@
         	</div>  
     	</header>
     
-    <nav class="menu">
-        <div class="wrap">
-            <ul>
-            	<li class="title">
-            		<a href="#none" style="color: black;">STORE</a><br>
-             	<ul class="sub" style="display: block;">
-                  <li><a href="product_controller?viewType=list&cPage=1">ALL</a></li><br>		                        
-                  <li><a href="product_controller?viewType=list&producttype=T&cPage=1">TOP</a></li><br>	
-                  <li><a href="product_controller?viewType=list&producttype=B&cPage=1">BOTTOM</a></li><br>	
-             	</ul>
-             </li>
-             <br>
-             <li class="title">
-                	<a href="#none" style="color: black;">BOARD</a><br>
-                	<ul class="sub" style="display: block;">
-	                  <li><a href="bbsController?type=bbs">Q&A</a></li><br>		                        
-	                  <li><a href="mypage.html">MYPAGE</a></li>
-            		</ul>
-           		</li>
-           	</ul>
-        </div>
-    </nav>
-	<form method="post" id="submitForm">
-	<input type="button" value="All" onclick="all_search(this.form)">
-	<input type="button" value="Top" onclick="top_search(this.form)">
-	<input type="button" value="Bottom" onclick="bottom_search(this.form)">
-	
-	<div id="bbs">
-		<table>
-			<thead>
-				<tr>
-					<th width="15%">상품번호</th>
-					<th width="20%">상품명</th>
-					<th width="20%">가격</th>
-				<tr>
-			</thead>
-			<tbody>
-				<c:if test="${not empty list}">
-					<c:forEach var="vo" items="${list}">
-						<tr>
-							<td>${vo.getProductno() }</td>
-							<td>
-								<a href="#" onclick="detail_view('${vo.getProductno()}');">${vo.getProductname()}</a>
-							</td>
-							<td>${vo.getPrice()}원</td>
-						</tr>	
-					</c:forEach>
-				</c:if>	
-				<c:if test="${empty list}">
-				</c:if>	
-			</tbody>
-			<tfoot>
-				<tr align="center">
-					<td colspan="5" align="center">
-						<ol class="paging" id="paging">
-							<c:forEach var="i" begin="1" end="${totalPage}">
-								<c:choose>
-									<c:when test="${i == cPage}">
-										<li class="now">
-											${i}
-										</li>
-									</c:when>
-									<c:otherwise>
-										<li>
-											<a href="#" onclick="paging_click('<%=producttype%>',${i});">${i}</a>
-										</li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-						</ol>
-					</td>
-				</tr>
-			</tfoot>
-		</table>
-			            <footer>
+	    <nav class="menu">
+	        <div class="wrap">
+	            <ul>
+	            	<li class="title">
+	            		<a href="#none" style="color: black;">STORE</a><br>
+	             	<ul class="sub" style="display: block;">
+	                  <li><a href="product_controller?viewType=list&cPage=1">ALL</a></li><br>		                        
+	                  <li><a href="product_controller?viewType=list&producttype=T&cPage=1">TOP</a></li><br>	
+	                  <li><a href="product_controller?viewType=list&producttype=B&cPage=1">BOTTOM</a></li><br>	
+	             	</ul>
+	             </li>
+	             <br>
+	             <li class="title">
+	                	<a href="#none" style="color: black;">BOARD</a><br>
+	                	<ul class="sub" style="display: block;">
+		                  <li><a href="bbsController?type=bbs">Q&A</a></li><br>		                        
+		                  <li><a href="mypage.html">MYPAGE</a></li>
+	            		</ul>
+	           		</li>
+	           	</ul>
+	        </div>
+	    </nav>
+    
+	    <section class="main_slide-banner">
+	    	<img alt="상품들" src="images/items.jpg">
+	    </section>
+	            
+		<form method="post" id="submitForm">	
+			 <main>
+                <div class="wrap">
+                    <div class="normal-item">
+                    	<c:choose> 
+							<c:when test="${producttype=='B'}">
+								<div class="item_list_title">BOTTOM</div>
+							</c:when> 
+							<c:when test="${producttype=='T'}">
+								<div class="item_list_title">TOP</div>
+							</c:when> 
+							<c:otherwise>
+								<div class="item_list_title">ALL</div>
+							</c:otherwise> 
+						</c:choose> 
+	                       <div style="display: table;"> 
+	                       <ul class="item_list">
+	                           <li class="item">
+	                           	<c:if test="${not empty list}">
+									<c:forEach var="vo" items="${list}" varStatus="status">
+			                            <c:if test="${(status.index+1)%1 ==0}">
+				                           		<li class="item_box">
+				                            		<a href="#" onclick="detail_view('${vo.getProductno()}');">
+				                            			<p><img class="item_img" alt="" src="images/${vo.getImage_s()}"></p>
+				                            			<p class="item_name">${vo.getProductname()}</p>
+				                            			<p class="item_price">${vo.getPrice()}원</p>
+				                            		</a>
+				                            	</li>
+				                            	<br><br>
+			                            </c:if>	
+		                            </c:forEach>
+								</c:if>
+								<c:if test="${empty list}">
+								</c:if>
+							</li>
+						</ul>
+						</div>
+							</div>
+								<div colspan="5" align="center">
+									<ul class="paging" id="paging">
+										<c:forEach var="i" begin="1" end="${totalPage}">
+											<c:choose>
+												<c:when test="${i == cPage}">
+													<li class="now">
+														${i}
+													</li>
+												</c:when>
+												<c:otherwise>
+													<li>
+														<a href="#" onclick="paging_click('<%=producttype%>',${i});">${i}</a>
+													</li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+									</ul>
+								</div>
+	               </div>
+				</main>
+			</form>	 
+			           
+				<footer>
 	                <div class="wrap">
 	                    <section class="footer_left">
 	                        <div class="footer_terms">
@@ -290,8 +310,6 @@
 	                </div>
 	            </footer>
 	            <div class="chat-bot"><i class="fas fa-comments"></i></div>
-	        </div>	
 	</div>
-</form>
 </body>
 </html>

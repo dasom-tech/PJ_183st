@@ -11,39 +11,138 @@
 %>		
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>183번가</title>
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-        <meta name="path_role" content="MAIN">
-        <meta name="author" content="183번가">
-        <meta name="description" content="183번가 - 의류 쇼핑몰">
-        <meta name="keywords" content="183ST">
-        <link rel="stylesheet" type="text/css" href="reset.css">
-        <link rel="stylesheet" type="text/css" href="common.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <link href="css/menu.css" rel="stylesheet" type="text/css">
-        <script src="main.js" defer></script>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
-        <link rel="preconnect" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
-        <script type="text/javascript">
-        	function logoutChk(){
-        		var chk = confirm("로그아웃 하시겠습니까?");
-        		
-        		if(chk){
-        			location.href="memberController?type=logout";
-        		} else{
-        			return;
-        		}
-        	}
-        	
-        	function needLogin(){
-        		alert("로그인이 필요한 기능입니다");
-        		location.href="memberController?type=loginMove";
-        	}
-        </script>
-    </head>
+<head>
+<meta charset="UTF-8">
+<title>목록</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="path_role" content="MAIN">
+<meta name="author" content="183번가">
+<meta name="description" content="183번가 - 의류 쇼핑몰">
+<meta name="keywords" content="183ST">
+<link rel="stylesheet" type="text/css" href="reset.css">
+<link rel="stylesheet" type="text/css" href="common.css">
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="css/menu.css" rel="stylesheet" type="text/css">
+<script src="main.js" defer></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet"> <!--CDN 링크 -->
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<script type="text/javascript">
+	function logoutChk(){
+		var chk = confirm("로그아웃 하시겠습니까?");
+		
+		if(chk){
+			location.href="memberController?type=logout";
+		} else{
+			return;
+		}
+	}
+	
+	function needLogin(){
+		alert("로그인이 필요한 기능입니다");
+		location.href="memberController?type=loginMove";
+	}
+</script>
+<style>
+	#titleArea{position:relative;border-bottom:1px solid #c2c2c2;background-color:#fff;}
+	#titleArea h2{padding:0 61px 10px 61px;line-height:20px;font-size:15px;color:#2e2e2e;text-align:center;}
+	
+	.join_form { border:1px solid black; border-collapse:collapse; border-style: solid;}
+	.join_form tr { border:1px solid black; border-style: solid none; }
+</style>
+<style>
+	table {
+		width: 600px;
+		margin: 35px auto 0; /* 상 좌우 하 */
+		border-collapse: collapse;
+		font-size: 1.0em;
+		border-bottom: 1px solid #ddd;
+	}
+	th, td { border-bottom: 1px solid #ddd; padding: 3px; }
+	th { background-color: #ddd; }
+	.red { color: red; }
+	
+	.title { width: 30%; }
+	tfoot { text-align: left; height: 3em; }
+	.submitBtn {
+		background-color: #008CBA;
+		border: none;
+		color: white;
+		padding: 15px 32px;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 16px;
+		margin: 4px 2px;
+		cursor: pointer;
+	}
+</style>
+<style>
+	.no { width: 10%; }
+	.writer { width: 15%; }
+	.regdate { width: 20%; }
+	.hit { width: 15%; }
+	
+	/***** 페이지 표시 부분 스타일(시작) ****/
+	.paging { list-style: none; text-align: center;}
+	.paging li {
+		float: left;
+		margin-right: 8px;
+	}
+	.paging li a {
+		text-decoration: none;
+		display: block;
+		padding: 3px 7px;
+		border: 1px solid #00B3DC;
+		font-weight: bold;
+		color: black;
+	}
+	.paging .disable {
+		border: 1px solid silver;
+		padding: 3px 7px;
+		color: silver;
+	}
+	.paging .now {
+		border: 1px solid #ff4aa5;
+		padding: 3px 7px;
+		background-color: #ff4aa5;
+	}
+	.paging li a:hover {
+		background-color: #00B3DC;
+		color: white;
+	}
+	.center {
+		text-align: center;
+	}
+	/***** 페이지 표시 부분 스타일(끝) ****/
+</style>
+<script>
+	function all_search(frm) {
+		frm.action = "product_controller?viewType=list&cPage=1";
+		frm.submit();
+	}
+	function top_search(frm) {
+		producttype = "T";
+		frm.action = "product_controller?viewType=list&producttype=T&cPage=1";
+		frm.submit();
+	}
+	function bottom_search(frm) {
+		producttype = "B";
+		frm.action = "product_controller?viewType=list&producttype=B&cPage=1";
+		frm.submit();
+	}
+	function detail_view(productno){
+		var frm = document.getElementById("submitForm");
+		frm.action="product_controller?viewType=info&productno="+productno;
+		frm.submit();
+	}
+	function paging_click(producttype, pageNo){
+		var frm = document.getElementById("submitForm");
+		frm.action = "product_controller?viewType=list&producttype="+producttype+"&cPage="+pageNo;		
+		frm.submit();
+	}	
+</script>
+</head>
     <body>
         <div class="body_wrap"> 
             <header>
@@ -52,7 +151,7 @@
 			    	<a href="#none" class="xi-close-thin" id="header_close_button"></a>
 				    <ul style="top: 0px;">
 				    	<li style="background-color:violet;"><a href="memberController?type=joinMove" style="color:#fff;">183번가 온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
-				        <li style="background-color:#60da9f;"><a href="http://lmoodc.cafe24.com/product/list.html?cate_no=58" style="color:#fff;">인기 많은 품절 임박 상품 확인하기!</a></li>
+				        <li style="background-color:#60da9f;"><a href="bbsController?type=bbs" style="color:#fff;">183번가 "Q&A"</a></li>
 				        <li style="background-color:pink;"><a href="https://www.instagram.com/" style="color:#fff;">인스타그램 @183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
 					</ul>
 				</div>
@@ -60,11 +159,11 @@
                     <div class="header_menu">
                         <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
                         	<c:if test="${empty sessionScope.id }">
-                        		<a href="memberController?type=loginMove" style="font-size: 13px">LOGIN</a>
+                        		<a href="memberController?type=loginMove"><i class="fas fa-user"></i></a>
                         	</c:if>
                         	<c:if test="${!empty sessionScope.id }">
-                        		<a href="#" onclick="logoutChk()" style="font-size: 13px">LOGOUT</a>
-                       			<a href="memberController?type=myPage" style="font-size: 13px">MYPAGE</a>
+                        		<a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
+                       			<a href="memberController?type=myPage">마이 페이지</a>
                        		</c:if>
                     </div>
                     <div class="header_logo">
@@ -92,17 +191,12 @@
 		                        <li><a href="product_controller?viewType=list&producttype=B&cPage=1">BOTTOM</a></li><br>	
 	                    	</ul>
 	                    </li>
-	                    <br>
+	                    
 	                    <li class="title">
                         	<a href="#none" style="color: black;">BOARD</a><br>
                         	<ul class="sub" style="display: block;">
-		                        <li><a href="bbsController?type=bbs">Q&A</a></li><br>
-		                        <c:if test="${empty sessionScope.id }">	                        
-		                        <li><a href="#" onclick="needLogin()">MYPAGE</a></li>
-		                        </c:if>
-		                        <c:if test="${!empty sessionScope.id }">	                        
-		                        <li><a href="memberController?type=myPage">MYPAGE</a></li>
-		                        </c:if>
+		                        <li><a href="bbsController?type=bbs">Q&A</a></li>	                        
+		                        <li><a href="mypage.html">MYPAGE</a></li>
                     		</ul>
                    		</li>
                    	</ul>
@@ -112,8 +206,9 @@
             <section class="main_slide-banner img">
                 <img alt="메인배너사진" src="images/main3.jpg">
             </section>
-    
-            <main>
+         
+         <form method="post" id="submitForm">	
+			 <main> 
                 <div class="wrap">
                     <div class="best-item">
                         <div class="item_list_title">BESTSELLER</div>
@@ -156,25 +251,51 @@
 	                            </li>
 	                        </ul>                       
                     	</div>
-	               <div class="wrap">
-	              		<div class="normal-item">
-	              			<div class="item_list_title">ALL</div>
-	                    		<ul class="item_list">
-	                   				<li class="item">
-	                        			<div class="item_box">
-											<c:forEach var="vo" items="${list }">
-												<li>
-													<div class="item_name">${vo.getProductname()}</div>
-	                          						<div class="item_price">${vo.getPrice()}원</div>
-												</li>
-											</c:forEach>
-										</div>
-									</li>
-								</ul>
-	                	</div>
-	           		</div>
-            	</div>
-	        </main>
+                	<br><br>
+					<div class="best-item">
+                        <div class="item_list_title">RECOMMEND</div>
+	                        <ul class="item_list">
+	                            <li class="item">
+	                            	<div class="item_box">                         	
+		                                <a href="product_controller?viewType=info&productno=T108">
+			                                <img class="item_img" alt="" src="images/b218s.jpg">
+			                                <div class="item_name">퓨어크림 클래식 크롭 데님</div>
+			                                <div class="item_price">84,000원</div>
+		                                </a>
+	                                </div>
+	                            </li>
+	                            <li class="item">
+	                            	<div class="item_box">
+	                            		<a href="product_controller?viewType=info&productno=T106">
+	                            			<img class="item_img" alt="" src="images/t106s.jpg">
+	                            			<div class="item_name">에센셜 스탠다드 맨투맨 CREAM</div>
+	                            			<div class="item_price">36,400원</div>
+	                            		</a>
+	                            	</div>
+	                            </li>
+	                            <li class="item">
+	                            	<div class="item_box">
+	                            		<a href="product_controller?viewType=info&productno=T105">
+	                            			<img class="item_img" alt="" src="images/t105s.jpg">
+	                            			<div class="item_name">익스클루시브 코튼 맨투맨 BLACK</div>
+	                            			<div class="item_price">34,000원</div>
+	                            		</a>
+	                            	</div>
+	                            </li>
+	                            <li class="item">
+	                            	<div class="item_box">
+	                            		<a href="product_controller?viewType=info&productno=B215">
+	                            			<img class="item_img" alt="" src="images/b215s.jpg">
+	                            			<div class="item_name">시그니처 테크니컬 슬랙스 BLACK</div>
+	                            			<div class="item_price">69,900원</div>
+	                            		</a>
+	                            	</div>
+	                            </li>
+	                        </ul>                       
+                    	</div>
+	             </div>
+			</main>
+		</form>
 	    
 	            <footer>
 	                <div class="wrap">
