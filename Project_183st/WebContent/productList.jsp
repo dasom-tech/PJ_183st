@@ -243,8 +243,8 @@
 						</ul>
 						</div>
 							</div>
-								<div colspan="5" align="center">
-									<ul class="paging" id="paging">
+								<div colspan="5" style="text-align: center;">
+									<ul class="paging" id="paging" style="margin-left: 48%;">
 										<c:forEach var="i" begin="1" end="${totalPage}">
 											<c:choose>
 												<c:when test="${i == cPage}">

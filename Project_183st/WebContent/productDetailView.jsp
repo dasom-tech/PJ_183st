@@ -33,10 +33,20 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Lexend+Mega&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
 <script type="text/javascript">
+function logoutChk(){
+	var chk = confirm("로그아웃 하시겠습니까?");
+	
+	if(chk){
+		location.href="memberController?type=logout";
+	} else{
+		return;
+	}
+}
    	function needLogin(){
    		alert("로그인이 필요한 기능입니다");
    		location.href="memberController?type=loginMove";
    	}
+   	
 </script>
 <style>
 	table {
@@ -167,7 +177,11 @@
 		
 		
 	});
-
+	
+	function errorM() {
+		alert("로그인 후 한 줄 리뷰작성이 가능합니다.");
+	}
+	
 </script>
 
 
@@ -298,8 +312,13 @@
 										<textarea name="review" rows="3" required placeholder="한 줄 리뷰"></textarea>
 									</div>
 									<div class="review_write_submit">
-										<input type="submit" value="등록">
-										<input type="hidden" name="productno" value="${productno }">
+										<c:if test="${empty sessionScope.id }">
+											<input type="button" value="등록" onclick="errorM()">
+										</c:if>
+										<c:if test="${!empty sessionScope.id }">
+											<input type="submit" value="등록">
+											<input type="hidden" name="productno" value="${productno }">
+										</c:if>
 									</div>
 								</form>
 							</th>
