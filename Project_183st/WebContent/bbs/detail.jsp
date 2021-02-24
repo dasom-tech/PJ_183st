@@ -138,32 +138,16 @@
 	<div class="body_wrap">
 		<header>
 			<div id="loading"></div>
-			<!-- <div class="header_banner">
-				<a href="#none" class="xi-close-thin" id="header_close_button"></a>
-				<ul style="top: 0px;">
-					<li style="background-color: violet;"><a
-						href="memberController?type=joinMove" style="color: #fff;">183번가
-							온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
-					<li style="background-color: #60da9f;"><a
-						href="http://lmoodc.cafe24.com/product/list.html?cate_no=58"
-						style="color: #fff;">인기 많은 품절 임박 상품 확인하기!</a></li>
-					<li style="background-color: pink;"><a
-						href="https://www.instagram.com/" style="color: #fff;">인스타그램
-							@183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
-				</ul>
-			</div>  -->
 			<div class="wrap">
 				<div class="header_menu">
 					<a href="#" class="toggle"><i class="fas fa-bars"></i></a>
 					<c:if test="${empty sessionScope.id }">
-						<a href="memberController?type=loginMove">
-						<i class="fas fa-user"></i></a>
-					</c:if>
-					<c:if test="${!empty sessionScope.id }">
-						<a href="#" onclick="logoutChk()"><i class="fas fa-user"></i></a>
-						<a href="memberController?type=myPage">마이 페이지</a>
-						<!-- <a href="memberController?type=myPage"><i class="fas fa-user"></i></a>  -->
-					</c:if>
+                        <a href="memberController?type=loginMove" style="font-size: 13px">LOGIN</a>
+                    </c:if>
+                    <c:if test="${!empty sessionScope.id }">
+                        <a href="#" onclick="logoutChk()" style="font-size: 13px">LOGOUT</a>
+                       	<a href="memberController?type=myPage" style="font-size: 13px">MYPAGE</a>
+                    </c:if>
 				</div>
 				<div class="header_logo">
 					<a href="shop183st.jsp">183번가</a>
@@ -229,8 +213,7 @@
 									<td colspan="5" style="height:40px;">${vo.subject }</td>
 								</tr>
 								<tr class="contact-tr">
-									<th>내용</th>
-									<td colspan="5" style="text-align: left; height:inherit;">${vo.contact }</td>
+									<td colspan="5" style="text-align:left; vertical-align:top; padding:10px;">${vo.contact }</td>
 								</tr>
 							</tbody>
 							<tfoot>
