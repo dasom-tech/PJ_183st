@@ -127,6 +127,21 @@
 		
 		firstForm.submit();
 	}
+	
+	function logoutChk(){
+		var chk = confirm("로그아웃 하시겠습니까?");
+		
+		if(chk){
+			location.href="memberController?type=logout";
+		} else{
+			return;
+		}
+	}
+	
+	function needLogin(){
+		alert("로그인이 필요한 기능입니다");
+		location.href="memberController?type=loginMove";
+	}
 </script>
 </head>
 <body>
@@ -162,30 +177,33 @@
 			</div>
 		</header>
 
-		<nav class="menu">
-			<div class="wrap">
-				<ul>
-					<li class="title"><a href="#none" style="color: black;">STORE</a><br>
-						<ul class="sub" style="display: block;">
-							<li><a href="product_controller?viewType=list&cPage=1">ALL</a></li>
-							<br>
-							<li><a
-								href="product_controller?viewType=list&producttype=T&cPage=1">TOP</a></li>
-							<br>
-							<li><a
-								href="product_controller?viewType=list&producttype=B&cPage=1">BOTTOM</a></li>
-							<br>
-						</ul></li>
-					<br>
-					<li class="title"><a href="#none" style="color: black;">BOARD</a><br>
-						<ul class="sub" style="display: block;">
-							<li><a href="bbsController?type=bbs">Q&A</a></li>
-							<br>
-							<li><a href="memberController?type=myPage">MYPAGE</a></li>
-						</ul></li>
-				</ul>
-			</div>
-		</nav>
+	    <nav class="menu">
+	        <div class="wrap">
+	            <ul>
+	            	<li class="title">
+	            		<a href="#none" style="color: black;">STORE</a><br>
+	             	<ul class="sub" style="display: block;">
+	                  <li><a href="product_controller?viewType=list&cPage=1">ALL</a></li><br>		                        
+	                  <li><a href="product_controller?viewType=list&producttype=T&cPage=1">TOP</a></li><br>	
+	                  <li><a href="product_controller?viewType=list&producttype=B&cPage=1">BOTTOM</a></li><br>	
+	             	</ul>
+	             </li>
+	             <br><br>
+	             <li class="title">
+	                	<a href="#none" style="color: black;">BOARD</a><br>
+	                	<ul class="sub" style="display: block;">
+		                  <li><a href="bbsController?type=bbs">Q&A</a></li><br>		                        
+		                 <c:if test="${empty sessionScope.id }">
+		                 	<li><a href="#" onclick="needLogin()">MYPAGE</a></li>
+		                 </c:if>
+		                 <c:if test="${!empty sessionScope.id }">
+		                    <li><a href="memberController?type=myPage">MYPAGE</a></li>
+		                 </c:if>
+	            		</ul>
+	           		</li>
+	           	</ul>
+	        </div>
+	    </nav>
 		<main>
 		<div class="warp" style="min-height: 820px;">
 				<div id="bbs">
