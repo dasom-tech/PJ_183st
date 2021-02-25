@@ -399,7 +399,7 @@
 					<tr>
 						<th>주소</th>
 						<td> 
-						<input type="text" name="addr">
+						<input type="text" name="addr" style="width: 500px;">
 						</td>
 					</tr>
 					
