@@ -147,15 +147,7 @@
 <body>
 	<div class="body_wrap"> 
     	<header>
-     		<div id="loading"></div> 
-			<div class="header_banner">
-				<a href="#none" class="xi-close-thin" id="header_close_button"></a>
- 					<ul style="top: 0px;">
-						<li style="background-color:violet;"><a href="memberController?type=joinMove" style="color:#fff;">183번가 온라인 쇼핑몰 신규가입 적립금 2,000원 혜택!</a></li>
-					    <li style="background-color:#60da9f;"><a href="http://lmoodc.cafe24.com/product/list.html?cate_no=58" style="color:#fff;">인기 많은 품절 임박 상품 확인하기!</a></li>
-					    <li style="background-color:pink;"><a href="https://www.instagram.com/" style="color:#fff;">인스타그램 @183st 팔로우시 다양한 이벤트 참여 가능!</a></li>
-					</ul>
-			</div>
+     		<div id="loading"></div>
             <div class="wrap">                	
                 <div class="header_menu">
                     <a href="#" class="toggle"><i class="fas fa-bars"></i></a>
@@ -251,8 +243,8 @@
 						</ul>
 						</div>
 							</div>
-								<div colspan="5" align="center">
-									<ul class="paging" id="paging">
+								<div colspan="5" style="text-align: center;">
+									<ul class="paging" id="paging" style="margin-left: 48%;">
 										<c:forEach var="i" begin="1" end="${totalPage}">
 											<c:choose>
 												<c:when test="${i == cPage}">

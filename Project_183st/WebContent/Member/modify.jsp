@@ -326,7 +326,7 @@
 					</tr>
 					<tr>
 						<th>주소</th>
-						<td><input type="text" name="addr" value="${member.addr }"></td>
+						<td><input type="text" name="addr" value="${member.addr }" style="width: 500px;"></td>
 					</tr>
 					<tr>
 						<th>전화번호</th>
