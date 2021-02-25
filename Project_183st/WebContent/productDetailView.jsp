@@ -180,11 +180,7 @@ function logoutChk(){
 	function errorM() {
 		alert("로그인 후 한 줄 리뷰작성이 가능합니다.");
 	}
-<<<<<<< HEAD
-
-=======
 	
->>>>>>> 2577b4cab689243102d3ec2a12e39bb011710efb
 </script>
 
 
