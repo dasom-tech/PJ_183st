@@ -236,7 +236,7 @@ function logoutChk(){
 	       </div>
 	   </nav>
 	<form action="CartController?type=insertItem" method="post" id="submitForm">
-		<table style="height: 400px; width: 500px;">
+		<table style="height: 400px; width: 1080px;">
 			<tr>
 				<td>
 					<img src="images/${vo.getImage_s()}" alt="제품이미지" width="500" height="400">
@@ -291,7 +291,7 @@ function logoutChk(){
 				</td>
 			</tr>
 		</table>
-		<div>
+		<div align="center">
 			<img src="images/${vo.getImage_l() }" alt="제품이미지">
 		</div>
 	</form>
