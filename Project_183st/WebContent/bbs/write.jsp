@@ -240,11 +240,11 @@
 									</select></td>
 								</tr>
 								<tr>
-                                   <th colspan="2">내용</th>
-                                </tr>
-		                        <tr>
-		                           <td><textarea name="contant" rows="40" cols="129" title="내용">${vo.contact }</textarea></td>
+                           			<th colspan="2">내용</th>
 		                        </tr>
+		                        <tr>
+		                           <td><textarea name="content" rows="40" cols="129" title="내용"></textarea>
+		                        </td>
 							</tbody>
 							<tfoot>
 								<tr>
