@@ -2,7 +2,8 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>  
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>  
 <% 
 	String producttype = request.getParameter("producttype");
 	if(producttype == null) {
@@ -239,7 +240,7 @@
 			                            		<a href="#" onclick="detail_view('${vo.getProductno()}');">
 			                            			<p><img class="item_img" alt="" src="images/${vo.getImage_s()}"></p>
 			                            			<p class="item_name">${vo.getProductname()}</p>
-			                            			<p class="item_price">${vo.getPrice()}원</p>
+			                            			<p class="item_price"><fmt:formatNumber value="${vo.getPrice()}" pattern="#,###" />원</p>
 			                            		</a>
 			                            	</li>
 			                            	<br><br>
