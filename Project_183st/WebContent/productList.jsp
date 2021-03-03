@@ -142,6 +142,16 @@
 		frm.submit();
 	}	
 </script>
+<style>
+.item_list {
+  display : flex;
+  flex-wrap : wrap;
+}
+
+.item_box {
+  width: 20%;
+}
+</style>
 </head>
 
 <body>
@@ -222,24 +232,22 @@
 						</c:choose> 
 	                       <div style="display: table;"> 
 	                       <ul class="item_list">
-	                           <li class="item">
-	                           	<c:if test="${not empty list}">
-									<c:forEach var="vo" items="${list}" varStatus="status">
-			                            <c:if test="${(status.index+1)%1 ==0}">
-				                           		<li class="item_box">
-				                            		<a href="#" onclick="detail_view('${vo.getProductno()}');">
-				                            			<p><img class="item_img" alt="" src="images/${vo.getImage_s()}"></p>
-				                            			<p class="item_name">${vo.getProductname()}</p>
-				                            			<p class="item_price">${vo.getPrice()}원</p>
-				                            		</a>
-				                            	</li>
-				                            	<br><br>
-			                            </c:if>	
-		                            </c:forEach>
-								</c:if>
-								<c:if test="${empty list}">
-								</c:if>
-							</li>
+                            	<c:if test="${not empty list}">
+								<c:forEach var="vo" items="${list}" varStatus="status">
+		                            <c:if test="${(status.index+1)%1 ==0}">
+			                           		<li class="item_box">
+			                            		<a href="#" onclick="detail_view('${vo.getProductno()}');">
+			                            			<p><img class="item_img" alt="" src="images/${vo.getImage_s()}"></p>
+			                            			<p class="item_name">${vo.getProductname()}</p>
+			                            			<p class="item_price">${vo.getPrice()}원</p>
+			                            		</a>
+			                            	</li>
+			                            	<br><br>
+		                            </c:if>	
+	                            </c:forEach>
+							</c:if>
+							<c:if test="${empty list}">
+							</c:if>
 						</ul>
 						</div>
 							</div>
