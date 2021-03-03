@@ -1,5 +1,7 @@
 package com.bc.product;
 
+import java.text.DecimalFormat;
+
 public class ProductVO {
 
 	private String productno, producttype, productname, info, image_s, image_l;

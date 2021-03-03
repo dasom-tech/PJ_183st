@@ -27,7 +27,7 @@ public class ProductListCommand implements Command{
 				
 				int productCnt = ProductDAO.getCntProductListByType(paramMap);
 				p.setTotalRecord(productCnt);
-				p.setPageSize(5);
+				p.setPageSize(10);
 				p.setTotalPage();
 				
 				String cPage = request.getParameter("cPage");

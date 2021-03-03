@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%-- 전달받은 제품번호를 사용해서 DB데이터 조회 후 화면 표시 --%>
 <%-- 액션태그 useBean scope 상에 id명 속성값이 
 	있으면 사용하고, 없으면 클래스 속성 타입의 객체 생성 + scope 등록--%>
@@ -253,7 +254,7 @@ function logoutChk(){
 						</tr>
 						<tr align="left">
 							<td width="20%" style="font-size: 18px; font-weight: bold;">가격</td>
-							<td align="left">${info.getPrice()}원</td>
+							<td align="left"><fmt:formatNumber value="${info.getPrice()}" pattern="#,###" />원</td>
 						</tr>
 						<c:if test="${info.getStock()<=5}">
 							<tr style="color: red;">
