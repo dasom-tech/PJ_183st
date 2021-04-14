@@ -421,7 +421,7 @@ function logoutChk(){
 	            </div>
 	            <div class="footer_other">
 	                <div class="footer_other_business-hour">
-	                    평일 AM 10:00 - PM 07:00<br>
+	                    평일 AM 9:00 - PM 18:00<br>
 	                    점심 PM 01:00 - PM 02:00<br>
 	                    휴무 토 / 일 / 공휴일
 	                </div>

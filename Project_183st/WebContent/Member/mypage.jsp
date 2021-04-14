@@ -228,7 +228,7 @@
 					</a>
 				</li>
 				<li>
-					<a>
+					<a href="">
 						<strong>문의 건수</strong><br><br>
 						<span>${ContactCount }</span>
 					</a>
@@ -245,7 +245,7 @@
 						<a href="memberController?type=modifyMove">정보 수정</a>
 					</li>
 					<li>
-						<a href="bbsController?type=myPage">문의 내역</a>
+						<a href="bbsController?type=bbs">문의 내역</a>
 					</li>
 				</ul>
 			</div>
