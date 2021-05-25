@@ -28,10 +28,10 @@
 ![image](https://user-images.githubusercontent.com/73812196/119328892-8faa2500-bcbf-11eb-9d8d-0e893821cb62.png)
 - 카테고리별(ALL, TOP, BOTTOM) 상품 조회 가능
 ---
-![image](https://user-images.githubusercontent.com/73812196/119327247-bbc4a680-bcbd-11eb-9db9-e3705103a81a.png)
-- 한 페이지당 5개 조회, 페이징 처리
+![screencapture-localhost-8080-Project-183st-product-controller-2021-05-25-12_31_20](https://user-images.githubusercontent.com/73812196/119435549-4efceb00-bd55-11eb-9506-fd3567c74a51.png)
+- 한 페이지당 상품 10개씩 2줄로 조회, 페이징 처리
 ---
-![image](https://user-images.githubusercontent.com/73812196/119327454-f62e4380-bcbd-11eb-8957-ddfbba40add7.png)
+![image](https://user-images.githubusercontent.com/73812196/119435408-05140500-bd55-11eb-9abe-c8ddfe74cbcb.png)
 ![image](https://user-images.githubusercontent.com/73812196/119328615-42c64e80-bcbf-11eb-8fe5-384f4724660a.png)
 - 재고 5개 이하 상품 품절 임박 표시되도록 구현
 ---
